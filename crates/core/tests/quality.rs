@@ -1,4 +1,4 @@
-use cross_math_core::{Op, Puzzle, check, evaluate, generate, hint, solve};
+use cross_math_core::legacy::{Op, Puzzle, check, evaluate, generate, hint, solve};
 
 #[test]
 fn arithmetic_handles_precedence_exact_division_and_overflow() {

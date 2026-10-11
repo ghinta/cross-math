@@ -1,15 +1,17 @@
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
-import { initSync, generate, check, hint } from '../src/wasm/cross_math_core.js';
+import { initSync, generate, check, hint, verify } from '../src/wasm/cross_math_core.js';
 
 initSync({ module: readFileSync(new URL('../src/wasm/cross_math_core_bg.wasm', import.meta.url)) });
 const catalog = JSON.parse(readFileSync(new URL('../src/data/puzzles.json', import.meta.url), 'utf8'));
 let longest = 0;
-for (const expected of catalog) {
+const legacy = JSON.parse(readFileSync(new URL('../tests/data/legacy-puzzles.json', import.meta.url), 'utf8'));
+for (const expected of [...catalog, ...legacy]) {
   const start = performance.now();
-  const actual = JSON.parse(generate(expected.seed, expected.difficulty));
+  const actual = expected.version === 2 ? JSON.parse(generate(expected.seed, expected.difficulty)) : expected;
   longest = Math.max(longest, performance.now() - start);
   assert.deepEqual(actual, expected, `Native/WASM mismatch: ${expected.id}`);
+  assert.equal(JSON.parse(verify(JSON.stringify(actual))), true);
   const board = [...actual.givens];
   while (board.includes(null)) {
     const next = JSON.parse(hint(JSON.stringify(actual), JSON.stringify(board)));
@@ -17,4 +19,4 @@ for (const expected of catalog) {
   }
   assert.equal(JSON.parse(check(JSON.stringify(actual), JSON.stringify(board))).valid, true);
 }
-console.log(`${catalog.length} native/WASM parity checks and complete hint paths passed. Slowest generation: ${longest.toFixed(1)} ms.`);
+console.log(`${catalog.length} native/WASM parity checks, ${catalog.length + legacy.length} verified tasks and complete hint paths passed. Slowest generation: ${longest.toFixed(1)} ms.`);

@@ -11,41 +11,73 @@ export const emptySave = (): Save => ({ version: 1, activeMode: 'free', session:
 const object = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const natural = (v: unknown) => Number.isSafeInteger(v) && (v as number) >= 0;
 const number = (v: unknown) => Number.isInteger(v) && (v as number) >= 1 && (v as number) <= 99;
-const board = (v: unknown): boolean => Array.isArray(v) && v.length === 9 && v.every(n => n === null || number(n));
+const board = (v: unknown, length: number): v is (number | null)[] => Array.isArray(v) && v.length === length && v.every(n => n === null || number(n));
 const date = (v: unknown): boolean => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && Number.isFinite(Date.parse(`${v}T00:00:00Z`)) && new Date(`${v}T00:00:00Z`).toISOString().slice(0, 10) === v;
-function notes(v: unknown): boolean {
-  return object(v) && Object.entries(v).every(([key, values]) => /^[0-8]$/.test(key) && Array.isArray(values) && values.length <= 99 && values.every(number));
+function notes(v: unknown, length: number): boolean {
+  return object(v) && Object.entries(v).every(([key, values]) => /^(0|[1-9]\d*)$/.test(key) && Number(key) < length && Array.isArray(values) && values.length <= 99 && values.every(number));
+}
+function validLayout(p: Record<string, unknown>): boolean {
+  if (!Array.isArray(p.equations) || !Array.isArray(p.givens)) return false;
+  if (p.version === 1) return p.givens.length === 9 && p.equations.length === 6 && p.equations.every((eq, i) => object(eq)
+    && JSON.stringify(eq.cells) === JSON.stringify(i < 3 ? [3 * i, 3 * i + 1, 3 * i + 2] : [i - 3, i, i + 3])
+    && Array.isArray(eq.operators) && eq.operators.length === 2 && eq.operators.every(op => ['+', '-', '*', '/'].includes(op))
+    && natural(eq.target) && (eq.target as number) > 0 && (eq.target as number) <= 999);
+  if (p.version !== 2 || !object(p.layout) || !natural(p.layout.rows) || !natural(p.layout.cols)
+    || (p.layout.rows as number) < 5 || (p.layout.rows as number) > 11 || (p.layout.cols as number) < 5 || (p.layout.cols as number) > 11
+    || !Array.isArray(p.layout.cells) || p.layout.cells.length !== p.givens.length || p.equations.length < 2 || p.equations.length > 20) return false;
+  const cells = p.layout.cells;
+  const occupied = new Set<string>();
+  for (const pos of cells) {
+    if (!object(pos) || !natural(pos.row) || !natural(pos.col) || (pos.row as number) >= (p.layout.rows as number) || (pos.col as number) >= (p.layout.cols as number)) return false;
+    const key = `${pos.row},${pos.col}`; if (occupied.has(key)) return false; occupied.add(key);
+  }
+  const used = new Set<number>();
+  const axes = new Set<string>();
+  const connected = new Set<number>([0]);
+  const relations: number[][] = [];
+  for (const eq of p.equations) {
+    if (!object(eq) || !['+', '-', '*', '/'].includes(eq.operator as string) || !Array.isArray(eq.cells) || eq.cells.length !== 3
+      || !eq.cells.every(i => natural(i) && i < cells.length)) return false;
+    const [a, b, c] = eq.cells.map(i => cells[i]) as { row: number; col: number }[];
+    const horizontal = a.row === b.row && b.row === c.row && a.col + 2 === b.col && b.col + 2 === c.col;
+    const vertical = a.col === b.col && b.col === c.col && a.row + 2 === b.row && b.row + 2 === c.row;
+    if (!horizontal && !vertical) return false;
+    for (const cell of eq.cells) { const key = `${cell},${vertical}`; if (axes.has(key)) return false; axes.add(key); }
+    for (const offset of [1, 3]) {
+      const key = `${a.row + (vertical ? offset : 0)},${a.col + (horizontal ? offset : 0)}`;
+      if (occupied.has(key)) return false; occupied.add(key);
+    }
+    eq.cells.forEach(i => used.add(i)); relations.push(eq.cells);
+  }
+  let count: number;
+  do { count = connected.size; for (const relation of relations) if (relation.some(i => connected.has(i))) relation.forEach(i => connected.add(i)); } while (count !== connected.size);
+  return used.size === cells.length && connected.size === cells.length;
 }
 export function validSession(value: unknown): value is Session | null {
   if (value === null) return true;
   if (!object(value) || !object(value.puzzle)) return false;
   const p = value.puzzle;
-  if (p.version !== 1 || typeof p.id !== 'string' || p.id.length > 100 || !natural(p.seed) || (p.seed as number) > 0xffffffff
-    || !['easy', 'medium', 'hard'].includes(p.difficulty as string) || !board(p.givens) || !board(value.board)
-    || !Array.isArray(p.bank) || p.bank.length > 9 || !p.bank.every(number)
-    || !Array.isArray(p.equations) || p.equations.length !== 6 || !object(p.rating)) return false;
-  if (!p.equations.every((eq, i) => object(eq) && JSON.stringify(eq.cells) === JSON.stringify(i < 3 ? [3 * i, 3 * i + 1, 3 * i + 2] : [i - 3, i, i + 3])
-    && Array.isArray(eq.operators) && eq.operators.length === 2 && eq.operators.every(op => ['+', '-', '*', '/'].includes(op))
-    && natural(eq.target) && (eq.target as number) > 0 && (eq.target as number) <= 999)) return false;
+  const length = Array.isArray(p.givens) ? p.givens.length : 0;
+  if (length < 5 || length > 36 || ![1, 2].includes(p.version as number) || typeof p.id !== 'string' || !p.id.length || p.id.length > 100 || !natural(p.seed) || (p.seed as number) > 0xffffffff
+    || !['easy', 'medium', 'hard'].includes(p.difficulty as string) || !board(p.givens, length) || !board(value.board, length)
+    || !Array.isArray(p.bank) || p.bank.length > length || !p.bank.every(number) || !object(p.rating) || !validLayout(p)) return false;
   if (!['deductions', 'rounds', 'branches'].every(k => natural((p.rating as Record<string, unknown>)[k]))) return false;
-  if (p.bank.length !== (p.givens as unknown[]).filter(n => n === null).length) return false;
+  if (p.bank.length !== p.givens.filter(n => n === null).length) return false;
   const validBoard = (values: unknown): boolean => {
-    if (!board(values)) return false;
+    if (!board(values, length)) return false;
     const inventory = new Map<number, number>();
     for (const n of p.bank as number[]) inventory.set(n, (inventory.get(n) ?? 0) + 1);
-    for (let i = 0; i < 9; i++) {
-      const given = (p.givens as (number | null)[])[i];
-      const valueAt = (values as (number | null)[])[i];
+    for (let i = 0; i < length; i++) {
+      const given = (p.givens as (number | null)[])[i]; const valueAt = values[i];
       if (given !== null && valueAt !== given) return false;
       if (given === null && valueAt !== null) {
-        inventory.set(valueAt, (inventory.get(valueAt) ?? 0) - 1);
-        if (inventory.get(valueAt)! < 0) return false;
+        inventory.set(valueAt, (inventory.get(valueAt) ?? 0) - 1); if (inventory.get(valueAt)! < 0) return false;
       }
     }
     return true;
   };
-  const snapshots = (v: unknown) => Array.isArray(v) && v.length <= 100 && v.every(s => object(s) && validBoard(s.board) && notes(s.notes));
-  if (!notes(value.notes) || !snapshots(value.undo) || !snapshots(value.redo) || !natural(value.elapsed) || !natural(value.hints)
+  const snapshots = (v: unknown) => Array.isArray(v) && v.length <= 100 && v.every(s => object(s) && validBoard(s.board) && notes(s.notes, length));
+  if (!notes(value.notes, length) || !snapshots(value.undo) || !snapshots(value.redo) || !natural(value.elapsed) || !natural(value.hints)
     || !['free', 'daily'].includes(value.mode as string) || typeof value.completed !== 'boolean'
     || (value.mode === 'daily' ? !date(value.day) : value.day !== null)) return false;
   return validBoard(value.board);

@@ -17,13 +17,21 @@ async fn get_hint(puzzle: String, values: String) -> Result<String, String> {
         .map_err(|e| e.to_string())?
 }
 
+#[tauri::command]
+async fn verify_puzzle(puzzle: String) -> Result<String, String> {
+    tauri::async_runtime::spawn_blocking(move || cross_math_core::verify_json(&puzzle))
+        .await
+        .map_err(|e| e.to_string())?
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             generate_puzzle,
             check_board,
-            get_hint
+            get_hint,
+            verify_puzzle
         ])
         .run(tauri::generate_context!())
         .expect("could not start Cross Math");

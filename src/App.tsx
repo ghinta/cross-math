@@ -1,20 +1,20 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { ArrowRight, CalendarDays, Check, CheckCheck, CircleHelp, Clock3, Download, Eraser, Lightbulb, Moon, Pause, Pencil, Play, Plus, Redo2, Settings2, Sparkles, Sun, Trophy, Undo2, Upload, WifiOff, X } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
-import type { Check as BoardCheck, Difficulty, Hint, Puzzle, Save, Session } from './types';
+import type { Check as BoardCheck, Difficulty, CrosswordPuzzle, Hint, Puzzle, Save, Session } from './types';
 import { dailyDate, dailySeed, engine, randomSeed } from './engine';
 import { clearCell, commit, newSession, place, remainingNumbers, toggleNote, travel } from './game';
 import { emptySave, loadSave, parseSave, saveGame } from './storage';
 import catalog from './data/puzzles.json';
 
 const levels: { id: Difficulty; label: string; detail: string }[] = [
-  { id: 'easy', label: 'Leicht', detail: 'Vier freie Felder. Addition und Subtraktion mit Zahlen bis 12.' },
-  { id: 'medium', label: 'Mittel', detail: 'Sechs freie Felder. Alle vier Rechenarten mit Zahlen bis 20.' },
-  { id: 'hard', label: 'Schwer', detail: 'Acht freie Felder. Alle vier Rechenarten mit Zahlen bis 30.' },
+  { id: 'easy', label: 'Leicht', detail: 'Sechs freie Felder. Addition und Subtraktion.' },
+  { id: 'medium', label: 'Mittel', detail: 'Neun freie Felder. Alle vier Rechenarten.' },
+  { id: 'hard', label: 'Schwer', detail: 'Zwölf freie Felder. Alle vier Rechenarten.' },
 ];
 const opLabel = (op: string) => op === '*' ? '×' : op === '/' ? '÷' : op === '-' ? '−' : op;
 const timeLabel = (seconds: number) => `${Math.floor(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
-const dayLabel = (date = dailyDate()) => new Intl.DateTimeFormat('de-AT', { day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`));
+const dayLabel = (date = dailyDate()) => new Intl.DateTimeFormat('de-AT', { day: '2-digit', month: '2-digit', timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`));
 
 function Modal({ title, children, onClose }: { title: string; children: ReactNode; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -25,8 +25,37 @@ function Modal({ title, children, onClose }: { title: string; children: ReactNod
   </dialog>;
 }
 
+function CrosswordBoard({ session, selected, onSelect, check, showErrors }: { session: Session; selected: number | null; onSelect: (cell: number) => void; check: BoardCheck | null; showErrors: boolean }) {
+  const puzzle = session.puzzle as CrosswordPuzzle;
+  const tiles = new Map<string, ReactNode>();
+  puzzle.layout.cells.forEach(({ row, col }, index) => {
+    const given = puzzle.givens[index] !== null;
+    const equations = puzzle.equations.map((eq, i) => eq.cells.includes(index) ? i : -1).filter(i => i >= 0);
+    const related = selected !== null && equations.some(i => puzzle.equations[i].cells.includes(selected));
+    const error = showErrors && equations.some(i => check?.equations[i] === 'invalid');
+    const correct = equations.every(i => check?.equations[i] === 'valid');
+    tiles.set(`${row},${col}`, <button key={`${row},${col}`} data-cell={index} className={`number-cell ${given ? 'given' : 'editable'} ${selected === index ? 'selected' : related ? 'related' : ''} ${error ? 'error' : ''} ${correct ? 'correct' : ''}`} aria-label={`Zeile ${row + 1}, Spalte ${col + 1}${given ? ', vorgegeben' : ''}, ${session.board[index] ?? 'leer'}`} aria-pressed={selected === index} disabled={given || session.completed} onClick={() => onSelect(index)}>
+      {session.board[index] !== null ? <span className="number-value">{session.board[index]}</span> : session.notes[index]?.length ? <span className="cell-notes">{session.notes[index].join(' · ')}</span> : <span className="empty-cell" aria-hidden="true">·</span>}
+    </button>);
+  });
+  puzzle.equations.forEach((eq, i) => {
+    const [a, b] = eq.cells.map(c => puzzle.layout.cells[c]);
+    const vertical = a.col === b.col;
+    for (const offset of [1, 3]) {
+      const key = `${a.row + (vertical ? offset : 0)},${a.col + (vertical ? 0 : offset)}`;
+      tiles.set(key, <span key={key} className={`cross-symbol ${check?.equations[i] === 'valid' ? 'correct' : ''} ${showErrors && check?.equations[i] === 'invalid' ? 'error' : ''}`} aria-hidden="true">{offset === 1 ? opLabel(eq.operator) : <span className={vertical ? 'vertical-equals' : ''}>=</span>}</span>);
+    }
+  });
+  const style = { '--cols': puzzle.layout.cols, '--rows': puzzle.layout.rows, aspectRatio: `${puzzle.layout.cols}/${puzzle.layout.rows}` } as CSSProperties;
+  return <div className="puzzle-grid crossword-grid" style={style} aria-label={`Rechenkreuz mit ${puzzle.equations.length} Gleichungen`}>{Array.from({ length: puzzle.layout.rows * puzzle.layout.cols }, (_, i) => {
+    const key = `${Math.floor(i / puzzle.layout.cols)},${i % puzzle.layout.cols}`;
+    return tiles.get(key) ?? <span key={key} aria-hidden="true" />;
+  })}</div>;
+}
+
 function Board({ session, selected, onSelect, check, showErrors }: { session: Session; selected: number | null; onSelect: (cell: number) => void; check: BoardCheck | null; showErrors: boolean }) {
   const { puzzle, board, notes } = session;
+  if (puzzle.version === 2) return <CrosswordBoard {...{ session, selected, onSelect, check, showErrors }} />;
   const cells: ReactNode[] = [];
   for (let y = 0; y < 7; y++) {
     for (let x = 0; x < 7; x++) {
@@ -92,7 +121,7 @@ export default function App() {
     loadSave().then(value => {
       if (!active) return;
       if (!value.session && catalog.length) value.session = newSession((catalog as Puzzle[])[0]);
-      if (value.activeMode === 'daily' && (!value.daily || value.daily.puzzle.seed !== dailySeed(dailyDate()))) value.activeMode = 'free';
+      if (value.activeMode === 'daily' && (!value.daily || value.daily.day !== dailyDate())) value.activeMode = 'free';
       setSave(value);
       const s = value.activeMode === 'daily' ? value.daily : value.session;
       setSelected(s?.puzzle.givens.findIndex(n => n === null) ?? null);
@@ -130,10 +159,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!session || session.completed || paused || busy || modal || confirm) return;
+    if (!session || session.completed || paused || busy || modal || confirm || hint) return;
     const timer = setInterval(() => { if (document.visibilityState === 'visible') changeSession(s => ({ ...s, elapsed: s.elapsed + 1 })); }, 1000);
     return () => clearInterval(timer);
-  }, [session?.puzzle.id, session?.completed, mode, paused, busy, modal, confirm, changeSession]);
+  }, [session?.puzzle.id, session?.completed, mode, paused, busy, modal, confirm, !!hint, changeSession]);
 
   useEffect(() => {
     if (!session) return;
@@ -222,7 +251,7 @@ export default function App() {
   async function switchMode(nextMode: 'free' | 'daily') {
     if (!save || busy || (nextMode === mode && (nextMode === 'free' || save.daily?.day === dailyDate()))) return;
     setHint(null); setPaused(false); setNoting(false);
-    if (nextMode === 'daily' && (!save.daily || save.daily.puzzle.seed !== dailySeed(dailyDate()))) { await start('medium', 'daily'); return; }
+    if (nextMode === 'daily' && (!save.daily || save.daily.day !== dailyDate())) { await start('medium', 'daily'); return; }
     const s = nextMode === 'free' ? save.session : save.daily;
     setSave({ ...save, activeMode: nextMode });
     setSelected(s?.puzzle.givens.findIndex(n => n === null) ?? null);
@@ -230,7 +259,7 @@ export default function App() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (!session || modal || confirm || paused || busy || session.completed || (e.target instanceof HTMLElement && ['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName))) return;
+      if (!session || modal || confirm || hint || paused || busy || session.completed || (e.target instanceof HTMLElement && ['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName))) return;
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); changeSession(s => travel(s, e.shiftKey ? 'redo' : 'undo')); return; }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); changeSession(s => travel(s, 'redo')); return; }
       if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -238,9 +267,20 @@ export default function App() {
       if (e.key.toLowerCase() === 'n') { setNoting(value => !value); return; }
       if (e.key.startsWith('Arrow')) {
         e.preventDefault();
-        const delta = e.key === 'ArrowLeft' ? -1 : e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' ? -3 : 3;
-        let next = selected ?? 0;
-        for (let i = 0; i < 9; i++) { next = (next + delta + 9) % 9; if (session.puzzle.givens[next] === null) { setSelected(next); break; } }
+        const puzzle = session.puzzle;
+        if (puzzle.version === 2) {
+          const origin = puzzle.layout.cells[selected ?? 0];
+          const horizontal = e.key === 'ArrowLeft' || e.key === 'ArrowRight';
+          const sign = e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 1;
+          const axis = horizontal ? 'col' : 'row', other = horizontal ? 'row' : 'col';
+          const next = puzzle.layout.cells.map((pos, i) => ({ pos, i })).filter(({ pos, i }) => puzzle.givens[i] === null && sign * (pos[axis] - origin[axis]) > 0)
+            .sort((a, b) => (Math.abs(a.pos[other] - origin[other]) * 20 + Math.abs(a.pos[axis] - origin[axis])) - (Math.abs(b.pos[other] - origin[other]) * 20 + Math.abs(b.pos[axis] - origin[axis])))[0];
+          if (next) setSelected(next.i);
+        } else {
+          const delta = e.key === 'ArrowLeft' ? -1 : e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' ? -3 : 3;
+          let next = selected ?? 0;
+          for (let i = 0; i < 9; i++) { next = (next + delta + 9) % 9; if (puzzle.givens[next] === null) { setSelected(next); break; } }
+        }
       }
       if (/^[0-9]$/.test(e.key) && selected !== null) {
         e.preventDefault(); inputBuffer.current = (inputBuffer.current + e.key).slice(-2);
@@ -255,7 +295,7 @@ export default function App() {
     }
     addEventListener('keydown', onKey);
     return () => removeEventListener('keydown', onKey);
-  }, [session, selected, noting, modal, confirm, paused, busy, changeSession]);
+  }, [session, selected, noting, modal, confirm, hint, paused, busy, changeSession]);
 
   async function exportSave() {
     if (!save) return;
@@ -270,6 +310,7 @@ export default function App() {
       const value = parseSave(await file.text());
       for (const s of [value.session, value.daily]) {
         if (!s) continue;
+        await engine.verify(s.puzzle).catch(() => { throw new Error('Die Aufgabe hat keine geprüfte eindeutige Lösung mit nachvollziehbarem Lösungsweg.'); });
         const result = await engine.check(s.puzzle, s.board);
         if (!result.inventory_valid || (s.completed && !result.valid)) throw new Error('Der Spielstand enthält ungültige Zahlen.');
       }
@@ -297,45 +338,38 @@ export default function App() {
     </header>
 
     <main>
-      <section className="intro"><p className="game-instructions">Wähle ein freies Feld und setze eine Zahl ein.</p>
-        <div className="mode-switch glass" aria-label="Spielmodus"><button aria-pressed={mode === 'free'} className={mode === 'free' ? 'active' : ''} disabled={busy} onClick={() => void switchMode('free')}><Sparkles size={17} />Freies Spiel</button><button aria-pressed={mode === 'daily'} className={mode === 'daily' ? 'active' : ''} disabled={busy} onClick={() => void switchMode('daily')}><CalendarDays size={17} />Tagesrätsel</button></div>
+      <section className="game-controls">
+        <div className="mode-switch glass" aria-label="Spielmodus"><button aria-pressed={mode === 'free'} className={mode === 'free' ? 'active' : ''} disabled={busy} onClick={() => void switchMode('free')}><Sparkles size={16} />Freies Spiel</button><button aria-pressed={mode === 'daily'} className={mode === 'daily' ? 'active' : ''} disabled={busy} onClick={() => void switchMode('daily')}><CalendarDays size={16} />Tagesrätsel</button></div>
+        <div className="difficulty-switch glass" aria-label="Schwierigkeit">{levels.map(item => <button key={item.id} aria-pressed={level.id === item.id} className={level.id === item.id ? 'active' : ''} disabled={busy || mode === 'daily'} onClick={() => askNew(item.id)}>{item.label}</button>)}</div>
       </section>
 
       {message && <div className="notice glass" role="status"><span>{message}</span><button className="icon-button" aria-label="Meldung schließen" onClick={() => setMessage('')}><X size={17} /></button></div>}
 
       <div className="play-layout">
         <section className={`game-card ${session?.completed ? 'solved' : ''}`} aria-label="Spielbereich">
-          <div className="game-heading"><div className="game-title"><span className="level-dot" /><span>{mode === 'daily' ? `${dayLabel(session?.day ?? dailyDate())} · Tagesrätsel` : 'Rätsel'}</span><span className="level-tag">{level.label}</span></div><div className="game-clock">{settings.showTimer && <><Clock3 size={15} /><span>{timeLabel(session?.elapsed ?? 0)}</span></>}<button className="icon-button" aria-label={paused ? 'Fortsetzen' : 'Pause'} disabled={!session || session.completed} onClick={() => setPaused(v => !v)}>{paused ? <Play size={15} /> : <Pause size={15} />}</button></div></div>
+          <div className="game-heading"><div className="game-title"><span className="level-dot" /><span>{mode === 'daily' ? `Tagesrätsel · ${dayLabel(session?.day ?? dailyDate())}` : 'Rätsel'}</span><span className="level-tag">{level.label}</span></div><div className="game-clock">{settings.showTimer && <><Clock3 size={15} /><span>{timeLabel(session?.elapsed ?? 0)}</span></>}<button className="icon-button" aria-label={paused ? 'Fortsetzen' : 'Pause'} disabled={!session || session.completed} onClick={() => setPaused(v => !v)}>{paused ? <Play size={15} /> : <Pause size={15} />}</button></div></div>
           <div className="board-area">
             {session && !paused && !busy && <Board session={session} selected={selected} onSelect={cell => { setSelected(cell); setHint(null); }} check={check} showErrors={settings.checkErrors} />}
             {(!session || busy) && <div className="board-state"><div className="loading-cross">✦</div><p>Rätsel wird erzeugt …</p></div>}
             {paused && !busy && <div className="board-state"><span className="pause-symbol"><Pause size={32} /></span><h2>Spiel pausiert</h2><button className="primary-button" onClick={() => setPaused(false)}>Spiel fortsetzen <Play size={16} /></button></div>}
           </div>
-          <div className="board-footer"><div className="board-rule"><span className="rule-symbol">× ÷</span><span>Punkt vor Strich</span></div><div className="equation-progress" aria-label={`${check?.equations.filter(s => s === 'valid').length ?? 0} von 6 Gleichungen erfüllt`}>{Array.from({ length: 6 }, (_, i) => <span className={check?.equations[i] === 'valid' ? 'done' : ''} key={i} />)}</div></div>
-          <div className="game-toolbar"><div className="history-buttons"><button className="tool-button" aria-label="Rückgängig" disabled={!session?.undo.length || session.completed || busy || paused} onClick={() => { changeSession(s => travel(s, 'undo')); setHint(null); }}><Undo2 size={20} /></button><button className="tool-button" aria-label="Wiederholen" disabled={!session?.redo.length || session.completed || busy || paused} onClick={() => { changeSession(s => travel(s, 'redo')); setHint(null); }}><Redo2 size={20} /></button><span className="toolbar-divider" /><button className="tool-button" aria-label="Zahl entfernen" disabled={!session || selected === null || (!session.board[selected] && !session.notes[selected]?.length) || session.completed || busy || paused} onClick={() => { if (selected !== null) changeSession(s => clearCell(s, selected)); setHint(null); }}><Eraser size={20} /></button></div>
-            <button className={`text-tool ${noting ? 'active' : ''}`} aria-pressed={noting} disabled={session?.completed || busy || paused} onClick={() => setNoting(v => !v)}><Pencil size={17} />Notizen<span className="key-hint">N</span></button>
-            <button className="hint-button" disabled={!session || session.completed || busy || paused} onClick={() => void showHint()}><Lightbulb size={17} />Hinweis</button>
-          </div>
-        </section>
-
-        <aside className="side-panel">
+          <div className="board-footer"><span className="board-rule">{session?.completed ? <strong role="status">Rätsel gelöst.</strong> : 'Feld wählen · Zahl einsetzen'}</span><div className="equation-progress" aria-label={`${check?.equations.filter(s => s === 'valid').length ?? 0} von ${session?.puzzle.equations.length ?? 0} Gleichungen erfüllt`}>{session?.puzzle.equations.map((_, i) => <span className={check?.equations[i] === 'valid' ? 'done' : ''} key={i} />)}</div></div>
           <section className="numbers-card glass">
             <div className="side-heading"><span className="eyebrow">{noting ? 'NOTIZEN' : 'VERFÜGBARE ZAHLEN'}</span><span className="number-counter">{total - filled}<span> / {total}</span></span></div>
-            <p className="side-copy">{session?.completed ? 'Starte mit „Neues Rätsel“ das nächste Spiel.' : noting ? 'Markiere mögliche Zahlen im gewählten Feld.' : 'Wähle eine Zahl für das markierte Feld.'}</p>
             <div className="number-bank" aria-label="Verfügbare Zahlen">{[...new Set(session?.puzzle.bank ?? [])].map(n => {
               const count = remaining.get(n) ?? 0;
               const chosen = selected !== null && session?.board[selected] === n;
               return <button key={n} data-number={n} className={`bank-number ${chosen ? 'chosen' : ''}`} disabled={count <= 0 || selected === null || session?.completed || busy || paused} aria-label={`Zahl ${n}, ${count} verfügbar`} onClick={() => choose(n)}>{n}{count > 1 && <span className="tile-count">×{count}</span>}{count === 0 && <Check size={14} className="used-check" />}</button>;
             })}</div>
-            <div className="fill-progress"><div style={{ width: `${total ? filled / total * 100 : 0}%` }} /></div><div className="progress-caption"><span>{session?.completed ? 'Alle Felder ausgefüllt' : 'Ausgefüllte Felder'}</span><span>{total ? Math.round(filled / total * 100) : 0}%</span></div>
-            {session?.completed && <div className="completion" role="status"><span className="completion-icon"><CheckCheck size={24} /></span><div><strong>Rätsel gelöst.</strong><p>{timeLabel(session.elapsed)} · {session.hints === 0 ? '0 Hinweise' : `${session.hints} ${session.hints === 1 ? 'Hinweis' : 'Hinweise'}`}</p></div></div>}
-            {hint && <div className="hint-content" role="status"><div><Lightbulb size={18} /><strong>Hinweis</strong></div><p>{hint.explanation}</p><button className="inline-button" onClick={applyHint}>Zahl einsetzen <ArrowRight size={15} /></button></div>}
           </section>
-
-          <section className="difficulty-section"><div className="section-label"><span className="eyebrow">SCHWIERIGKEIT</span>{mode === 'daily' && <span>Im Tagesrätsel festgelegt</span>}</div><div className="difficulty-switch glass">{levels.map(item => <button key={item.id} aria-pressed={level.id === item.id} className={level.id === item.id ? 'active' : ''} disabled={busy || mode === 'daily'} onClick={() => askNew(item.id)}>{item.label}</button>)}</div><p className="difficulty-copy">{level.detail}</p></section>
-          <button className="new-game-button glass" disabled={busy} onClick={() => { if (mode === 'daily') void switchMode('free'); else askNew(level.id); }}><span>{mode === 'daily' ? 'Zum freien Spiel' : 'Neues Rätsel'}</span><span className="new-game-arrow"><ArrowRight size={20} /></span></button>
-        </aside>
+          <div className="game-toolbar"><div className="history-buttons"><button className="tool-button" aria-label="Rückgängig" disabled={!session?.undo.length || session.completed || busy || paused} onClick={() => { changeSession(s => travel(s, 'undo')); setHint(null); }}><Undo2 size={20} /></button><button className="tool-button" aria-label="Wiederholen" disabled={!session?.redo.length || session.completed || busy || paused} onClick={() => { changeSession(s => travel(s, 'redo')); setHint(null); }}><Redo2 size={20} /></button><span className="toolbar-divider" /><button className="tool-button" aria-label="Zahl entfernen" disabled={!session || selected === null || (!session.board[selected] && !session.notes[selected]?.length) || session.completed || busy || paused} onClick={() => { if (selected !== null) changeSession(s => clearCell(s, selected)); setHint(null); }}><Eraser size={20} /></button></div>
+            <button className={`text-tool ${noting ? 'active' : ''}`} aria-pressed={noting} disabled={session?.completed || busy || paused} onClick={() => setNoting(v => !v)}><Pencil size={17} />Notizen<span className="key-hint">N</span></button>
+            <button className="hint-button" disabled={!session || session.completed || busy || paused} onClick={() => void showHint()}><Lightbulb size={17} />Hinweis</button>
+            <button className="new-game-button" aria-label={mode === 'daily' ? 'Zum freien Spiel' : 'Neues Rätsel'} title="Neues Rätsel" disabled={busy} onClick={() => { if (mode === 'daily') void switchMode('free'); else askNew(level.id); }}><span>{mode === 'daily' ? 'Zum freien Spiel' : 'Neues Rätsel'}</span><ArrowRight size={18} /></button>
+          </div>
+        </section>
       </div>
+
 
     </main>
 
@@ -343,8 +377,9 @@ export default function App() {
 
     {needRefresh && <div className="update-toast glass" role="status"><span>Eine neue Version ist bereit. Dein Spielstand bleibt erhalten.</span><button onClick={() => void saveGame(save ?? emptySave()).then(() => updateServiceWorker(true))}>Jetzt aktualisieren <ArrowRight size={14} /></button></div>}
 
+    {hint && <Modal title="Hinweis" onClose={() => setHint(null)}><p className="modal-copy hint-explanation" role="status">{hint.explanation}</p><button className="primary-button full-width" onClick={applyHint}>Zahl einsetzen <ArrowRight size={16} /></button></Modal>}
     {confirm && <Modal title="Ein neues Rätsel?" onClose={() => setConfirm(null)}><p className="modal-copy">Damit beendest du dein aktuelles freies Rätsel. Deine gelösten Rätsel und Statistiken bleiben gespeichert.</p><div className="modal-actions"><button className="secondary-button" onClick={() => setConfirm(null)}>Weiterspielen</button><button className="primary-button" onClick={() => void start(confirm)}>Neues Rätsel <ArrowRight size={16} /></button></div></Modal>}
-    {modal === 'help' && <Modal title="Spielregeln" onClose={() => setModal(null)}><p className="modal-copy">Fülle die freien Felder so, dass jede Zeile und jede Spalte das angegebene Ergebnis ergibt.</p><ol className="rule-list"><li><span>1</span><div><strong>Feld auswählen und Zahl einsetzen.</strong><p>Tippe ein freies Feld an und wähle eine Zahl aus deinem Vorrat. Jede Kachel wird einmal benutzt.</p></div></li><li><span>2</span><div><strong>Zeilen und Spalten prüfen.</strong><p>Jedes Feld gehört zu einer Zeile und einer Spalte. Beide Gleichungen müssen stimmen.</p></div></li><li><span>3</span><div><strong>Punkt vor Strich.</strong><p>Multiplikation und Division kommen vor Addition und Subtraktion. Gleichrangige Zeichen rechnest du von links nach rechts.</p><div className="math-example">2 + 3 × 4 = <strong>14</strong></div></div></li></ol><div className="help-footer"><Pencil size={17} /><p>Aktiviere Notizen, um mögliche Zahlen im ausgewählten Feld zu markieren.</p></div><p className="keyboard-help">Tastatur: Pfeile wählen ein Feld · Zahlen eingeben · Entf entfernen · N Notizen · Strg/⌘ Z zurück. Das Tagesrätsel wechselt um 00:00 UTC.</p><button className="primary-button full-width" onClick={() => setModal(null)}>Schließen <Check size={17} /></button></Modal>}
+    {modal === 'help' && <Modal title="Spielregeln" onClose={() => setModal(null)}><p className="modal-copy">Fülle die freien Zahlenfelder so, dass jede waagrechte und senkrechte Gleichung stimmt.</p><ol className="rule-list"><li><span>1</span><div><strong>Feld auswählen und Zahl einsetzen.</strong><p>Tippe ein freies Feld an und wähle eine Zahl aus deinem Vorrat. Jede Kachel wird einmal benutzt.</p></div></li><li><span>2</span><div><strong>Zeilen und Spalten prüfen.</strong><p>An Kreuzungen gilt dieselbe Zahl für beide Gleichungen. Ergebnisse können ebenfalls freie Felder sein.</p></div></li><li><span>3</span><div><strong>Punkt vor Strich.</strong><p>Multiplikation und Division kommen vor Addition und Subtraktion. Gleichrangige Zeichen rechnest du von links nach rechts.</p><div className="math-example">2 + 3 × 4 = <strong>14</strong></div></div></li></ol><div className="help-footer"><Pencil size={17} /><p>Aktiviere Notizen, um mögliche Zahlen im ausgewählten Feld zu markieren.</p></div><p className="keyboard-help">Tastatur: Pfeile wählen ein Feld · Zahlen eingeben · Entf entfernen · N Notizen · Strg/⌘ Z zurück. Das Tagesrätsel wechselt um 00:00 UTC.</p><button className="primary-button full-width" onClick={() => setModal(null)}>Verstanden <Check size={17} /></button></Modal>}
     {modal === 'settings' && <Modal title="Einstellungen" onClose={() => setModal(null)}><div className="setting-group"><span className="eyebrow">ERSCHEINUNGSBILD</span><div className="theme-switch glass">{([{ value: 'light', label: 'Hell', icon: Sun }, { value: 'dark', label: 'Dunkel', icon: Moon }, { value: 'system', label: 'System', icon: Settings2 }] as const).map(({ value, label, icon: Icon }) => <button key={value} className={settings.theme === value ? 'active' : ''} aria-pressed={settings.theme === value} onClick={() => updateSetting('theme', value)}><Icon size={17} />{label}</button>)}</div></div>
       <div className="setting-toggles">{([{ key: 'reduceMotion', title: 'Weniger Bewegung', text: 'Animationen und Übergänge deaktivieren.' }, { key: 'opaque', title: 'Weniger Transparenz', text: 'Glaseffekte reduzieren und den Kontrast erhöhen.' }, { key: 'showTimer', title: 'Zeit anzeigen', text: 'Die verstrichene Spielzeit anzeigen.' }, { key: 'checkErrors', title: 'Fehler direkt anzeigen', text: 'Falsche vollständige Gleichungen markieren.' }] as const).map(item => <label className="setting-row" key={item.key}><span><strong>{item.title}</strong><small>{item.text}</small></span><input type="checkbox" checked={settings[item.key]} onChange={e => updateSetting(item.key, e.target.checked)} /><span className="toggle" aria-hidden="true" /></label>)}</div>
       <div className="backup-section"><span className="eyebrow">SPIELSTAND</span><p>Exportiere deinen Spielstand, um ihn zu sichern oder auf einem anderen Gerät wiederherzustellen.</p><div className="backup-buttons"><button className="secondary-button" onClick={() => void exportSave()}><Download size={16} />Sichern</button><button className="secondary-button" onClick={() => fileInput.current?.click()}><Upload size={16} />Wiederherstellen</button></div>{backupError && <p className="backup-error" role="alert">{backupError}</p>}<input ref={fileInput} type="file" accept="application/json,.json" hidden onChange={e => { const file = e.target.files?.[0]; if (file) void importSave(file); }} /></div></Modal>}

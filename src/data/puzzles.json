@@ -1,152 +1,324 @@
 [
   {
-    "id": "cm1-easy-00000064",
-    "version": 1,
+    "id": "cm2-easy-00000064",
+    "version": 2,
     "seed": 100,
     "difficulty": "easy",
     "givens": [
       4,
-      8,
-      7,
+      14,
+      10,
       null,
-      3,
-      null,
+      74,
+      12,
       null,
       6,
-      null
+      8,
+      12,
+      null,
+      3,
+      15,
+      null,
+      2,
+      10,
+      14,
+      18,
+      4,
+      12,
+      null,
+      3,
+      18,
+      null,
+      11
     ],
     "bank": [
-      3,
       4,
       7,
-      10
+      15,
+      72,
+      84,
+      84
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 19
+        "operator": "-"
       },
       {
         "cells": [
           3,
-          4,
-          5
+          2,
+          4
         ],
-        "operators": [
-          "-",
-          "-"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          5,
+          6
         ],
-        "target": 1
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          1
+        ],
+        "operator": "+"
       },
       {
         "cells": [
           6,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
           7,
-          8
+          13,
+          14
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 20
+        "operator": "-"
       },
       {
         "cells": [
           0,
-          3,
-          6
+          15,
+          16
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 1
+        "operator": "+"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          17,
+          18,
+          16
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 17
+        "operator": "-"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          19,
+          11,
+          20
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          12,
+          21,
+          22
         ],
-        "target": 14
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 9,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        }
+      ]
+    },
     "rating": {
-      "deductions": 4,
-      "rounds": 1,
+      "deductions": 6,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-easy-00000065",
-    "version": 1,
+    "id": "cm2-easy-00000065",
+    "version": 2,
     "seed": 101,
     "difficulty": "easy",
     "givens": [
       2,
+      96,
+      94,
+      null,
+      90,
+      77,
+      83,
+      5,
+      null,
+      null,
+      97,
+      8,
+      85,
+      17,
+      8,
       3,
       null,
+      null,
+      8,
+      13,
+      24,
+      14,
+      12,
+      23,
+      null,
+      85,
       9,
-      null,
-      null,
-      1,
-      11,
-      null
+      2,
+      7,
+      12,
+      2
     ],
     "bank": [
-      2,
-      5,
+      6,
       9,
-      9
+      11,
+      11,
+      11,
+      88
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
+          0,
           2
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 7
+        "operator": "-"
       },
       {
         "cells": [
+          1,
           3,
-          4,
-          5
+          4
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          3,
+          6
         ],
-        "target": 5
+        "operator": "+"
       },
       {
         "cells": [
@@ -154,2109 +326,1281 @@
           7,
           8
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 3
+        "operator": "+"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          8,
+          9,
+          10
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 12
+        "operator": "+"
       },
       {
         "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 23
-      },
-      {
-        "cells": [
-          2,
           5,
-          8
+          11,
+          12
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          9
         ],
-        "target": 16
+        "operator": "-"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          15
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          16,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          2
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          26,
+          27,
+          28
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          21
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 4,
+      "deductions": 6,
       "rounds": 1,
       "branches": 0
     }
   },
   {
-    "id": "cm1-easy-00000066",
-    "version": 1,
+    "id": "cm2-easy-00000066",
+    "version": 2,
     "seed": 102,
     "difficulty": "easy",
     "givens": [
-      12,
+      10,
+      14,
+      4,
+      6,
+      10,
+      null,
+      1,
       null,
       null,
       null,
       null,
       8,
+      1,
+      13,
+      1,
+      76,
+      null,
+      23,
       5,
-      8,
-      7
+      5,
+      8
     ],
     "bank": [
-      2,
-      3,
-      5,
-      12
+      7,
+      9,
+      11,
+      12,
+      18,
+      66
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 29
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 9
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 20
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "-",
-          "-"
-        ],
-        "target": 4
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 6
+        "operator": "-"
       },
       {
         "cells": [
           2,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          4,
           5,
-          8
+          6
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          6
         ],
-        "target": 20
+        "operator": "-"
+      },
+      {
+        "cells": [
+          8,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          11,
+          12,
+          9
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          1
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          0,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          10
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          19,
+          20
+        ],
+        "operator": "-"
       }
     ],
+    "layout": {
+      "rows": 9,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        }
+      ]
+    },
     "rating": {
-      "deductions": 4,
-      "rounds": 1,
+      "deductions": 6,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-easy-00000067",
-    "version": 1,
+    "id": "cm2-easy-00000067",
+    "version": 2,
     "seed": 103,
     "difficulty": "easy",
     "givens": [
+      5,
+      13,
+      8,
+      8,
       null,
-      null,
-      4,
-      null,
-      null,
+      7,
       1,
+      null,
+      7,
+      null,
+      14,
+      4,
+      3,
       8,
       7,
-      9
+      9,
+      10,
+      11,
+      14,
+      7,
+      7,
+      null,
+      15,
+      null,
+      19,
+      null,
+      10,
+      24,
+      12,
+      11,
+      4
     ],
     "bank": [
-      1,
-      3,
-      5,
-      11
+      4,
+      7,
+      9,
+      12,
+      15,
+      21
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "-"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
         ],
-        "target": 12
+        "operator": "+"
       },
       {
         "cells": [
           3,
-          4,
-          5
+          5,
+          6
         ],
-        "operators": [
-          "-",
-          "-"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          2
         ],
-        "target": 1
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          8,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          13,
+          14
+        ],
+        "operator": "-"
       },
       {
         "cells": [
           6,
-          7,
-          8
+          15,
+          16
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 24
+        "operator": "+"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          12,
+          17,
+          18
         ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 10
+        "operator": "+"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          18,
+          19,
+          20
         ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 17
+        "operator": "-"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          17,
+          21,
+          22
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          20,
+          23,
+          24
         ],
-        "target": 14
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          23
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          22
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 4,
+      "deductions": 6,
       "rounds": 1,
       "branches": 0
     }
   },
   {
-    "id": "cm1-easy-00000068",
-    "version": 1,
+    "id": "cm2-easy-00000068",
+    "version": 2,
     "seed": 104,
     "difficulty": "easy",
     "givens": [
       null,
-      5,
-      5,
+      15,
       10,
       4,
+      6,
+      2,
+      17,
       null,
-      10,
+      3,
       null,
-      null
+      11,
+      3,
+      8,
+      82,
+      73,
+      2,
+      80,
+      20,
+      28,
+      11,
+      91,
+      11,
+      null,
+      null,
+      40,
+      null,
+      69
     ],
     "bank": [
       2,
       5,
-      5,
-      6
+      9,
+      9,
+      29,
+      60
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 5
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 12
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 13
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 25
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 3
+        "operator": "-"
       },
       {
         "cells": [
           2,
+          3,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
           5,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          7,
           8
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          9,
+          10
         ],
-        "target": 4
+        "operator": "+"
+      },
+      {
+        "cells": [
+          10,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          9,
+          14
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          12,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          16,
+          19,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          15
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          23,
+          21,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          22,
+          26
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 10
+        }
+      ]
+    },
     "rating": {
-      "deductions": 4,
-      "rounds": 1,
+      "deductions": 6,
+      "rounds": 2,
       "branches": 0
     }
   },
   {
-    "id": "cm1-easy-00000069",
-    "version": 1,
+    "id": "cm2-easy-00000069",
+    "version": 2,
     "seed": 105,
     "difficulty": "easy",
     "givens": [
+      5,
       null,
       null,
-      null,
-      null,
-      8,
+      4,
+      7,
       1,
+      8,
       3,
+      null,
+      null,
+      9,
+      15,
       6,
+      7,
+      13,
+      11,
+      5,
+      5,
+      2,
+      3,
+      10,
+      5,
+      6,
+      4,
+      null,
+      null,
       5
     ],
     "bank": [
-      5,
-      5,
-      9,
-      11
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 7
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 12
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 4
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 13
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 13
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 5
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-easy-0000006a",
-    "version": 1,
-    "seed": 106,
-    "difficulty": "easy",
-    "givens": [
-      11,
-      5,
-      null,
-      null,
-      4,
-      8,
-      9,
-      null,
-      null
-    ],
-    "bank": [
       1,
-      5,
-      10,
-      10
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 7
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 6
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 4
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 30
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 6
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 19
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-easy-0000006b",
-    "version": 1,
-    "seed": 107,
-    "difficulty": "easy",
-    "givens": [
-      8,
-      null,
-      3,
-      3,
-      9,
-      null,
-      null,
-      4,
-      null
-    ],
-    "bank": [
-      1,
-      1,
-      4,
-      10
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "-",
-          "-"
-        ],
-        "target": 4
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 11
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "-",
-          "-"
-        ],
-        "target": 2
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 1
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 6
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 8
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-easy-0000006c",
-    "version": 1,
-    "seed": 108,
-    "difficulty": "easy",
-    "givens": [
-      null,
-      null,
-      7,
-      1,
-      5,
-      3,
-      null,
-      null,
-      10
-    ],
-    "bank": [
-      1,
-      2,
-      5,
-      10
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 6
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 3
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 5
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 5
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 7
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 14
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-easy-0000006d",
-    "version": 1,
-    "seed": 109,
-    "difficulty": "easy",
-    "givens": [
-      null,
-      10,
-      5,
-      null,
-      null,
-      6,
       2,
       7,
-      null
-    ],
-    "bank": [
-      2,
-      4,
-      5,
-      7
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 22
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 1
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 13
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 4
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "-",
-          "-"
-        ],
-        "target": 1
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 3
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-easy-0000006e",
-    "version": 1,
-    "seed": 110,
-    "difficulty": "easy",
-    "givens": [
-      1,
-      12,
-      2,
-      null,
-      12,
-      3,
-      null,
-      null,
-      null
-    ],
-    "bank": [
-      2,
-      4,
       10,
-      10
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 15
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 25
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 8
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 21
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 22
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 3
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-easy-0000006f",
-    "version": 1,
-    "seed": 111,
-    "difficulty": "easy",
-    "givens": [
-      6,
-      null,
-      null,
-      12,
-      null,
-      9,
-      12,
-      null,
-      6
-    ],
-    "bank": [
-      3,
-      3,
-      4,
-      9
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 19
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 18
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 15
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 30
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 9
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 7
-      }
-    ],
-    "rating": {
-      "deductions": 4,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-00000064",
-    "version": 1,
-    "seed": 100,
-    "difficulty": "medium",
-    "givens": [
-      4,
-      null,
-      null,
-      null,
-      null,
-      15,
-      18,
-      null,
-      null
-    ],
-    "bank": [
-      2,
-      4,
-      7,
       11,
-      11,
-      20
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 69
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 33
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 26
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "*"
-        ],
-        "target": 792
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 34
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 30
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-00000065",
-    "version": 1,
-    "seed": 101,
-    "difficulty": "medium",
-    "givens": [
-      2,
-      null,
-      14,
-      null,
-      17,
-      null,
-      null,
-      null,
-      null
-    ],
-    "bank": [
-      3,
-      5,
-      9,
-      13,
-      13,
-      19
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 44
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 25
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 3
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 35
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 32
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 22
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-00000066",
-    "version": 1,
-    "seed": 102,
-    "difficulty": "medium",
-    "givens": [
-      null,
-      null,
-      null,
-      19,
-      10,
-      null,
-      null,
-      16,
-      null
-    ],
-    "bank": [
-      1,
-      11,
-      13,
-      16,
-      16,
-      20
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 49
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 45
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 27
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 304
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 14
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 197
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-00000067",
-    "version": 1,
-    "seed": 103,
-    "difficulty": "medium",
-    "givens": [
-      null,
-      null,
-      12,
-      null,
-      null,
-      1,
-      null,
-      3,
-      null
-    ],
-    "bank": [
-      5,
-      11,
-      13,
-      13,
-      16,
-      19
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 137
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 33
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 26
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 40
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 21
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "/",
-          "*"
-        ],
-        "target": 156
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-00000068",
-    "version": 1,
-    "seed": 104,
-    "difficulty": "medium",
-    "givens": [
-      null,
-      null,
-      17,
-      null,
-      16,
-      null,
-      null,
-      null,
-      17
-    ],
-    "bank": [
-      2,
-      2,
-      9,
-      10,
-      13,
-      18
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 100
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 44
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "/",
-          "+"
-        ],
-        "target": 18
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 160
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 206
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 10
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-00000069",
-    "version": 1,
-    "seed": 105,
-    "difficulty": "medium",
-    "givens": [
-      null,
-      null,
-      5,
-      null,
-      20,
-      null,
-      3,
-      null,
-      null
-    ],
-    "bank": [
-      1,
-      3,
-      6,
-      9,
-      9,
-      9
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 32
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 171
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 19
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "/"
-        ],
-        "target": 12
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 17
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "+",
-          "/"
-        ],
-        "target": 14
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-0000006a",
-    "version": 1,
-    "seed": 106,
-    "difficulty": "medium",
-    "givens": [
-      15,
-      null,
-      null,
-      18,
-      null,
-      null,
-      null,
-      null,
-      18
-    ],
-    "bank": [
-      1,
-      4,
-      8,
-      9,
-      13,
-      13
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 195
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "-",
-          "-"
-        ],
-        "target": 6
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 40
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "-",
-          "/"
-        ],
-        "target": 13
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 91
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 15
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-0000006b",
-    "version": 1,
-    "seed": 107,
-    "difficulty": "medium",
-    "givens": [
-      16,
-      17,
-      null,
-      null,
-      null,
-      null,
-      null,
-      20,
-      null
-    ],
-    "bank": [
-      1,
-      4,
-      5,
-      7,
-      15,
-      18
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 287
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 2
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 90
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 142
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 36
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "*",
-          "*"
-        ],
-        "target": 300
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-0000006c",
-    "version": 1,
-    "seed": 108,
-    "difficulty": "medium",
-    "givens": [
-      13,
-      null,
-      19,
-      null,
-      1,
-      null,
-      null,
-      null,
-      null
-    ],
-    "bank": [
-      1,
-      7,
-      9,
-      10,
-      14,
-      18
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 355
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 15
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 4
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 21
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 32
-      },
-      {
-        "cells": [
-          2,
-          5,
-          8
-        ],
-        "operators": [
-          "-",
-          "-"
-        ],
-        "target": 2
-      }
-    ],
-    "rating": {
-      "deductions": 6,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-medium-0000006d",
-    "version": 1,
-    "seed": 109,
-    "difficulty": "medium",
-    "givens": [
-      19,
-      null,
-      17,
-      null,
-      null,
-      null,
-      10,
-      null,
-      null
-    ],
-    "bank": [
-      2,
-      6,
-      9,
-      11,
-      14,
       16
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 16
+        "operator": "-"
       },
       {
         "cells": [
           3,
           4,
-          5
+          2
         ],
-        "operators": [
-          "*",
-          "*"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          4,
+          5,
+          6
         ],
-        "target": 108
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          7,
+          8
+        ],
+        "operator": "+"
       },
       {
         "cells": [
           6,
-          7,
-          8
+          9,
+          10
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 126
+        "operator": "+"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          11,
+          10,
+          12
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 109
+        "operator": "-"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          12,
+          13,
+          14
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 31
+        "operator": "+"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          15,
+          16,
+          1
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          13
         ],
-        "target": 31
+        "operator": "+"
+      },
+      {
+        "cells": [
+          19,
+          20,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          21
+        ],
+        "operator": "-"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        }
+      ]
+    },
     "rating": {
       "deductions": 6,
       "rounds": 1,
@@ -2264,28 +1608,1170 @@
     }
   },
   {
-    "id": "cm1-medium-0000006e",
-    "version": 1,
-    "seed": 110,
-    "difficulty": "medium",
+    "id": "cm2-easy-0000006a",
+    "version": 2,
+    "seed": 106,
+    "difficulty": "easy",
     "givens": [
+      11,
+      14,
+      3,
+      4,
+      1,
+      null,
+      1,
+      8,
+      null,
+      null,
+      null,
+      10,
+      16,
+      13,
       null,
       12,
       null,
+      17,
+      4,
+      26,
+      30,
+      2,
+      6,
+      27,
+      3
+    ],
+    "bank": [
+      3,
+      4,
+      6,
+      6,
+      10,
+      16
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          4,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          0,
+          5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          7,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          11,
+          9,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          12,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          13
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          16,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          20
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 6,
+      "rounds": 3,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-easy-0000006b",
+    "version": 2,
+    "seed": 107,
+    "difficulty": "easy",
+    "givens": [
+      8,
+      84,
+      92,
+      94,
+      2,
       null,
+      67,
       null,
       7,
+      12,
+      79,
       null,
-      6,
+      20,
+      1,
+      19,
+      null,
+      8,
+      3,
+      23,
+      3,
+      2,
+      11,
+      9,
+      1,
+      null,
+      4,
       null
     ],
     "bank": [
+      12,
+      20,
+      69,
+      91,
+      95,
+      99
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          0,
+          2
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          4,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          4,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          1
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          6,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          12,
+          13,
+          14
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          11
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          19,
+          13,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          23,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          24,
+          25,
+          26
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 6,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-easy-0000006c",
+    "version": 2,
+    "seed": 108,
+    "difficulty": "easy",
+    "givens": [
+      1,
+      6,
+      5,
+      12,
+      null,
+      null,
+      9,
+      30,
+      null,
+      8,
+      22,
+      14,
+      9,
       2,
+      6,
+      3,
+      5,
+      12,
+      7,
       4,
+      3,
+      5,
+      null,
+      19,
+      10,
+      7,
+      16,
+      null,
+      8,
+      null,
+      15
+    ],
+    "bank": [
+      2,
+      9,
+      9,
+      10,
+      18,
+      21
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          4,
+          5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          6,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          9,
+          10
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          11,
+          12,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
+          13,
+          14
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          20,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          5,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          22,
+          25,
+          26
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          14,
+          27,
+          28
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          21,
+          29,
+          30
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 6,
+      "rounds": 1,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-easy-0000006d",
+    "version": 2,
+    "seed": 109,
+    "difficulty": "easy",
+    "givens": [
+      7,
+      9,
+      null,
+      43,
+      50,
+      null,
+      45,
+      21,
+      12,
+      1,
+      3,
+      4,
+      7,
+      11,
+      4,
+      3,
+      7,
+      3,
+      10,
+      2,
+      19,
+      null,
+      1,
+      null,
+      21,
+      null,
+      5,
+      6,
+      5,
+      null,
+      3
+    ],
+    "bank": [
+      2,
+      2,
+      2,
+      10,
+      16,
+      19
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          0,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          5,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          1
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          2,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          10,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          16,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          21,
+          22
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          23,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          22
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          25
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 6,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-easy-0000006e",
+    "version": 2,
+    "seed": 110,
+    "difficulty": "easy",
+    "givens": [
+      1,
+      10,
+      11,
+      3,
+      7,
+      6,
+      5,
+      73,
+      67,
+      null,
+      4,
+      6,
+      7,
+      null,
+      2,
+      null,
+      null,
+      null,
+      8,
+      1,
+      14,
+      31,
+      null,
+      72,
+      77
+    ],
+    "bank": [
       5,
       10,
-      10,
-      20
+      13,
+      14,
+      32,
+      63
     ],
     "equations": [
       {
@@ -2294,73 +2780,489 @@
           1,
           2
         ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 6
+        "operator": "+"
       },
       {
         "cells": [
           3,
           4,
-          5
+          1
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 30
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 130
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "*"
-        ],
-        "target": 100
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 54
+        "operator": "+"
       },
       {
         "cells": [
           2,
           5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          5,
           8
         ],
-        "operators": [
-          "*",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
+          10,
+          8
         ],
-        "target": 90
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          3
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          11
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          19,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          21,
+          19,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          6,
+          24
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 9,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 6,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-easy-0000006f",
+    "version": 2,
+    "seed": 111,
+    "difficulty": "easy",
+    "givens": [
+      null,
+      69,
+      63,
+      2,
+      67,
+      7,
+      1,
+      1,
+      null,
+      null,
+      57,
+      1,
+      2,
+      14,
+      12,
+      9,
+      2,
+      1,
+      2,
+      1,
+      8,
+      8,
+      null,
+      15,
+      6,
+      null,
+      21,
+      17,
+      null
+    ],
+    "bank": [
+      1,
+      3,
+      6,
+      9,
+      13,
+      56
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          0,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          6,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          7,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
+          6,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          5
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          8,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          22,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          25,
+          21,
+          26
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          13
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        }
+      ]
+    },
     "rating": {
       "deductions": 6,
       "rounds": 1,
@@ -2368,134 +3270,1876 @@
     }
   },
   {
-    "id": "cm1-medium-0000006f",
-    "version": 1,
-    "seed": 111,
+    "id": "cm2-medium-00000064",
+    "version": 2,
+    "seed": 100,
+    "difficulty": "medium",
+    "givens": [
+      19,
+      18,
+      null,
+      null,
+      36,
+      12,
+      null,
+      null,
+      9,
+      22,
+      null,
+      11,
+      11,
+      null,
+      41,
+      null,
+      4,
+      56,
+      14,
+      53,
+      null,
+      15,
+      26,
+      null,
+      8
+    ],
+    "bank": [
+      1,
+      14,
+      15,
+      18,
+      23,
+      27,
+      35,
+      42,
+      45
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          2,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          1
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          6,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          13,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          16
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          19,
+          11,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          12,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 9,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 4,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-00000065",
+    "version": 2,
+    "seed": 101,
+    "difficulty": "medium",
+    "givens": [
+      7,
+      64,
+      57,
+      null,
+      69,
+      65,
+      null,
+      14,
+      null,
+      null,
+      7,
+      13,
+      52,
+      48,
+      4,
+      2,
+      null,
+      null,
+      4,
+      9,
+      54,
+      null,
+      17,
+      9,
+      null,
+      59,
+      2,
+      null,
+      23,
+      11,
+      13
+    ],
+    "bank": [
+      5,
+      6,
+      6,
+      8,
+      12,
+      21,
+      24,
+      70,
+      84
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          0,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          5,
+          3,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          6,
+          7,
+          8
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          8,
+          9,
+          10
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          5,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          9
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          15
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          16,
+          20
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          26,
+          27,
+          28
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          21
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-00000066",
+    "version": 2,
+    "seed": 102,
     "difficulty": "medium",
     "givens": [
       null,
+      26,
+      10,
       null,
+      14,
+      null,
+      56,
+      null,
+      null,
+      null,
+      null,
+      13,
+      11,
+      4,
+      22,
+      88,
+      null,
+      36,
+      2,
+      13,
+      null
+    ],
+    "bank": [
+      3,
+      4,
+      4,
+      16,
+      17,
+      24,
+      53,
+      72,
+      72
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          2,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          4,
+          5,
+          6
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          8,
+          9,
+          10
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          11,
+          12,
+          9
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          1
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          0,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          10
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          13,
+          19,
+          20
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 9,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 3,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-00000067",
+    "version": 2,
+    "seed": 103,
+    "difficulty": "medium",
+    "givens": [
+      null,
+      27,
+      22,
+      8,
+      null,
+      14,
+      22,
+      null,
+      12,
+      null,
+      13,
+      4,
+      48,
+      22,
+      null,
+      2,
+      20,
+      20,
+      68,
+      23,
       null,
       null,
       19,
       null,
-      8,
-      7,
-      null
+      79,
+      null,
+      15,
+      18,
+      6,
+      38,
+      19
     ],
     "bank": [
-      16,
-      17,
-      17,
-      18,
-      18,
-      20
+      1,
+      1,
+      5,
+      10,
+      12,
+      32,
+      35,
+      64,
+      91
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "*",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
         ],
-        "target": 326
+        "operator": "+"
       },
       {
         "cells": [
           3,
-          4,
-          5
+          5,
+          6
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          2
         ],
-        "target": 52
+        "operator": "+"
+      },
+      {
+        "cells": [
+          5,
+          9,
+          10
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          8,
+          11,
+          12
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          7,
+          13,
+          14
+        ],
+        "operator": "+"
       },
       {
         "cells": [
           6,
-          7,
-          8
+          15,
+          16
         ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 19
+        "operator": "-"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          12,
+          17,
+          18
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 146
+        "operator": "+"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          18,
+          19,
+          20
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 43
+        "operator": "+"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          17,
+          21,
+          22
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          20,
+          23,
+          24
         ],
-        "target": 21
+        "operator": "-"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          23
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          22
+        ],
+        "operator": "-"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 6,
-      "rounds": 1,
+      "deductions": 9,
+      "rounds": 2,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-00000064",
-    "version": 1,
-    "seed": 100,
-    "difficulty": "hard",
+    "id": "cm2-medium-00000068",
+    "version": 2,
+    "seed": 104,
+    "difficulty": "medium",
+    "givens": [
+      null,
+      22,
+      2,
+      7,
+      9,
+      14,
+      null,
+      null,
+      11,
+      null,
+      16,
+      6,
+      10,
+      25,
+      28,
+      24,
+      null,
+      10,
+      1,
+      25,
+      null,
+      16,
+      null,
+      null,
+      75,
+      null,
+      33
+    ],
+    "bank": [
+      1,
+      3,
+      8,
+      13,
+      24,
+      25,
+      36,
+      41,
+      59
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          2,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          1,
+          5,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          7,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          10,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          9,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          12,
+          18
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          16,
+          19,
+          20
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          15
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          21,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          22,
+          26
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 10
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-00000069",
+    "version": 2,
+    "seed": 105,
+    "difficulty": "medium",
     "givens": [
       null,
       null,
+      1,
       null,
+      20,
+      43,
+      57,
+      null,
+      4,
+      null,
+      18,
+      null,
+      7,
+      19,
+      null,
+      10,
+      30,
+      1,
+      10,
+      57,
+      57,
+      55,
+      null,
+      null,
+      18
+    ],
+    "bank": [
+      10,
+      14,
+      14,
+      20,
+      25,
+      26,
+      38,
+      65,
+      72
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          3,
+          4,
+          2
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          5,
+          1,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          7,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
+          10,
+          8
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          11,
+          10,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          12,
+          13,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          4,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          17,
+          18
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          19,
+          17,
+          20
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          21,
+          18,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          3,
+          24
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 9,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 4
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-0000006a",
+    "version": 2,
+    "seed": 106,
+    "difficulty": "medium",
+    "givens": [
+      null,
+      16,
+      4,
+      16,
       null,
       null,
       15,
+      2,
+      null,
+      6,
+      9,
+      91,
       null,
       null,
+      86,
+      88,
+      null,
+      null,
+      74,
+      null,
+      17
+    ],
+    "bank": [
+      1,
+      5,
+      8,
+      12,
+      27,
+      54,
+      69,
+      82,
+      93
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          0,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          1,
+          4
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          5,
+          0,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          7,
+          8
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          8,
+          9,
+          10
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          11,
+          10,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          11,
+          13,
+          14
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          13,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          12,
+          17,
+          18
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          20,
+          14
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-0000006b",
+    "version": 2,
+    "seed": 107,
+    "difficulty": "medium",
+    "givens": [
+      6,
+      17,
+      23,
+      null,
+      6,
+      3,
+      2,
+      96,
+      null,
+      null,
+      2,
+      13,
+      4,
+      null,
+      15,
+      11,
+      null,
+      1,
+      null,
+      13,
+      null,
+      4,
+      4,
+      13,
+      26,
+      null,
+      41,
+      67,
       null
     ],
     "bank": [
       1,
-      1,
       4,
-      4,
-      12,
-      20,
-      27,
-      28
+      13,
+      15,
+      17,
+      21,
+      73,
+      88,
+      88
     ],
     "equations": [
       {
@@ -2504,129 +5148,1765 @@
           1,
           2
         ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 79
+        "operator": "+"
       },
       {
         "cells": [
           3,
           4,
-          5
+          0
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 43
+        "operator": "*"
       },
       {
         "cells": [
+          5,
           6,
+          3
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
           7,
+          2,
           8
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 76
+        "operator": "-"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          9,
+          10,
+          4
         ],
-        "operators": [
-          "*",
-          "*"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          11,
+          12,
+          1
         ],
-        "target": 112
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          10,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          17,
+          18
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          9,
+          19,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          21,
+          22
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          11,
+          23,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          24,
+          25,
+          26
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          18
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 10
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 4,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-0000006c",
+    "version": 2,
+    "seed": 108,
+    "difficulty": "medium",
+    "givens": [
+      null,
+      40,
+      null,
+      null,
+      null,
+      17,
+      55,
+      34,
+      29,
+      25,
+      17,
+      22,
+      null,
+      29,
+      22,
+      null,
+      4,
+      9,
+      31,
+      42,
+      null,
+      null,
+      40,
+      null,
+      10
+    ],
+    "bank": [
+      2,
+      5,
+      8,
+      9,
+      21,
+      30,
+      38,
+      51,
+      51
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "/"
       },
       {
         "cells": [
           1,
+          3,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
           4,
-          7
+          5,
+          6
         ],
-        "operators": [
-          "+",
-          "*"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          2,
+          8
         ],
-        "target": 344
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
+          10,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          8,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          9
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          14,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          19,
+          17,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          18,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 9,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-0000006d",
+    "version": 2,
+    "seed": 109,
+    "difficulty": "medium",
+    "givens": [
+      14,
+      17,
+      null,
+      43,
+      57,
+      null,
+      28,
+      85,
+      5,
+      25,
+      28,
+      null,
+      null,
+      37,
+      12,
+      3,
+      9,
+      13,
+      22,
+      25,
+      60,
+      null,
+      15,
+      null,
+      48,
+      null,
+      12,
+      null,
+      12,
+      null,
+      6
+    ],
+    "bank": [
+      3,
+      3,
+      3,
+      4,
+      10,
+      11,
+      12,
+      15,
+      25
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          0,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          1
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          2,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          10,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          16,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          23,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          25
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-medium-0000006e",
+    "version": 2,
+    "seed": 110,
+    "difficulty": "medium",
+    "givens": [
+      5,
+      null,
+      null,
+      10,
+      1,
+      12,
+      27,
+      61,
+      null,
+      null,
+      20,
+      9,
+      45,
+      45,
+      1,
+      70,
+      7,
+      null,
+      7,
+      4,
+      null,
+      null,
+      35,
+      15,
+      null,
+      null,
+      25
+    ],
+    "bank": [
+      10,
+      15,
+      21,
+      31,
+      46,
+      49,
+      63,
+      69,
+      74
+    ],
+    "equations": [
+      {
+        "cells": [
+          0,
+          1,
+          2
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          4,
+          1
+        ],
+        "operator": "/"
       },
       {
         "cells": [
           2,
           5,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          5,
           8
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
+          10,
+          8
         ],
-        "target": 20
+        "operator": "-"
+      },
+      {
+        "cells": [
+          0,
+          11,
+          12
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          3
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          11
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          15,
+          19,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          21,
+          19,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          23,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 9,
+      "rounds": 2,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-00000065",
-    "version": 1,
+    "id": "cm2-medium-0000006f",
+    "version": 2,
+    "seed": 111,
+    "difficulty": "medium",
+    "givens": [
+      23,
+      95,
+      null,
+      null,
+      82,
+      37,
+      14,
+      6,
+      78,
+      49,
+      35,
+      11,
+      66,
+      67,
+      null,
+      null,
+      13,
+      null,
+      58,
+      null,
+      38,
+      14,
+      34,
+      19,
+      15,
+      25,
+      null,
+      null,
+      75,
+      78,
+      null
+    ],
+    "bank": [
+      1,
+      11,
+      11,
+      12,
+      13,
+      17,
+      20,
+      50,
+      72
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          0,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          6,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          7,
+          8
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          9,
+          6,
+          10
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          11,
+          12
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          5
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          8,
+          17,
+          18
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          21
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          18,
+          27,
+          28
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          13
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 9,
+      "rounds": 2,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-hard-00000064",
+    "version": 2,
+    "seed": 100,
+    "difficulty": "hard",
+    "givens": [
+      34,
+      null,
+      null,
+      35,
+      36,
+      12,
+      null,
+      null,
+      9,
+      16,
+      39,
+      5,
+      80,
+      14,
+      null,
+      2,
+      null,
+      16,
+      null,
+      70,
+      null,
+      8,
+      47,
+      33,
+      null,
+      76,
+      null,
+      null,
+      10,
+      null,
+      1
+    ],
+    "bank": [
+      1,
+      1,
+      4,
+      14,
+      17,
+      23,
+      23,
+      35,
+      44,
+      58,
+      77,
+      86
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          2,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          3,
+          5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          1
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          6,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          11,
+          12
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          7,
+          13,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          15,
+          16
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          19,
+          17,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          10,
+          21,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          22,
+          23,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          23
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          25
+        ],
+        "operator": "-"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 12,
+      "rounds": 4,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-hard-00000065",
+    "version": 2,
     "seed": 101,
     "difficulty": "hard",
     "givens": [
       2,
+      23,
+      46,
       null,
       null,
+      56,
+      null,
+      4,
       null,
       null,
+      35,
+      13,
+      43,
+      41,
+      8,
+      3,
       null,
       null,
+      23,
       null,
+      41,
+      null,
+      9,
+      72,
+      null,
+      50,
+      4,
+      null,
+      38,
+      39,
       null
     ],
     "bank": [
-      3,
-      3,
-      3,
       5,
-      14,
-      19,
-      27,
-      29
+      8,
+      17,
+      18,
+      21,
+      33,
+      34,
+      39,
+      46,
+      62,
+      68,
+      69
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
+          0,
           2
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 44
+        "operator": "*"
       },
       {
         "cells": [
+          1,
           3,
-          4,
-          5
+          4
         ],
-        "operators": [
-          "*",
-          "*"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          5,
+          3,
+          6
         ],
-        "target": 405
+        "operator": "-"
       },
       {
         "cells": [
@@ -2634,423 +6914,1419 @@
           7,
           8
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 554
+        "operator": "*"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          8,
+          9,
+          10
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 25
+        "operator": "-"
       },
       {
         "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 52
-      },
-      {
-        "cells": [
-          2,
           5,
-          8
+          11,
+          12
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          9
         ],
-        "target": 12
+        "operator": "-"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          15
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          19,
+          16,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          0
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          22
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          26,
+          27,
+          28
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          21
+        ],
+        "operator": "-"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 5,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-00000066",
-    "version": 1,
+    "id": "cm2-hard-00000066",
+    "version": 2,
     "seed": 102,
     "difficulty": "hard",
     "givens": [
+      24,
+      65,
+      null,
+      23,
+      18,
+      null,
+      9,
+      null,
+      66,
       null,
       null,
       null,
+      70,
+      16,
+      30,
+      28,
       null,
       null,
+      4,
+      null,
+      45,
+      null,
+      76,
+      56,
       null,
       null,
-      26,
-      null
+      38
     ],
     "bank": [
-      1,
-      6,
-      9,
-      11,
-      20,
-      23,
-      26,
-      30
+      4,
+      5,
+      13,
+      14,
+      15,
+      27,
+      41,
+      45,
+      46,
+      75,
+      80,
+      83
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 59
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 55
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 287
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 8
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 24
+        "operator": "-"
       },
       {
         "cells": [
           2,
+          3,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
           5,
+          6,
+          0
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          6,
           8
         ],
-        "operators": [
-          "*",
-          "-"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          8,
+          9,
+          10
         ],
-        "target": 597
+        "operator": "+"
+      },
+      {
+        "cells": [
+          1,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          13,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          5
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          17,
+          18
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          4,
+          19,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          21,
+          14,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          19,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-00000067",
-    "version": 1,
+    "id": "cm2-hard-00000067",
+    "version": 2,
     "seed": 103,
     "difficulty": "hard",
     "givens": [
       null,
-      null,
-      22,
-      null,
-      null,
+      17,
+      12,
       null,
       null,
+      38,
+      53,
       null,
-      null
+      29,
+      null,
+      41,
+      4,
+      33,
+      2,
+      null,
+      36,
+      17,
+      1,
+      33,
+      10,
+      null,
+      null,
+      null,
+      null,
+      31,
+      null,
+      20,
+      null,
+      1,
+      1,
+      12
     ],
     "bank": [
-      1,
+      2,
       3,
       5,
-      9,
+      8,
+      8,
       11,
-      13,
-      13,
-      26
+      11,
+      12,
+      15,
+      23,
+      41,
+      43
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "*"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          1,
+          3,
+          4
         ],
-        "target": 247
+        "operator": "-"
       },
       {
         "cells": [
           3,
-          4,
-          5
+          5,
+          6
         ],
-        "operators": [
-          "+",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          8,
+          2
         ],
-        "target": 23
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          9,
+          10
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          8,
+          11,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          13,
+          14
+        ],
+        "operator": "+"
       },
       {
         "cells": [
           6,
-          7,
-          8
+          15,
+          16
         ],
-        "operators": [
-          "/",
-          "*"
-        ],
-        "target": 6
+        "operator": "-"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          12,
+          17,
+          18
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 40
+        "operator": "/"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          18,
+          19,
+          20
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 11
+        "operator": "-"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          17,
+          21,
+          22
         ],
-        "operators": [
-          "-",
-          "-"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          20,
+          23,
+          24
         ],
-        "target": 18
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          23
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          22
+        ],
+        "operator": "*"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-00000068",
-    "version": 1,
+    "id": "cm2-hard-00000068",
+    "version": 2,
     "seed": 104,
     "difficulty": "hard",
     "givens": [
       null,
+      70,
+      5,
       null,
-      17,
+      42,
+      21,
       null,
       null,
       null,
       null,
+      40,
       null,
-      null
+      20,
+      72,
+      58,
+      35,
+      null,
+      50,
+      70,
+      22,
+      null,
+      5,
+      null,
+      null,
+      40,
+      null,
+      59
     ],
     "bank": [
-      2,
-      16,
-      17,
-      22,
-      23,
-      28,
-      29,
-      30
+      7,
+      14,
+      14,
+      15,
+      20,
+      26,
+      35,
+      37,
+      37,
+      40,
+      49,
+      52
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 650
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 74
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 27
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 790
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 366
+        "operator": "/"
       },
       {
         "cells": [
           2,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          1,
           5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          0,
+          7,
           8
         ],
-        "operators": [
-          "+",
-          "-"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          9,
+          10
         ],
-        "target": 30
+        "operator": "+"
+      },
+      {
+        "cells": [
+          10,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          9,
+          14
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          12,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          16,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          15
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          23,
+          21,
+          24
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          22,
+          26
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 10
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-00000069",
-    "version": 1,
+    "id": "cm2-hard-00000069",
+    "version": 2,
     "seed": 105,
     "difficulty": "hard",
     "givens": [
       null,
       null,
-      15,
       null,
       null,
+      9,
+      9,
+      25,
+      null,
+      2,
+      null,
+      23,
+      null,
+      39,
+      8,
       null,
       null,
+      7,
+      13,
+      20,
+      51,
       null,
+      40,
+      null,
+      null,
+      64
+    ],
+    "bank": [
+      2,
+      2,
+      7,
+      11,
+      14,
+      16,
+      16,
+      20,
+      31,
+      38,
+      46,
+      53
+    ],
+    "equations": [
+      {
+        "cells": [
+          1,
+          2,
+          0
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          3,
+          4,
+          2
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          1,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          0,
+          7,
+          8
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          9,
+          10,
+          8
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          11,
+          10,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          12,
+          13,
+          14
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          4,
+          15,
+          16
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          19,
+          17,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          21,
+          18,
+          22
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          23,
+          3,
+          24
+        ],
+        "operator": "+"
+      }
+    ],
+    "layout": {
+      "rows": 11,
+      "cols": 9,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 4
+        }
+      ]
+    },
+    "rating": {
+      "deductions": 12,
+      "rounds": 5,
+      "branches": 0
+    }
+  },
+  {
+    "id": "cm2-hard-0000006a",
+    "version": 2,
+    "seed": 106,
+    "difficulty": "hard",
+    "givens": [
+      17,
+      null,
+      null,
+      39,
+      null,
+      88,
+      null,
+      14,
+      31,
+      28,
+      null,
+      2,
+      null,
+      null,
+      38,
+      14,
+      1,
+      null,
+      4,
+      63,
+      null,
+      null,
+      89,
+      49,
+      null,
+      73,
       null
     ],
     "bank": [
       3,
-      6,
-      11,
-      19,
-      20,
-      23,
-      29,
-      29
+      17,
+      21,
+      33,
+      34,
+      34,
+      36,
+      37,
+      39,
+      56,
+      71,
+      88
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
+          0,
           2
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 682
+        "operator": "-"
       },
       {
         "cells": [
+          0,
           3,
-          4,
-          5
+          4
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          5,
+          6,
+          2
         ],
-        "target": 28
+        "operator": "-"
       },
       {
         "cells": [
@@ -3058,504 +8334,1124 @@
           7,
           8
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 29
+        "operator": "+"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          8,
+          9,
+          10
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 844
+        "operator": "-"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          11,
+          12,
+          3
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 37
+        "operator": "+"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          11,
+          13,
+          14
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 23
-      }
-    ],
-    "rating": {
-      "deductions": 8,
-      "rounds": 1,
-      "branches": 0
-    }
-  },
-  {
-    "id": "cm1-hard-0000006a",
-    "version": 1,
-    "seed": 106,
-    "difficulty": "hard",
-    "givens": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      28
-    ],
-    "bank": [
-      1,
-      5,
-      9,
-      14,
-      23,
-      23,
-      28,
-      28
-    ],
-    "equations": [
-      {
-        "cells": [
-          0,
-          1,
-          2
-        ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 115
+        "operator": "+"
       },
       {
         "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "+",
-          "/"
-        ],
-        "target": 30
-      },
-      {
-        "cells": [
-          6,
+          15,
           7,
-          8
+          16
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 60
+        "operator": "/"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          14,
+          17,
+          18
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 257
+        "operator": "-"
       },
       {
         "cells": [
-          1,
+          19,
+          20,
+          10
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
           4,
-          7
+          21,
+          22
         ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 621
+        "operator": "+"
       },
       {
         "cells": [
-          2,
-          5,
-          8
+          23,
+          24,
+          1
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          24,
+          26
         ],
-        "target": 15
+        "operator": "-"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 2
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 5,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-0000006b",
-    "version": 1,
+    "id": "cm2-hard-0000006b",
+    "version": 2,
     "seed": 107,
     "difficulty": "hard",
     "givens": [
-      26,
       null,
       null,
+      11,
       null,
       null,
+      2,
+      null,
+      2,
+      12,
+      null,
+      54,
+      69,
+      53,
+      null,
+      43,
+      null,
+      52,
+      61,
+      null,
+      86,
       null,
       null,
+      21,
       null,
-      null
+      68
     ],
     "bank": [
-      4,
-      7,
+      8,
+      9,
       10,
-      15,
+      16,
       21,
-      25,
-      27,
-      28
+      21,
+      32,
+      34,
+      43,
+      52,
+      55,
+      59
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
+          0,
           2
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 197
-      },
-      {
-        "cells": [
-          3,
-          4,
-          5
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 542
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 70
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 782
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 18
+        "operator": "-"
       },
       {
         "cells": [
           2,
+          3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          4,
           5,
+          6
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          7,
+          0,
           8
         ],
-        "operators": [
-          "*",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          7,
+          10
         ],
-        "target": 379
+        "operator": "+"
+      },
+      {
+        "cells": [
+          11,
+          6,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          19,
+          20,
+          5
+        ],
+        "operator": "/"
+      },
+      {
+        "cells": [
+          21,
+          22,
+          13
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          15,
+          24
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-0000006c",
-    "version": 1,
+    "id": "cm2-hard-0000006c",
+    "version": 2,
     "seed": 108,
     "difficulty": "hard",
     "givens": [
+      null,
+      5,
+      23,
+      4,
+      null,
+      null,
+      12,
+      1,
+      null,
+      29,
+      null,
+      null,
+      15,
+      null,
+      49,
+      16,
+      null,
+      33,
+      3,
+      4,
+      7,
+      17,
+      null,
+      67,
+      null,
       13,
+      81,
       null,
+      30,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      55
     ],
     "bank": [
-      4,
+      3,
       8,
-      10,
-      11,
-      11,
+      9,
+      13,
       19,
-      19,
-      27
+      20,
+      28,
+      30,
+      36,
+      38,
+      64,
+      68
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 165
+        "operator": "+"
       },
       {
         "cells": [
+          1,
           3,
+          4
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
           4,
-          5
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 35
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 34
-      },
-      {
-        "cells": [
-          0,
-          3,
+          5,
           6
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 21
+        "operator": "+"
       },
       {
         "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 52
-      },
-      {
-        "cells": [
-          2,
-          5,
+          7,
+          6,
           8
         ],
-        "operators": [
-          "*",
-          "+"
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          9,
+          10
         ],
-        "target": 523
+        "operator": "+"
+      },
+      {
+        "cells": [
+          11,
+          12,
+          2
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          9,
+          13,
+          14
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          13,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          19,
+          20,
+          0
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          19,
+          21,
+          22
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          23,
+          5,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          22,
+          25,
+          26
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          14,
+          27,
+          28
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          21,
+          29,
+          30
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 6
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-0000006d",
-    "version": 1,
+    "id": "cm2-hard-0000006d",
+    "version": 2,
     "seed": 109,
     "difficulty": "hard",
     "givens": [
+      34,
+      2,
+      null,
+      74,
+      40,
+      null,
+      96,
+      28,
+      26,
+      3,
       null,
       null,
-      17,
       null,
+      54,
+      9,
       null,
+      28,
+      3,
       null,
+      8,
+      36,
       null,
+      8,
       null,
-      null
+      21,
+      null,
+      44,
+      null,
+      3,
+      null,
+      33
     ],
     "bank": [
-      1,
-      4,
-      12,
-      16,
+      5,
+      11,
       19,
-      20,
-      26,
-      29
+      22,
+      31,
+      32,
+      32,
+      33,
+      33,
+      63,
+      65,
+      96
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
-          2
+          2,
+          0
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 6
+        "operator": "+"
       },
       {
         "cells": [
           3,
-          4,
-          5
-        ],
-        "operators": [
-          "-",
-          "+"
-        ],
-        "target": 15
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 36
-      },
-      {
-        "cells": [
           0,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
           3,
+          5,
           6
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 599
+        "operator": "+"
       },
       {
         "cells": [
-          1,
-          4,
-          7
+          7,
+          8,
+          1
         ],
-        "operators": [
-          "+",
-          "/"
-        ],
-        "target": 30
+        "operator": "-"
       },
       {
         "cells": [
           2,
-          5,
-          8
+          9,
+          10
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "*"
+      },
+      {
+        "cells": [
+          10,
+          11,
+          12
         ],
-        "target": 21
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          14,
+          15,
+          16
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          16,
+          17,
+          18
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          19,
+          20
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          15,
+          21,
+          22
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          23,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          25,
+          26,
+          24
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          29,
+          30,
+          25
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 4
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 10,
+          "col": 0
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 0
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-0000006e",
-    "version": 1,
+    "id": "cm2-hard-0000006e",
+    "version": 2,
     "seed": 110,
     "difficulty": "hard",
     "givens": [
+      25,
+      null,
+      35,
+      null,
+      40,
+      32,
+      3,
       null,
       null,
+      2,
+      32,
       null,
       null,
+      10,
+      3,
+      81,
       null,
-      27,
+      null,
+      8,
+      11,
       null,
       null,
-      null
+      34,
+      6,
+      null,
+      null,
+      54
     ],
     "bank": [
+      2,
+      7,
       10,
-      10,
-      12,
-      20,
-      22,
-      24,
-      25,
-      26
+      18,
+      18,
+      23,
+      26,
+      31,
+      31,
+      50,
+      64,
+      70
     ],
     "equations": [
       {
@@ -3564,182 +9460,514 @@
           1,
           2
         ],
-        "operators": [
-          "*",
-          "/"
-        ],
-        "target": 15
+        "operator": "+"
       },
       {
         "cells": [
           3,
           4,
-          5
+          1
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 670
-      },
-      {
-        "cells": [
-          6,
-          7,
-          8
-        ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 270
-      },
-      {
-        "cells": [
-          0,
-          3,
-          6
-        ],
-        "operators": [
-          "*",
-          "-"
-        ],
-        "target": 540
-      },
-      {
-        "cells": [
-          1,
-          4,
-          7
-        ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 314
+        "operator": "-"
       },
       {
         "cells": [
           2,
           5,
+          6
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          7,
+          5,
           8
         ],
-        "operators": [
-          "*",
-          "+"
+        "operator": "*"
+      },
+      {
+        "cells": [
+          9,
+          10,
+          8
         ],
-        "target": 550
+        "operator": "*"
+      },
+      {
+        "cells": [
+          0,
+          11,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          13,
+          14,
+          12
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          16,
+          3
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          17,
+          18,
+          11
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          15,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          21,
+          19,
+          22
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          23,
+          6,
+          24
+        ],
+        "operator": "*"
+      },
+      {
+        "cells": [
+          25,
+          21,
+          26
+        ],
+        "operator": "+"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 9,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 6
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 2
+        },
+        {
+          "row": 10,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 4
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 3,
       "branches": 0
     }
   },
   {
-    "id": "cm1-hard-0000006f",
-    "version": 1,
+    "id": "cm2-hard-0000006f",
+    "version": 2,
     "seed": 111,
     "difficulty": "hard",
     "givens": [
       null,
       null,
       null,
+      6,
       null,
-      9,
+      39,
+      null,
+      41,
+      38,
+      67,
+      64,
+      20,
+      62,
+      78,
+      58,
+      null,
+      30,
+      58,
       null,
       null,
+      58,
       null,
+      10,
+      null,
+      2,
+      null,
+      32,
+      37,
       null
     ],
     "bank": [
-      6,
-      10,
-      18,
-      18,
-      18,
-      27,
-      27,
-      27
+      3,
+      3,
+      3,
+      4,
+      9,
+      9,
+      11,
+      15,
+      22,
+      29,
+      42,
+      56
     ],
     "equations": [
       {
         "cells": [
-          0,
           1,
+          0,
           2
         ],
-        "operators": [
-          "*",
-          "+"
-        ],
-        "target": 496
+        "operator": "/"
       },
       {
         "cells": [
+          1,
           3,
+          4
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          5,
+          2,
+          6
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          7,
+          0,
+          8
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
+          9,
           4,
-          5
+          10
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 42
+        "operator": "-"
       },
       {
         "cells": [
           6,
-          7,
-          8
+          11,
+          12
         ],
-        "operators": [
-          "+",
-          "-"
-        ],
-        "target": 27
+        "operator": "+"
       },
       {
         "cells": [
-          0,
-          3,
-          6
+          13,
+          11,
+          14
         ],
-        "operators": [
-          "+",
-          "*"
-        ],
-        "target": 126
+        "operator": "-"
       },
       {
         "cells": [
-          1,
-          4,
+          15,
+          16,
           7
         ],
-        "operators": [
-          "+",
-          "+"
-        ],
-        "target": 63
+        "operator": "+"
       },
       {
         "cells": [
-          2,
+          17,
+          18,
+          9
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          12,
+          19,
+          20
+        ],
+        "operator": "-"
+      },
+      {
+        "cells": [
           5,
-          8
+          21,
+          22
         ],
-        "operators": [
-          "-",
-          "+"
+        "operator": "-"
+      },
+      {
+        "cells": [
+          23,
+          24,
+          20
         ],
-        "target": 1
+        "operator": "+"
+      },
+      {
+        "cells": [
+          25,
+          22,
+          26
+        ],
+        "operator": "+"
+      },
+      {
+        "cells": [
+          27,
+          28,
+          25
+        ],
+        "operator": "-"
       }
     ],
+    "layout": {
+      "rows": 11,
+      "cols": 11,
+      "cells": [
+        {
+          "row": 4,
+          "col": 4
+        },
+        {
+          "row": 4,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 8,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 6
+        },
+        {
+          "row": 6,
+          "col": 6
+        },
+        {
+          "row": 2,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
+          "row": 8,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 4
+        },
+        {
+          "row": 6,
+          "col": 8
+        },
+        {
+          "row": 6,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 8
+        },
+        {
+          "row": 8,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 4,
+          "col": 0
+        },
+        {
+          "row": 6,
+          "col": 0
+        },
+        {
+          "row": 8,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 10
+        },
+        {
+          "row": 2,
+          "col": 8
+        },
+        {
+          "row": 2,
+          "col": 10
+        },
+        {
+          "row": 10,
+          "col": 6
+        },
+        {
+          "row": 10,
+          "col": 8
+        },
+        {
+          "row": 0,
+          "col": 10
+        },
+        {
+          "row": 4,
+          "col": 10
+        },
+        {
+          "row": 0,
+          "col": 6
+        },
+        {
+          "row": 0,
+          "col": 8
+        }
+      ]
+    },
     "rating": {
-      "deductions": 8,
-      "rounds": 1,
+      "deductions": 12,
+      "rounds": 2,
       "branches": 0
     }
   }

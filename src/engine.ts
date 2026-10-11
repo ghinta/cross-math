@@ -7,7 +7,7 @@ const pending = new Map<number, { resolve: (value: unknown) => void; reject: (re
 
 function request<T>(method: string, payload: Record<string, unknown>): Promise<T> {
   if (isTauri()) {
-    const command = method === 'generate' ? 'generate_puzzle' : method === 'check' ? 'check_board' : 'get_hint';
+    const command = method === 'generate' ? 'generate_puzzle' : method === 'check' ? 'check_board' : method === 'verify' ? 'verify_puzzle' : 'get_hint';
     const args = method === 'generate' ? payload : { puzzle: JSON.stringify(payload.puzzle), values: JSON.stringify(payload.board) };
     return invoke<string>(command, args).then(text => JSON.parse(text) as T);
   }
@@ -37,12 +37,13 @@ function request<T>(method: string, payload: Record<string, unknown>): Promise<T
 export const engine = {
   generate: (seed: number, difficulty: Difficulty) => request<Puzzle>('generate', { seed, difficulty }),
   check: (puzzle: Puzzle, board: Board) => request<Check>('check', { puzzle, board }),
+  verify: (puzzle: Puzzle) => request<boolean>('verify', { puzzle }),
   hint: (puzzle: Puzzle, board: Board) => request<Hint>('hint', { puzzle, board }),
 };
 
 export function dailySeed(date: string): number {
   let seed = 2166136261;
-  for (const char of `cross-math:v1:daily:${date}`) seed = Math.imul(seed ^ char.charCodeAt(0), 16777619);
+  for (const char of `cross-math:v2:daily:${date}`) seed = Math.imul(seed ^ char.charCodeAt(0), 16777619);
   return seed >>> 0;
 }
 export function randomSeed(): number { return crypto.getRandomValues(new Uint32Array(1))[0] }

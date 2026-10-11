@@ -28,9 +28,10 @@ describe('number inventory and game history', () => {
     const s = newSession(p);
     const given = p.givens.findIndex(n => n !== null);
     expect(place(s, given, 99)).toBe(s);
-    expect(place(s, first, 99)).toBe(s);
+    const unavailable = Array.from({ length: 99 }, (_, i) => i + 1).find(n => !p.bank.includes(n))!;
+    expect(place(s, first, unavailable)).toBe(s);
     expect(toggleNote(s, first, 0)).toBe(s);
-    expect(toggleNote(s, first, 99)).toBe(s);
+    expect(toggleNote(s, first, unavailable)).toBe(s);
   });
   it('records notes without consuming numbers and clears redo after a new action', () => {
     const s = newSession(p);
@@ -66,4 +67,20 @@ describe('save import validation', () => {
     expect(() => parseSave(JSON.stringify({ ...save, settings: { ...save.settings, theme: 'neon' } }))).toThrow();
     expect(() => parseSave(' '.repeat(1_000_001))).toThrow();
   });
+});
+
+import legacy from './data/legacy-puzzles.json';
+
+it('keeps old games and statistics readable', () => {
+  const save = emptySave(); save.session = newSession(legacy[0] as Puzzle); save.stats.solved = [legacy[1].id];
+  expect(parseSave(JSON.stringify(save))).toEqual(save);
+});
+it('rejects overlapping, detached and malformed crossword geometry', () => {
+  const save = emptySave(); save.session = newSession(p);
+  const broken = structuredClone(save);
+  if (broken.session!.puzzle.version === 2) broken.session!.puzzle.layout.cells[0] = broken.session!.puzzle.layout.cells[1];
+  expect(() => parseSave(JSON.stringify(broken))).toThrow();
+  const outOfBounds = structuredClone(save);
+  if (outOfBounds.session!.puzzle.version === 2) outOfBounds.session!.puzzle.layout.cells[0].row = 11;
+  expect(() => parseSave(JSON.stringify(outOfBounds))).toThrow();
 });

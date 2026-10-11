@@ -2,7 +2,7 @@
 
 Werbefreie Cross-Platform-App mit einer von Apple Liquid Glass inspirierten Oberfläche, gemeinsamem Rust-Kern und installierbarer Offline-PWA.
 
-Die erste Version enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemeinsames Tagesrätsel, Notizen, Undo/Redo, kostenlose Hinweise, Pause, Statistiken, Light/Dark Mode, Einstellungen für reduzierte Bewegung/Transparenz und exportierbare lokale Spielstände. Alle Zahlen stammen aus dem eigenen Generator; es werden keine fremden Leveldaten verwendet.
+Die App enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemeinsames Tagesrätsel, Notizen, Undo/Redo, kostenlose Hinweise, Pause, Statistiken, Light/Dark Mode, Einstellungen für reduzierte Bewegung/Transparenz und exportierbare lokale Spielstände. Alle Zahlen stammen aus dem eigenen Generator; es werden keine fremden Leveldaten verwendet.
 
 ## Starten
 
@@ -69,20 +69,30 @@ npm run test:e2e
 
 Der Browser-Test nutzt vorhandenes `/usr/bin/chromium`, falls verfügbar; sonst das von Playwright installierte Chromium. Die Tests starten und stoppen ihren eigenen Preview-Server.
 
-- Rust: Vorrat, arithmetische Regeln, Eindeutigkeit, deterministische Erzeugung, Hinweise und ungültige Eingaben. Ein unabhängiger vollständiger Solver prüft zusätzlich ausgewählte Aufgaben.
-- WASM: Alle 36 mitgelieferten Aufgaben werden mit dem nativen Katalog verglichen und über Hinweise vollständig gelöst.
+- Rust: 288 neue Aufgaben plus alle 36 mitgelieferten Rechenkreuze werden mit unabhängig implementierter Arithmetik und vollständiger Zahlenpermutation auf genau eine Lösung geprüft. Jeder Rechenschritt wird gegen den damaligen Zahlenvorrat nachgerechnet. Die Prüfungen der alten Engine bleiben erhalten.
+- WASM: 36 neue Aufgaben werden mit dem nativen Katalog verglichen; 36 neue und 36 alte Aufgaben werden geprüft und über Hinweise vollständig gelöst.
 - Frontend: Zahlenverbrauch, doppelte Kacheln, Notizen, History und Importvalidierung.
-- Browser: Eingabe, Hinweise, Wiederherstellung, Tagesrätsel, Schwierigkeitswechsel, Offline-Neustart und Offline-Generierung, responsive Darstellung und Erscheinungsbild.
+- Browser: Eingabe, konkrete Hinweise, Wiederherstellung, alte Spielstände, Tagesrätsel, Schwierigkeitswechsel, Offline-Neustart und Offline-Generierung. Brett, Zahlen und Aktionen werden unter anderem bei 320×568, 375×667, 390×844, 667×375 und 900×600 Pixeln auf Sichtbarkeit ohne Scrollen geprüft.
 
 Screenshots werden unter `artifacts/` erzeugt. CI prüft die Web-App unter Linux und native Builds unter Linux, Windows und macOS; die Plattformjobs müssen auf diesen Runnern tatsächlich laufen, bevor ihre Ergebnisse als bestätigt gelten.
 
 ## Rätsel und Daten
 
-Das erste Layout hat neun Zahlenfelder. Drei Zeilen und drei Spalten teilen sich die Felder; jede Gleichung enthält drei Zahlen, zwei feste Operatoren und ein Ergebnis. Punkt vor Strich und Linksassoziativität gelten. Division muss ohne Rest aufgehen.
+Neue Rätsel verwenden ein verbundenes Rechenkreuz mit bis zu 11×11 Rasterpositionen und 15 Gleichungen. Jede Gleichung hat die Form `a ⊕ b = c`; alle drei Zahlen können freie Felder sein. Kreuzungen teilen sich dieselbe Zahl. Zahlen liegen zwischen 1 und 99, Division muss ohne Rest aufgehen. Leicht hat sechs freie Felder und Addition/Subtraktion; Mittel hat neun und Schwer zwölf freie Felder mit allen Rechenarten. Die Formen variieren deterministisch mit dem Startwert. Die Stufen unterscheiden sich derzeit nach fehlenden Zahlen und Rechenarten; eine feinere Kalibrierung folgt anhand von Spieltests.
 
-Der Generator erzeugt eine vollständige Lösung und entfernt nur Zahlen, solange die Aufgabe genau eine Lösung behält. Identische Zahlen werden als Mengen mit Häufigkeiten behandelt. Ein zweiter Durchlauf prüft, ob sich alle fehlenden Werte über Gleichungen und Zahlenvorrat ableiten lassen. Die Startstufen unterscheiden sich nach Zahlenbereich, Rechenzeichen und Informationsmenge; die Lösungsbewertung wird mitgespeichert. Weitere Layouts und eine feinere Kalibrierung anhand von Spieltests können darauf aufbauen.
+Der Generator erzeugt zunächst ein vollständig korrektes Brett und entfernt nur Zahlen, wenn eine vollständige Folge von Einzelschritten erhalten bleibt. Jeder Schritt löst eine konkrete Gleichung mit genau einer unbekannten Zahl und prüft den Zahlenvorrat. Ein separater Solver zählt danach die Lösungen: Nur genau eine Lösung wird zugelassen. Bei ausgeschöpftem Suchbudget gilt eine Aufgabe als ungeprüft und wird abgelehnt. Doppelte Zahlen sind Häufigkeiten, keine verschiedenen Lösungen. Vorab mitgelieferte Aufgaben unterliegen zusätzlich dem unabhängigen Referenzprüfer in CI. Der Hinweis zeigt die unvollständige und die vervollständigte Rechnung; Fehlerkorrekturen geben falsch platzierte Kacheln zurück.
+
+Formatversion 1 bleibt über `crates/core/src/legacy.rs` unterstützt. Laufende alte Spiele, Notizen, Verlauf und Statistiken werden erhalten. „Neues Rätsel“ startet das größere Brett. Der Tagesrätsel-Startwert verwendet für neue Aufgaben einen versionierten Namensraum; bereits gespeicherte Tagesrätsel desselben UTC-Datums bleiben erhalten.
+
+Die Spielansicht nutzt die verfügbare dynamische Bildschirmhöhe und sichere Randabstände. Auf dem Handy liegt der Zahlenvorrat unter dem Brett, auf breiten Bildschirmen daneben. Hinweise, Einstellungen und Regeln öffnen eigene Dialoge; umfangreiche Dialoginhalte können innerhalb des Dialogs scrollen. Das Spielfeld und der Zahlenvorrat benötigen keinen Scrollbereich.
 
 36 eigene, vorab geprüfte Aufgaben liegen in `src/data/puzzles.json`. Sie ermöglichen den unmittelbaren ersten Start und dienen bei einem Generierungsfehler als Reserve. Regeneration: `cargo run -p cross-math-core --release --example catalog > src/data/puzzles.json`.
+
+### Hugging-Face-Datensätze
+
+Geprüft am 11. Oktober 2026: [xuyige/CrossMath](https://huggingface.co/datasets/xuyige/CrossMath) enthält 1.000 Benchmark-Zeilen mit mehreren Darstellungen; [xuyige/CrossMath-Train](https://huggingface.co/datasets/xuyige/CrossMath-Train) enthält 5.000 Aufgaben einschließlich Tabellen, Antworten und Schritten. Beide weisen `CC BY-NC-ND 4.0` aus. Die Lizenz erlaubt nichtkommerzielle Weitergabe mit Namensnennung, untersagt jedoch die Weitergabe bearbeiteten Materials; reine Formatänderungen gelten laut [Creative Commons](https://creativecommons.org/licenses/by-nc-nd/4.0/) nicht automatisch als Bearbeitung. Eine Freigabe für den konkreten Einsatz in der interaktiven App wurde nicht festgestellt. Die App übernimmt deshalb keine Aufgaben, Bilder oder Lösungen daraus.
+
+Die [Veröffentlichung zum Benchmark](https://arxiv.org/abs/2604.16256) beschreibt menschliche Prüfung der gleichen Informationen in Bild- und Textvarianten. Daraus folgt keine pauschale Garantie für eindeutige, ohne Raten lösbare App-Level. Falls später externe Aufgaben aufgenommen werden, benötigen sie eine passende Nutzungsfreigabe, festgehaltene Quelle/Revision und denselben vollständigen Rechenweg sowie dieselbe Eindeutigkeitsprüfung. Der Import von Spielständen prüft neue Aufgaben zusätzlich mathematisch in der Rust-Engine; reine Strukturprüfung reicht nicht.
 
 Der Startwert, die Generatorversion und geordnete Solver-Datenstrukturen garantieren reproduzierbare Aufgaben zwischen nativen und WASM-Builds. Das konkrete Rätsel wird im Spielstand gespeichert. Tagesrätsel wechseln weltweit um 00:00 UTC; das zugehörige Datum bleibt auch beim Weiterspielen über Mitternacht erhalten.
 
