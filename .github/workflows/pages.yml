@@ -24,7 +24,7 @@ jobs:
           node-version-file: .nvmrc
           check-latest: true
           cache: npm
-      - uses: dtolnay/rust-toolchain@1.99.0
+      - uses: dtolnay/rust-toolchain@1.120.0
         with:
           targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@v2.9.2
