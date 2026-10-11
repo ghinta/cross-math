@@ -6,7 +6,7 @@ Die erste Version enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemei
 
 ## Starten
 
-Voraussetzungen: Node.js 24, Rust (getestet mit 1.99.0), das Target `wasm32-unknown-unknown` und die zum Cargo-Lockfile passende `wasm-bindgen`-CLI (aktuell 0.2.129).
+Voraussetzungen: die neueste Node.js-LTS-Version (aktuell 24.21.0 mit npm 11.19.0), Rust (getestet mit 1.99.0), das Target `wasm32-unknown-unknown` und die zum Cargo-Lockfile passende `wasm-bindgen`-CLI (aktuell 0.2.129). Mit nvm wählen `nvm install` und `nvm use` anhand der `.nvmrc` automatisch die aktuelle LTS-Version.
 
 ```bash
 npm ci
@@ -17,6 +17,8 @@ npm run dev
 ```
 
 In der vorbereiteten Cloud-Umgebung vor Cargo-/Tauri-Befehlen `source /workspace/.cross-math-tools/activate.sh` ausführen. Netzwerkzugang und lokale Testserver benötigen dort die entsprechenden Sandbox-Berechtigungen.
+
+CI liest dieselbe `.nvmrc` mit `check-latest: true`; neue LTS-Versionen werden dadurch beim nächsten Lauf verwendet. Die JavaScript-Actions verwenden Node 24 statt der abgekündigten Node-20-Runtime. Bibliotheken ohne LTS-Kanal verwenden stabile Releases mit festgeschriebenem Lockfile. Dependabot prüft npm-Pakete und GitHub Actions wöchentlich und schlägt Updates als Pull Requests vor; sie werden vor Übernahme durch CI geprüft.
 
 ## PWA
 
