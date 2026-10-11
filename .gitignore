@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-native/
+target/
+src/wasm/
+test-results/
+playwright-report/
+src-tauri/gen/
+*.local
+*.tsbuildinfo
+artifacts/
+.DS_Store

@@ -1,0 +1,20 @@
+[package]
+name = "cross-math"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "cross_math_app"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+cross-math-core = { path = "../crates/core" }
+
+[[bin]]
+name = "cross-math"
+path = "src/main.rs"

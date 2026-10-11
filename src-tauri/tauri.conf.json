@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Cross Math",
+  "version": "0.1.0",
+  "identifier": "app.crossmath.game",
+  "build": {
+    "beforeDevCommand": "npm run dev -- --port 1420 --strictPort",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build -- --outDir dist-native",
+    "frontendDist": "../dist-native"
+  },
+  "app": {
+    "windows": [{
+      "title": "Cross Math",
+      "width": 1200,
+      "height": 900,
+      "minWidth": 360,
+      "minHeight": 640,
+      "backgroundColor": "#e8edf5"
+    }],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' ipc: http://ipc.localhost; worker-src 'self' blob:"
+    }
+  },
+  "bundle": { "active": true, "targets": "all", "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"] }
+}
