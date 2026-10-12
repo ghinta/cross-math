@@ -133,6 +133,65 @@ fn every_bundled_crossword_is_independently_audited() {
         );
     }
 }
+
+#[test]
+fn original_crossmath_tasks_match_the_authors_answers_and_unchanged_clues() {
+    let data: serde_json::Value =
+        serde_json::from_str(include_str!("../../../src/data/crossmath-originals.json")).unwrap();
+    let records = data["records"].as_array().unwrap();
+    assert_eq!(records.len(), 32);
+    for record in records {
+        let p: Puzzle = serde_json::from_value(record["puzzle"].clone()).unwrap();
+        audit(&p);
+        let expected: Vec<i32> = serde_json::from_value(record["solution"].clone()).unwrap();
+        assert_eq!(solve(&p, 2), vec![expected.clone()]);
+        let parse_grid = |key: &str| -> Vec<Vec<String>> {
+            record["original"][key]
+                .as_str()
+                .unwrap()
+                .lines()
+                .map(|line| {
+                    line.split('|')
+                        .skip(1)
+                        .take(p.layout.cols)
+                        .map(|v| v.trim().to_owned())
+                        .collect()
+                })
+                .collect()
+        };
+        let table = parse_grid("markdown_table");
+        let answers = parse_grid("markdown_answer");
+        assert_eq!(table.len(), p.layout.rows);
+        for (i, pos) in p.layout.cells.iter().enumerate() {
+            if table[pos.row][pos.col] == "?" {
+                assert!(p.givens[i].is_none());
+                assert_eq!(
+                    answers[pos.row][pos.col].parse::<i32>().unwrap(),
+                    expected[i]
+                );
+            } else {
+                assert_eq!(p.givens[i], Some(table[pos.row][pos.col].parse().unwrap()));
+            }
+        }
+        for eq in &p.equations {
+            let [a, b] = eq.cells[..2].try_into().unwrap();
+            let start = p.layout.cells[a];
+            let next = p.layout.cells[b];
+            let vertical = start.col == next.col;
+            let symbol =
+                &table[start.row + usize::from(vertical)][start.col + usize::from(!vertical)];
+            assert_eq!(
+                symbol.as_str(),
+                match eq.operator {
+                    Op::Add => "+",
+                    Op::Sub => "-",
+                    Op::Mul => "×",
+                    Op::Div => "÷",
+                }
+            );
+        }
+    }
+}
 #[test]
 fn ambiguous_or_corrupt_external_tasks_fail_verification() {
     let p: Puzzle=serde_json::from_str(r#"{"id":"ambiguous","version":2,"seed":0,"difficulty":"easy","givens":[null,null,5,1,6],"bank":[2,3],"equations":[{"cells":[0,1,2],"operator":"+"},{"cells":[2,3,4],"operator":"+"}],"layout":{"rows":5,"cols":5,"cells":[{"row":0,"col":0},{"row":0,"col":2},{"row":0,"col":4},{"row":2,"col":4},{"row":4,"col":4}]},"rating":{"deductions":0,"rounds":0,"branches":0}}"#).unwrap();

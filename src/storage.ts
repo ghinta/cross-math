@@ -5,7 +5,7 @@ const db = new Dexie('cross-math');
 db.version(1).stores({ saves: 'key' });
 const saves = db.table('saves') as Table<{ key: string; value: Save; writtenAt: number }>;
 const backupKey = 'cross-math-backup-v1';
-export const defaults: Settings = { theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
+export const defaults: Settings = { puzzleSource: 'crossmath', theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
 export const emptySave = (): Save => ({ version: 1, activeMode: 'free', session: null, daily: null, settings: { ...defaults }, stats: { solved: [], best: {}, dailyDates: [] } });
 
 const object = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -89,10 +89,12 @@ export function parseSave(text: string): Save {
   if ((v.session && v.session.mode !== 'free') || (v.daily && v.daily.mode !== 'daily')) throw new Error('Ungültiger Spielmodus.');
   if (!['system', 'light', 'dark'].includes(v.settings.theme as string)
     || !['reduceMotion', 'opaque', 'showTimer', 'checkErrors'].every(k => typeof (v.settings as Record<string, unknown>)[k] === 'boolean')) throw new Error('Ungültige Einstellungen.');
+  if (v.settings.puzzleSource !== undefined && !['crossmath', 'generator'].includes(v.settings.puzzleSource as string)) throw new Error('Ungültige Aufgabenquelle.');
   const list = (v: unknown) => Array.isArray(v) && v.length <= 10000 && v.every(s => typeof s === 'string' && s.length <= 100);
   if (!list(v.stats.solved) || !list(v.stats.dailyDates) || !object(v.stats.best)
     || !Object.entries(v.stats.best).every(([k, n]) => ['easy', 'medium', 'hard'].includes(k) && natural(n))) throw new Error('Ungültige Statistik.');
-  return v as unknown as Save;
+  const result = v as unknown as Save;
+  return { ...result, settings: { ...result.settings, puzzleSource: result.settings.puzzleSource ?? 'crossmath' } };
 }
 export async function loadSave(): Promise<Save> {
   const candidates: { writtenAt: number; value: Save }[] = [];

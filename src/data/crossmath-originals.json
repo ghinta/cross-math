@@ -1,0 +1,6985 @@
+{
+  "source": {
+    "dataset": "xuyige/CrossMath",
+    "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+    "file": "Original/testset_hr.jsonl",
+    "license": "CC-BY-NC-ND-4.0",
+    "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+    "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a"
+  },
+  "records": [
+    {
+      "index": 2,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0003.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0003_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          3,
+          115
+        ],
+        "markdown_table": "|   |   |   |   | ? |   |   |\n|   |   |   |   | + |   |   |\n| 28 |   | ? | ÷ | 3 | = | 31 |\n| + |   |   |   | = |   |   |\n| ? | ÷ | 5 | = | 9 |   |   |\n| = |   | × |   |   |   |   |\n| 73 |   | ? | + | 57 | = | 65 |\n|   |   | = |   |   |   |   |\n|   |   | 40 |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   | 6 |   |   |\n|   |   |   |   |   |   |   |\n|   |   | 93 |   |   |   |   |\n|   |   |   |   |   |   |   |\n| 45 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | 8 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n| step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |",
+        "solutions": "Across\n93÷3=31\n45÷5=9\n8+57=65\n\nDown\n6+3=9\n28+45=73\n5×8=40",
+        "solving_steps": {
+          "step1": [
+            "93÷3=31",
+            "45÷5=9",
+            "8+57=65",
+            "6+3=9",
+            "28+45=73",
+            "5×8=40"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0003",
+        "version": 2,
+        "seed": 3,
+        "difficulty": "easy",
+        "givens": [
+          null,
+          28,
+          null,
+          3,
+          31,
+          null,
+          5,
+          9,
+          73,
+          null,
+          57,
+          65,
+          40
+        ],
+        "bank": [
+          6,
+          8,
+          45,
+          93
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              3,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              5,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              6,
+              9,
+              12
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 7,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 2
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0003"
+        }
+      },
+      "solution": [
+        6,
+        28,
+        93,
+        3,
+        31,
+        45,
+        5,
+        9,
+        73,
+        8,
+        57,
+        65,
+        40
+      ]
+    },
+    {
+      "index": 5,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0006.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0006_blank.png",
+        "problems": 10,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          2,
+          86
+        ],
+        "markdown_table": "|   |   |   |   |   |   |   |   |   |   | 11 |\n|   |   |   |   |   |   |   |   |   |   | + |\n|   |   | ? | + | 24 | = | ? |   |   |   | 44 |\n|   |   | + |   |   |   |   |   |   |   | = |\n|   |   | 13 |   |   |   | ? | + | 29 | = | ? |\n|   |   | = |   |   |   | + |   | + |   |   |\n|   |   | ? | ÷ | 5 | = | 10 |   | 28 |   |   |\n|   |   |   |   | × |   | = |   | = |   |   |\n| ? | - | 7 | = | ? |   | ? |   | ? |   |   |\n|   |   |   |   | = |   |   |   |   |   |   |\n|   |   | 59 | - | ? | = | 14 |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 37 |   |   |   | 61 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 26 |   |   |   | 55 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 50 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n| 16 |   |   |   | 9 |   | 36 |   | 57 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 45 |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step2 |   |   |   | step3 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step2 |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n| step3 |   |   |   | step2 |   | step3 |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   |   |",
+        "solutions": "Across\n37+24=61\n26+29=55\n50÷5=10\n16-7=9\n59-45=14\n\nDown\n11+44=55\n37+13=50\n26+10=36\n29+28=57\n5×9=45",
+        "solving_steps": {
+          "step1": [
+            "50÷5=10",
+            "59-45=14",
+            "11+44=55",
+            "29+28=57"
+          ],
+          "step2": [
+            "26+29=55",
+            "37+13=50",
+            "5×9=45"
+          ],
+          "step3": [
+            "37+24=61",
+            "16-7=9",
+            "26+10=36"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0006",
+        "version": 2,
+        "seed": 6,
+        "difficulty": "hard",
+        "givens": [
+          11,
+          null,
+          24,
+          null,
+          44,
+          13,
+          null,
+          29,
+          null,
+          null,
+          5,
+          10,
+          28,
+          null,
+          7,
+          null,
+          null,
+          null,
+          59,
+          null,
+          14
+        ],
+        "bank": [
+          9,
+          16,
+          26,
+          36,
+          37,
+          45,
+          50,
+          55,
+          57,
+          61
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              4,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              5,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              6,
+              11,
+              16
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              12,
+              17
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              10,
+              15,
+              19
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              13,
+              14,
+              15
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              18,
+              19,
+              20
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 10
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 10
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 2
+            },
+            {
+              "row": 10,
+              "col": 4
+            },
+            {
+              "row": 10,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 10,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0006"
+        }
+      },
+      "solution": [
+        11,
+        37,
+        24,
+        61,
+        44,
+        13,
+        26,
+        29,
+        55,
+        50,
+        5,
+        10,
+        28,
+        16,
+        7,
+        9,
+        36,
+        57,
+        59,
+        45,
+        14
+      ]
+    },
+    {
+      "index": 22,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0023.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0023_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          3,
+          79
+        ],
+        "markdown_table": "| ? | - | 54 | = | 19 |   |   |\n|   |   | - |   |   |   |   |\n|   |   | 34 |   | ? |   |   |\n|   |   | = |   | ÷ |   |   |\n|   |   | ? | ÷ | 5 | = | 4 |\n|   |   |   |   | = |   | × |\n| 6 | + | ? | = | 14 |   | 11 |\n|   |   |   |   |   |   | = |\n|   |   |   |   |   |   | ? |",
+        "markdown_answer": "| 73 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   | 70 |   |   |\n|   |   |   |   |   |   |   |\n|   |   | 20 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | 8 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 44 |",
+        "markdown_answer_step": "| step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |",
+        "solutions": "Across\n73-54=19\n20÷5=4\n6+8=14\n\nDown\n54-34=20\n70÷5=14\n4×11=44",
+        "solving_steps": {
+          "step1": [
+            "73-54=19",
+            "20÷5=4",
+            "6+8=14",
+            "54-34=20",
+            "70÷5=14",
+            "4×11=44"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0023",
+        "version": 2,
+        "seed": 23,
+        "difficulty": "medium",
+        "givens": [
+          null,
+          54,
+          19,
+          34,
+          null,
+          null,
+          5,
+          4,
+          6,
+          null,
+          14,
+          11,
+          null
+        ],
+        "bank": [
+          8,
+          20,
+          44,
+          70,
+          73
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              1,
+              3,
+              5
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              4,
+              6,
+              10
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              7,
+              11,
+              12
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              8,
+              9,
+              10
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 7,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0023"
+        }
+      },
+      "solution": [
+        73,
+        54,
+        19,
+        34,
+        70,
+        20,
+        5,
+        4,
+        6,
+        8,
+        14,
+        11,
+        44
+      ]
+    },
+    {
+      "index": 26,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0027.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0027_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          3,
+          112
+        ],
+        "markdown_table": "| 35 |   |   |   | ? |   |   |   |   |\n| + |   |   |   | ÷ |   |   |   |   |\n| 8 |   |   |   | 3 | × | 11 | = | ? |\n| = |   |   |   | = |   | + |   | + |\n| ? | - | 13 | = | ? |   | 82 |   | 41 |\n|   |   |   |   |   |   | = |   | = |\n|   |   |   |   |   |   | ? |   | 74 |",
+        "markdown_answer": "|   |   |   |   | 90 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 33 |\n|   |   |   |   |   |   |   |   |   |\n| 43 |   |   |   | 30 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 93 |   |   |",
+        "markdown_answer_step": "|   |   |   |   | step3 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |\n| step1 |   |   |   | step2 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |",
+        "solutions": "Across\n3×11=33\n43-13=30\n\nDown\n35+8=43\n90÷3=30\n11+82=93\n33+41=74",
+        "solving_steps": {
+          "step1": [
+            "3×11=33",
+            "35+8=43",
+            "11+82=93",
+            "33+41=74"
+          ],
+          "step2": [
+            "43-13=30"
+          ],
+          "step3": [
+            "90÷3=30"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0027",
+        "version": 2,
+        "seed": 27,
+        "difficulty": "medium",
+        "givens": [
+          35,
+          null,
+          8,
+          3,
+          11,
+          null,
+          null,
+          13,
+          null,
+          82,
+          41,
+          null,
+          74
+        ],
+        "bank": [
+          30,
+          33,
+          43,
+          90,
+          93
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              2,
+              6
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              3,
+              8
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              4,
+              9,
+              11
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              5,
+              10,
+              12
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 7,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0027"
+        }
+      },
+      "solution": [
+        35,
+        90,
+        8,
+        3,
+        11,
+        33,
+        43,
+        13,
+        30,
+        82,
+        41,
+        93,
+        74
+      ]
+    },
+    {
+      "index": 56,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0057.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0057_blank.png",
+        "problems": 7,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          3,
+          157
+        ],
+        "markdown_table": "|   |   |   |   | ? |   |   |\n|   |   |   |   | + |   |   |\n|   |   |   |   | 14 |   |   |\n|   |   |   |   | = |   |   |\n| ? | - | 32 | = | 60 |   | 12 |\n| - |   | + |   |   |   | + |\n| 34 |   | 7 | × | 9 | = | ? |\n| = |   | = |   |   |   | = |\n| ? | + | ? | = | 97 |   | 75 |",
+        "markdown_answer": "|   |   |   |   | 46 |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n| 92 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 63 |\n|   |   |   |   |   |   |   |\n| 58 |   | 39 |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n| step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |\n| step2 |   | step1 |   |   |   |   |",
+        "solutions": "Across\n92-32=60\n7×9=63\n58+39=97\n\nDown\n46+14=60\n92-34=58\n32+7=39\n12+63=75",
+        "solving_steps": {
+          "step1": [
+            "92-32=60",
+            "7×9=63",
+            "46+14=60",
+            "32+7=39",
+            "12+63=75"
+          ],
+          "step2": [
+            "58+39=97",
+            "92-34=58"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0057",
+        "version": 2,
+        "seed": 57,
+        "difficulty": "medium",
+        "givens": [
+          null,
+          14,
+          null,
+          32,
+          60,
+          12,
+          34,
+          7,
+          9,
+          null,
+          null,
+          null,
+          97,
+          75
+        ],
+        "bank": [
+          39,
+          46,
+          58,
+          63,
+          92
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              4
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              6,
+              10
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              7,
+              11
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              5,
+              9,
+              13
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              10,
+              11,
+              12
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 7,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 2,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0057"
+        }
+      },
+      "solution": [
+        46,
+        14,
+        92,
+        32,
+        60,
+        12,
+        34,
+        7,
+        9,
+        63,
+        58,
+        39,
+        97,
+        75
+      ]
+    },
+    {
+      "index": 58,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0059.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0059_blank.png",
+        "problems": 9,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          3,
+          80
+        ],
+        "markdown_table": "| ? | - | 53 | = | 11 |   | 45 | ÷ | 5 | = | ? |\n|   |   |   |   | + |   | + |   |   |   |   |\n|   |   |   |   | ? | + | 25 | = | ? |   |   |\n|   |   |   |   | = |   | = |   | ÷ |   |   |\n|   |   |   |   | ? |   | ? |   | 3 |   |   |\n|   |   |   |   |   |   |   |   | = |   |   |\n|   |   |   |   |   |   | 4 | × | 17 | = | ? |\n|   |   |   |   |   |   | × |   |   |   | - |\n|   |   |   |   |   |   | 13 |   |   |   | 47 |\n|   |   |   |   |   |   | = |   |   |   | = |\n|   |   |   |   |   |   | ? |   |   |   | 21 |",
+        "markdown_answer": "| 64 |   |   |   |   |   |   |   |   |   | 9 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 26 |   |   |   | 51 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 37 |   | 70 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   | 68 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 52 |   |   |   |   |",
+        "markdown_answer_step": "| step1 |   |   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step2 |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step3 |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |",
+        "solutions": "Across\n64-53=11\n45÷5=9\n26+25=51\n4×17=68\n\nDown\n11+26=37\n45+25=70\n51÷3=17\n4×13=52\n68-47=21",
+        "solving_steps": {
+          "step1": [
+            "64-53=11",
+            "45÷5=9",
+            "4×17=68",
+            "45+25=70",
+            "51÷3=17",
+            "4×13=52",
+            "68-47=21"
+          ],
+          "step2": [
+            "26+25=51"
+          ],
+          "step3": [
+            "11+26=37"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0059",
+        "version": 2,
+        "seed": 59,
+        "difficulty": "medium",
+        "givens": [
+          null,
+          53,
+          11,
+          45,
+          5,
+          null,
+          null,
+          25,
+          null,
+          null,
+          null,
+          3,
+          4,
+          17,
+          null,
+          13,
+          47,
+          null,
+          21
+        ],
+        "bank": [
+          9,
+          26,
+          37,
+          51,
+          52,
+          64,
+          68,
+          70
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              6,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              3,
+              7,
+              10
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              8,
+              11,
+              13
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              12,
+              13,
+              14
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              12,
+              15,
+              17
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              14,
+              16,
+              18
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 0,
+              "col": 10
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 10
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 10
+            },
+            {
+              "row": 10,
+              "col": 6
+            },
+            {
+              "row": 10,
+              "col": 10
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 8,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0059"
+        }
+      },
+      "solution": [
+        64,
+        53,
+        11,
+        45,
+        5,
+        9,
+        26,
+        25,
+        51,
+        37,
+        70,
+        3,
+        4,
+        17,
+        68,
+        13,
+        47,
+        52,
+        21
+      ]
+    },
+    {
+      "index": 71,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0072.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0072_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          3,
+          71
+        ],
+        "markdown_table": "| ? | + | 25 | = | 69 |\n|   |   |   |   | - |\n|   |   | 58 |   | 21 |\n|   |   | + |   | = |\n| 12 | × | ? | = | ? |\n| + |   | = |   |   |\n| 34 |   | ? |   |   |\n| = |   |   |   |   |\n| ? |   |   |   |   |",
+        "markdown_answer": "| 44 |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   |   |\n|   |   | 4 |   | 48 |\n|   |   |   |   |   |\n|   |   | 62 |   |   |\n|   |   |   |   |   |\n| 46 |   |   |   |   |",
+        "markdown_answer_step": "| step1 |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   |   |\n|   |   | step2 |   | step1 |\n|   |   |   |   |   |\n|   |   | step3 |   |   |\n|   |   |   |   |   |\n| step1 |   |   |   |   |",
+        "solutions": "Across\n44+25=69\n12×4=48\n\nDown\n69-21=48\n58+4=62\n12+34=46",
+        "solving_steps": {
+          "step1": [
+            "44+25=69",
+            "69-21=48",
+            "12+34=46"
+          ],
+          "step2": [
+            "12×4=48"
+          ],
+          "step3": [
+            "58+4=62"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0072",
+        "version": 2,
+        "seed": 72,
+        "difficulty": "hard",
+        "givens": [
+          null,
+          25,
+          69,
+          58,
+          21,
+          12,
+          null,
+          null,
+          34,
+          null,
+          null
+        ],
+        "bank": [
+          4,
+          44,
+          46,
+          48,
+          62
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              4,
+              7
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              6,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              5,
+              8,
+              10
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 5,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 0
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0072"
+        }
+      },
+      "solution": [
+        44,
+        25,
+        69,
+        58,
+        21,
+        12,
+        4,
+        48,
+        34,
+        62,
+        46
+      ]
+    },
+    {
+      "index": 75,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0076.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0076_blank.png",
+        "problems": 9,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          1,
+          54
+        ],
+        "markdown_table": "|   |   | 1 |   |   |   |   |   |   |\n|   |   | + |   |   |   |   |   |   |\n|   |   | ? |   | 46 | - | ? | = | 19 |\n|   |   | = |   | ÷ |   |   |   |   |\n| ? | + | 9 | = | ? |   |   |   |   |\n| - |   |   |   | = |   |   |   |   |\n| ? |   | ? | - | 2 | = | 39 |   |   |\n| = |   |   |   |   |   | - |   |   |\n| 4 |   |   |   | 54 | - | ? | = | 30 |\n|   |   |   |   |   |   | = |   |   |\n|   |   | 3 | × | ? | = | ? |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 8 |   |   |   | 27 |   |   |\n|   |   |   |   |   |   |   |   |   |\n| 14 |   |   |   | 23 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n| 10 |   | 41 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 24 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 5 |   | 15 |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n| step2 |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n| step3 |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step3 |   | step2 |   |   |",
+        "solutions": "Across\n46-27=19\n14+9=23\n41-2=39\n54-24=30\n3×5=15\n\nDown\n1+8=9\n46÷23=2\n14-10=4\n39-24=15",
+        "solving_steps": {
+          "step1": [
+            "46-27=19",
+            "41-2=39",
+            "54-24=30",
+            "1+8=9",
+            "46÷23=2"
+          ],
+          "step2": [
+            "14+9=23",
+            "39-24=15"
+          ],
+          "step3": [
+            "3×5=15",
+            "14-10=4"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0076",
+        "version": 2,
+        "seed": 76,
+        "difficulty": "hard",
+        "givens": [
+          1,
+          null,
+          46,
+          null,
+          19,
+          null,
+          9,
+          null,
+          null,
+          null,
+          2,
+          39,
+          4,
+          54,
+          null,
+          30,
+          3,
+          null,
+          null
+        ],
+        "bank": [
+          5,
+          8,
+          10,
+          14,
+          15,
+          23,
+          24,
+          27,
+          41
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              6
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              7,
+              10
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              5,
+              8,
+              12
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              11,
+              14,
+              18
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              13,
+              14,
+              15
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              16,
+              17,
+              18
+            ],
+            "operator": "*"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 2
+            },
+            {
+              "row": 10,
+              "col": 4
+            },
+            {
+              "row": 10,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 9,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0076"
+        }
+      },
+      "solution": [
+        1,
+        8,
+        46,
+        27,
+        19,
+        14,
+        9,
+        23,
+        10,
+        41,
+        2,
+        39,
+        4,
+        54,
+        24,
+        30,
+        3,
+        5,
+        15
+      ]
+    },
+    {
+      "index": 87,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0088.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0088_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          2,
+          55
+        ],
+        "markdown_table": "| 47 | - | ? | = | 9 |   |   |\n|   |   | - |   |   |   |   |\n| ? |   | 12 | - | 2 | = | ? |\n| ÷ |   | = |   |   |   |   |\n| 8 | + | 26 | = | ? |   |   |\n| = |   |   |   | - |   |   |\n| 5 |   |   |   | ? |   |   |\n|   |   |   |   | = |   |   |\n|   |   |   |   | 21 |   |   |",
+        "markdown_answer": "|   |   | 38 |   |   |   |   |\n|   |   |   |   |   |   |   |\n| 40 |   |   |   |   |   | 10 |\n|   |   |   |   |   |   |   |\n|   |   |   |   | 34 |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   | 13 |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n| step1 |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   | step2 |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |",
+        "solutions": "Across\n47-38=9\n12-2=10\n8+26=34\n\nDown\n38-12=26\n40÷8=5\n34-13=21",
+        "solving_steps": {
+          "step1": [
+            "47-38=9",
+            "12-2=10",
+            "8+26=34",
+            "38-12=26",
+            "40÷8=5"
+          ],
+          "step2": [
+            "34-13=21"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0088",
+        "version": 2,
+        "seed": 88,
+        "difficulty": "medium",
+        "givens": [
+          47,
+          null,
+          9,
+          null,
+          12,
+          2,
+          null,
+          8,
+          26,
+          null,
+          5,
+          null,
+          21
+        ],
+        "bank": [
+          10,
+          13,
+          34,
+          38,
+          40
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              1,
+              4,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              7,
+              10
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              4,
+              5,
+              6
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              9,
+              11,
+              12
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 7,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 2,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0088"
+        }
+      },
+      "solution": [
+        47,
+        38,
+        9,
+        40,
+        12,
+        2,
+        10,
+        8,
+        26,
+        34,
+        5,
+        13,
+        21
+      ]
+    },
+    {
+      "index": 104,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0105.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0105_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          2,
+          53
+        ],
+        "markdown_table": "|   |   |   |   |   |   |   |   | 19 |\n|   |   |   |   |   |   |   |   | + |\n| 24 | + | 12 | = | ? |   | ? |   | ? |\n|   |   |   |   | ÷ |   | - |   | = |\n|   |   |   |   | 2 | × | 13 | = | ? |\n|   |   |   |   | = |   | = |   |   |\n|   |   |   |   | 18 |   | 28 |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 36 |   | 41 |   | 7 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 26 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   | step1 |   | step2 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |",
+        "solutions": "Across\n24+12=36\n2×13=26\n\nDown\n19+7=26\n36÷2=18\n41-13=28",
+        "solving_steps": {
+          "step1": [
+            "24+12=36",
+            "2×13=26",
+            "36÷2=18",
+            "41-13=28"
+          ],
+          "step2": [
+            "19+7=26"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0105",
+        "version": 2,
+        "seed": 105,
+        "difficulty": "medium",
+        "givens": [
+          19,
+          24,
+          12,
+          null,
+          null,
+          null,
+          2,
+          13,
+          null,
+          18,
+          28
+        ],
+        "bank": [
+          7,
+          26,
+          36,
+          41
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              5,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              6,
+              9
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              4,
+              7,
+              10
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "*"
+          }
+        ],
+        "layout": {
+          "rows": 7,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 2,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0105"
+        }
+      },
+      "solution": [
+        19,
+        24,
+        12,
+        36,
+        41,
+        7,
+        2,
+        13,
+        26,
+        18,
+        28
+      ]
+    },
+    {
+      "index": 113,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0114.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0114_blank.png",
+        "problems": 12,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          1,
+          101
+        ],
+        "markdown_table": "|   |   |   |   |   |   | 1 | + | ? | = | 22 |\n|   |   |   |   |   |   |   |   |   |   | + |\n|   |   | ? | - | 45 | = | 14 |   | ? |   | 38 |\n|   |   |   |   |   |   | + |   | - |   | = |\n| 11 | + | 13 | = | ? |   | 4 | × | 15 | = | ? |\n|   |   |   |   | ÷ |   | = |   | = |   |   |\n|   |   | 9 | × | 2 | = | ? |   | 76 |   |   |\n|   |   | × |   | = |   |   |   |   |   |   |\n|   |   | 3 | × | ? | = | ? |   |   |   |   |\n|   |   | = |   |   |   |   |   |   |   |   |\n| 71 | - | ? | = | ? |   |   |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   | 21 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 59 |   |   |   |   |   | 91 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 24 |   |   |   |   |   | 60 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 18 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 12 |   | 36 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 27 |   | 44 |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step2 |   | step3 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   | step2 |   |   |   |   |   |   |",
+        "solutions": "Across\n1+21=22\n59-45=14\n11+13=24\n4×15=60\n9×2=18\n3×12=36\n71-27=44\n\nDown\n22+38=60\n14+4=18\n91-15=76\n24÷2=12\n9×3=27",
+        "solving_steps": {
+          "step1": [
+            "1+21=22",
+            "59-45=14",
+            "11+13=24",
+            "4×15=60",
+            "9×2=18",
+            "22+38=60",
+            "14+4=18",
+            "91-15=76",
+            "9×3=27"
+          ],
+          "step2": [
+            "71-27=44",
+            "24÷2=12"
+          ],
+          "step3": [
+            "3×12=36"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0114",
+        "version": 2,
+        "seed": 114,
+        "difficulty": "medium",
+        "givens": [
+          1,
+          null,
+          22,
+          null,
+          45,
+          14,
+          null,
+          38,
+          11,
+          13,
+          null,
+          4,
+          15,
+          null,
+          9,
+          2,
+          null,
+          76,
+          3,
+          null,
+          null,
+          71,
+          null,
+          null
+        ],
+        "bank": [
+          12,
+          18,
+          21,
+          24,
+          27,
+          36,
+          44,
+          59,
+          60,
+          91
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              7,
+              13
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              5,
+              11,
+              16
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              6,
+              12,
+              17
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              8,
+              9,
+              10
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              10,
+              15,
+              19
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              11,
+              12,
+              13
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              14,
+              15,
+              16
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              14,
+              18,
+              22
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              18,
+              19,
+              20
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              21,
+              22,
+              23
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 0,
+              "col": 10
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 10
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 10,
+              "col": 0
+            },
+            {
+              "row": 10,
+              "col": 2
+            },
+            {
+              "row": 10,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 10,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0114"
+        }
+      },
+      "solution": [
+        1,
+        21,
+        22,
+        59,
+        45,
+        14,
+        91,
+        38,
+        11,
+        13,
+        24,
+        4,
+        15,
+        60,
+        9,
+        2,
+        18,
+        76,
+        3,
+        12,
+        36,
+        71,
+        27,
+        44
+      ]
+    },
+    {
+      "index": 117,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0118.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0118_blank.png",
+        "problems": 8,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          3,
+          73
+        ],
+        "markdown_table": "|   |   |   |   | 53 | - | ? | = | ? |   |   |\n|   |   |   |   |   |   |   |   | - |   |   |\n|   |   |   |   |   |   | 30 | + | 34 | = | ? |\n|   |   |   |   |   |   |   |   | = |   |   |\n|   |   |   |   | ? | ÷ | 5 | = | 4 |   |   |\n|   |   |   |   | - |   | × |   |   |   |   |\n|   |   |   |   | 8 | + | 13 | = | ? |   |   |\n|   |   |   |   | = |   | = |   |   |   |   |\n| ? | - | 55 | = | ? |   | ? |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   | 15 |   | 38 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   | 64 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 20 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 21 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n| 67 |   |   |   | 12 |   | 65 |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   | step2 |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n| step3 |   |   |   | step2 |   | step1 |   |   |   |   |",
+        "solutions": "Across\n53-15=38\n30+34=64\n20÷5=4\n8+13=21\n67-55=12\n\nDown\n38-34=4\n20-8=12\n5×13=65",
+        "solving_steps": {
+          "step1": [
+            "30+34=64",
+            "20÷5=4",
+            "8+13=21",
+            "38-34=4",
+            "5×13=65"
+          ],
+          "step2": [
+            "53-15=38",
+            "20-8=12"
+          ],
+          "step3": [
+            "67-55=12"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0118",
+        "version": 2,
+        "seed": 118,
+        "difficulty": "hard",
+        "givens": [
+          53,
+          null,
+          null,
+          30,
+          34,
+          null,
+          null,
+          5,
+          4,
+          8,
+          13,
+          null,
+          null,
+          55,
+          null,
+          null
+        ],
+        "bank": [
+          12,
+          15,
+          20,
+          21,
+          38,
+          64,
+          65,
+          67
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              4,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              6,
+              9,
+              14
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              7,
+              10,
+              15
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              12,
+              13,
+              14
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 8,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0118"
+        }
+      },
+      "solution": [
+        53,
+        15,
+        38,
+        30,
+        34,
+        64,
+        20,
+        5,
+        4,
+        8,
+        13,
+        21,
+        67,
+        55,
+        12,
+        65
+      ]
+    },
+    {
+      "index": 142,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0143.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0143_blank.png",
+        "problems": 10,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          2,
+          57
+        ],
+        "markdown_table": "|   |   |   |   |   |   |   |   | 13 |   |   |\n|   |   |   |   |   |   |   |   | + |   |   |\n|   |   | 43 |   | 29 | + | ? | = | ? |   |   |\n|   |   | - |   |   |   | × |   | = |   |   |\n| 26 | + | ? | = | ? |   | 3 |   | ? |   |   |\n|   |   | = |   | - |   | = |   |   |   |   |\n|   |   | 12 |   | ? | - | ? | = | 15 |   |   |\n|   |   |   |   | = |   |   |   | + |   |   |\n|   |   | 25 | + | 24 | = | ? |   | ? |   |   |\n|   |   |   |   |   |   |   |   | = |   |   |\n|   |   |   |   |   |   | 44 | ÷ | ? | = | 2 |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 6 |   | 35 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 31 |   | 57 |   |   |   | 48 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 33 |   | 18 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 49 |   | 7 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 22 |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step5 |   | step6 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   | step2 |   |   |   | step7 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step3 |   | step4 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   | step2 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |   |   |",
+        "solutions": "Across\n29+6=35\n26+31=57\n33-18=15\n25+24=49\n44÷22=2\n\nDown\n13+35=48\n43-31=12\n6×3=18\n57-33=24\n15+7=22",
+        "solving_steps": {
+          "step1": [
+            "25+24=49",
+            "44÷22=2",
+            "43-31=12"
+          ],
+          "step2": [
+            "26+31=57",
+            "15+7=22"
+          ],
+          "step3": [
+            "57-33=24"
+          ],
+          "step4": [
+            "33-18=15"
+          ],
+          "step5": [
+            "6×3=18"
+          ],
+          "step6": [
+            "29+6=35"
+          ],
+          "step7": [
+            "13+35=48"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0143",
+        "version": 2,
+        "seed": 143,
+        "difficulty": "hard",
+        "givens": [
+          13,
+          43,
+          29,
+          null,
+          null,
+          26,
+          null,
+          null,
+          3,
+          null,
+          12,
+          null,
+          null,
+          15,
+          25,
+          24,
+          null,
+          null,
+          44,
+          null,
+          2
+        ],
+        "bank": [
+          6,
+          7,
+          18,
+          22,
+          31,
+          33,
+          35,
+          48,
+          49,
+          57
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              4,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              6,
+              10
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              8,
+              12
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              11,
+              15
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              11,
+              12,
+              13
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              13,
+              17,
+              19
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              14,
+              15,
+              16
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              18,
+              19,
+              20
+            ],
+            "operator": "/"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 6
+            },
+            {
+              "row": 10,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 10
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 10,
+          "rounds": 7,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0143"
+        }
+      },
+      "solution": [
+        13,
+        43,
+        29,
+        6,
+        35,
+        26,
+        31,
+        57,
+        3,
+        48,
+        12,
+        33,
+        18,
+        15,
+        25,
+        24,
+        49,
+        7,
+        44,
+        22,
+        2
+      ]
+    },
+    {
+      "index": 147,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0148.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0148_blank.png",
+        "problems": 7,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          4,
+          85
+        ],
+        "markdown_table": "|   |   |   |   | 4 |   |   |   | 49 |\n|   |   |   |   | + |   |   |   | - |\n| ? | - | 18 | = | ? |   |   |   | 14 |\n|   |   |   |   | = |   |   |   | = |\n|   |   | ? |   | 20 | + | 15 | = | ? |\n|   |   | - |   |   |   | × |   |   |\n|   |   | 32 |   |   |   | 5 |   |   |\n|   |   | = |   |   |   | = |   |   |\n|   |   | 36 | + | 39 | = | ? |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n| 34 |   |   |   | 16 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 68 |   |   |   |   |   | 35 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 75 |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n| step2 |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |",
+        "solutions": "Across\n34-18=16\n20+15=35\n36+39=75\n\nDown\n4+16=20\n49-14=35\n68-32=36\n15×5=75",
+        "solving_steps": {
+          "step1": [
+            "20+15=35",
+            "36+39=75",
+            "4+16=20",
+            "49-14=35",
+            "68-32=36",
+            "15×5=75"
+          ],
+          "step2": [
+            "34-18=16"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0148",
+        "version": 2,
+        "seed": 148,
+        "difficulty": "medium",
+        "givens": [
+          4,
+          49,
+          null,
+          18,
+          null,
+          14,
+          null,
+          20,
+          15,
+          null,
+          32,
+          5,
+          36,
+          39,
+          null
+        ],
+        "bank": [
+          16,
+          34,
+          35,
+          68,
+          75
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              4,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              5,
+              9
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              10,
+              12
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              8,
+              11,
+              14
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              12,
+              13,
+              14
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 2,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0148"
+        }
+      },
+      "solution": [
+        4,
+        49,
+        34,
+        18,
+        16,
+        14,
+        68,
+        20,
+        15,
+        35,
+        32,
+        5,
+        36,
+        39,
+        75
+      ]
+    },
+    {
+      "index": 152,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0153.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0153_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          3,
+          75
+        ],
+        "markdown_table": "|   |   |   |   | 18 |   |   |   | ? |   |   |\n|   |   |   |   | + |   |   |   | + |   |   |\n| 3 | + | 16 | = | ? |   | 4 |   | 13 |   |   |\n|   |   |   |   | = |   | × |   | = |   |   |\n|   |   |   |   | 37 | - | ? | = | 20 |   |   |\n|   |   |   |   |   |   | = |   |   |   |   |\n|   |   |   |   |   |   | 68 | ÷ | 2 | = | ? |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   | 7 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 19 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 17 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   | 34 |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   | step1 |",
+        "solutions": "Across\n3+16=19\n37-17=20\n68÷2=34\n\nDown\n18+19=37\n7+13=20\n4×17=68",
+        "solving_steps": {
+          "step1": [
+            "3+16=19",
+            "37-17=20",
+            "68÷2=34",
+            "18+19=37",
+            "7+13=20",
+            "4×17=68"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0153",
+        "version": 2,
+        "seed": 153,
+        "difficulty": "easy",
+        "givens": [
+          18,
+          null,
+          3,
+          16,
+          null,
+          4,
+          13,
+          37,
+          null,
+          20,
+          68,
+          2,
+          null
+        ],
+        "bank": [
+          7,
+          17,
+          19,
+          34
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              4,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              6,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              5,
+              8,
+              10
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              10,
+              11,
+              12
+            ],
+            "operator": "/"
+          }
+        ],
+        "layout": {
+          "rows": 7,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 10
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0153"
+        }
+      },
+      "solution": [
+        18,
+        7,
+        3,
+        16,
+        19,
+        4,
+        13,
+        37,
+        17,
+        20,
+        68,
+        2,
+        34
+      ]
+    },
+    {
+      "index": 158,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0159.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0159_blank.png",
+        "problems": 8,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          2,
+          56
+        ],
+        "markdown_table": "|   |   | 12 |   |   |   |   |   |   |   |   |\n|   |   | + |   |   |   |   |   |   |   |   |\n| 49 | - | ? | = | ? |   |   |   |   |   |   |\n|   |   | = |   | - |   |   |   |   |   |   |\n|   |   | ? | - | 11 | = | 8 |   |   |   |   |\n|   |   |   |   | = |   | + |   |   |   |   |\n| 10 | + | ? | = | ? |   | ? | + | 6 | = | ? |\n|   |   |   |   |   |   | = |   |   |   |   |\n|   |   | 52 | - | 27 | = | ? |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 7 |   | 42 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 19 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 21 |   | 31 |   | 17 |   |   |   | 23 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 25 |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step2 |   | step3 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step5 |   | step4 |   | step2 |   |   |   | step3 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |",
+        "solutions": "Across\n49-7=42\n19-11=8\n10+21=31\n17+6=23\n52-27=25\n\nDown\n12+7=19\n42-11=31\n8+17=25",
+        "solving_steps": {
+          "step1": [
+            "19-11=8",
+            "52-27=25"
+          ],
+          "step2": [
+            "12+7=19",
+            "8+17=25"
+          ],
+          "step3": [
+            "49-7=42",
+            "17+6=23"
+          ],
+          "step4": [
+            "42-11=31"
+          ],
+          "step5": [
+            "10+21=31"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0159",
+        "version": 2,
+        "seed": 159,
+        "difficulty": "hard",
+        "givens": [
+          12,
+          49,
+          null,
+          null,
+          null,
+          11,
+          8,
+          10,
+          null,
+          null,
+          null,
+          6,
+          null,
+          52,
+          27,
+          null
+        ],
+        "bank": [
+          7,
+          17,
+          19,
+          21,
+          23,
+          25,
+          31,
+          42
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              2,
+              4
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              5,
+              9
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              4,
+              5,
+              6
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              10,
+              15
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              10,
+              11,
+              12
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              13,
+              14,
+              15
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 10
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 8,
+          "rounds": 5,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0159"
+        }
+      },
+      "solution": [
+        12,
+        49,
+        7,
+        42,
+        19,
+        11,
+        8,
+        10,
+        21,
+        31,
+        17,
+        6,
+        23,
+        52,
+        27,
+        25
+      ]
+    },
+    {
+      "index": 159,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0160.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0160_blank.png",
+        "problems": 7,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          2,
+          70
+        ],
+        "markdown_table": "| 36 | + | ? | = | ? |   | 3 | × | 4 | = | ? |\n|   |   | + |   |   |   | × |   |   |   |   |\n|   |   | 10 |   |   |   | ? |   |   |   |   |\n|   |   | = |   |   |   | = |   |   |   |   |\n|   |   | ? | ÷ | 2 | = | 15 |   |   |   |   |\n|   |   |   |   | × |   |   |   |   |   |   |\n|   |   |   |   | ? |   |   |   |   |   |   |\n|   |   |   |   | = |   |   |   |   |   |   |\n| 60 | - | 16 | = | ? |   |   |   |   |   |   |",
+        "markdown_answer": "|   |   | 20 |   | 56 |   |   |   |   |   | 12 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 5 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 30 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 22 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 44 |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   | step2 |   | step3 |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step2 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   |   |",
+        "solutions": "Across\n36+20=56\n3×4=12\n30÷2=15\n60-16=44\n\nDown\n20+10=30\n3×5=15\n2×22=44",
+        "solving_steps": {
+          "step1": [
+            "3×4=12",
+            "30÷2=15",
+            "60-16=44",
+            "3×5=15"
+          ],
+          "step2": [
+            "20+10=30",
+            "2×22=44"
+          ],
+          "step3": [
+            "36+20=56"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0160",
+        "version": 2,
+        "seed": 160,
+        "difficulty": "hard",
+        "givens": [
+          36,
+          null,
+          null,
+          3,
+          4,
+          null,
+          10,
+          null,
+          null,
+          2,
+          15,
+          null,
+          60,
+          16,
+          null
+        ],
+        "bank": [
+          5,
+          12,
+          20,
+          22,
+          30,
+          44,
+          56
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              6,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              3,
+              7,
+              10
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              8,
+              9,
+              10
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              9,
+              11,
+              14
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              12,
+              13,
+              14
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 0,
+              "col": 10
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 7,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0160"
+        }
+      },
+      "solution": [
+        36,
+        20,
+        56,
+        3,
+        4,
+        12,
+        10,
+        5,
+        30,
+        2,
+        15,
+        22,
+        60,
+        16,
+        44
+      ]
+    },
+    {
+      "index": 161,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0162.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0162_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          5,
+          214
+        ],
+        "markdown_table": "|   |   |   |   |   |   | 96 |   |   |\n|   |   |   |   |   |   | - |   |   |\n| 5 | × | 9 | = | ? |   | 50 |   |   |\n|   |   |   |   | - |   | = |   |   |\n|   |   |   |   | 32 | + | ? | = | 78 |\n|   |   |   |   | = |   |   |   | - |\n|   |   |   |   | 13 |   |   |   | ? |\n|   |   |   |   |   |   |   |   | = |\n|   |   |   |   |   |   |   |   | 25 |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 45 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 46 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 53 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |",
+        "solutions": "Across\n5×9=45\n32+46=78\n\nDown\n96-50=46\n45-32=13\n78-53=25",
+        "solving_steps": {
+          "step1": [
+            "5×9=45",
+            "32+46=78",
+            "96-50=46",
+            "45-32=13",
+            "78-53=25"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0162",
+        "version": 2,
+        "seed": 162,
+        "difficulty": "easy",
+        "givens": [
+          96,
+          5,
+          9,
+          null,
+          50,
+          32,
+          null,
+          78,
+          13,
+          null,
+          25
+        ],
+        "bank": [
+          45,
+          46,
+          53
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              4,
+              6
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              3,
+              5,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              9,
+              10
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 8
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 3,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0162"
+        }
+      },
+      "solution": [
+        96,
+        5,
+        9,
+        45,
+        50,
+        32,
+        46,
+        78,
+        13,
+        53,
+        25
+      ]
+    },
+    {
+      "index": 163,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0164.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0164_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          4,
+          77
+        ],
+        "markdown_table": "| 35 |   |   |   |   |   |   |   |   |\n| + |   |   |   |   |   |   |   |   |\n| 21 |   | ? |   | 15 | × | 5 | = | ? |\n| = |   | - |   | × |   |   |   |   |\n| ? | ÷ | 14 | = | ? |   |   |   |   |\n|   |   | = |   | = |   |   |   |   |\n|   |   | 38 |   | ? |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 52 |   |   |   |   |   | 75 |\n|   |   |   |   |   |   |   |   |   |\n| 56 |   |   |   | 4 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 60 |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |\n| step1 |   |   |   | step2 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step3 |   |   |   |   |",
+        "solutions": "Across\n15×5=75\n56÷14=4\n\nDown\n35+21=56\n52-14=38\n15×4=60",
+        "solving_steps": {
+          "step1": [
+            "15×5=75",
+            "35+21=56",
+            "52-14=38"
+          ],
+          "step2": [
+            "56÷14=4"
+          ],
+          "step3": [
+            "15×4=60"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0164",
+        "version": 2,
+        "seed": 164,
+        "difficulty": "hard",
+        "givens": [
+          35,
+          21,
+          null,
+          15,
+          5,
+          null,
+          null,
+          14,
+          null,
+          38,
+          null
+        ],
+        "bank": [
+          4,
+          52,
+          56,
+          60,
+          75
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              6
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              7,
+              9
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              3,
+              8,
+              10
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "/"
+          }
+        ],
+        "layout": {
+          "rows": 7,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0164"
+        }
+      },
+      "solution": [
+        35,
+        21,
+        52,
+        15,
+        5,
+        75,
+        56,
+        14,
+        4,
+        38,
+        60
+      ]
+    },
+    {
+      "index": 165,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0166.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0166_blank.png",
+        "problems": 10,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          4,
+          67
+        ],
+        "markdown_table": "| ? | - | ? | = | 6 |   |   |   | ? |   |   |\n|   |   | - |   |   |   |   |   | ÷ |   |   |\n|   |   | 24 |   | 62 | - | ? | = | 4 |   |   |\n|   |   | = |   |   |   | - |   | = |   |   |\n|   |   | ? | - | 23 | = | 13 |   | 10 |   |   |\n|   |   |   |   | - |   | = |   |   |   |   |\n|   |   |   |   | ? |   | ? | + | 5 | = | ? |\n|   |   |   |   | = |   |   |   | × |   |   |\n|   |   | 9 | × | 7 | = | ? |   | 11 |   |   |\n|   |   |   |   |   |   |   |   | = |   |   |\n|   |   |   |   |   |   |   |   | ? |   |   |",
+        "markdown_answer": "| 66 |   | 60 |   |   |   |   |   | 40 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 58 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 36 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 16 |   | 45 |   |   |   | 50 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 63 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 55 |   |   |",
+        "markdown_answer_step": "| step3 |   | step2 |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   | step2 |   |   |   | step3 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |   |   |",
+        "solutions": "Across\n66-60=6\n62-58=4\n36-23=13\n45+5=50\n9×7=63\n\nDown\n60-24=36\n40÷4=10\n58-13=45\n23-16=7\n5×11=55",
+        "solving_steps": {
+          "step1": [
+            "62-58=4",
+            "36-23=13",
+            "9×7=63",
+            "40÷4=10",
+            "23-16=7",
+            "5×11=55"
+          ],
+          "step2": [
+            "60-24=36",
+            "58-13=45"
+          ],
+          "step3": [
+            "66-60=6",
+            "45+5=50"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0166",
+        "version": 2,
+        "seed": 166,
+        "difficulty": "hard",
+        "givens": [
+          null,
+          null,
+          6,
+          null,
+          24,
+          62,
+          null,
+          4,
+          null,
+          23,
+          13,
+          10,
+          null,
+          null,
+          5,
+          null,
+          9,
+          7,
+          null,
+          11,
+          null
+        ],
+        "bank": [
+          16,
+          36,
+          40,
+          45,
+          50,
+          55,
+          58,
+          60,
+          63,
+          66
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              1,
+              4,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              7,
+              11
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              10,
+              13
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              8,
+              9,
+              10
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              9,
+              12,
+              17
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              13,
+              14,
+              15
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              14,
+              19,
+              20
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              16,
+              17,
+              18
+            ],
+            "operator": "*"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 10
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 8
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 10,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0166"
+        }
+      },
+      "solution": [
+        66,
+        60,
+        6,
+        40,
+        24,
+        62,
+        58,
+        4,
+        36,
+        23,
+        13,
+        10,
+        16,
+        45,
+        5,
+        50,
+        9,
+        7,
+        63,
+        11,
+        55
+      ]
+    },
+    {
+      "index": 167,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0168.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0168_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          1,
+          173
+        ],
+        "markdown_table": "|   |   | ? |   |   |   |   |   |   |\n|   |   | + |   |   |   |   |   |   |\n|   |   | 9 |   |   |   |   |   |   |\n|   |   | = |   |   |   |   |   |   |\n| ? | ÷ | 48 | = | ? |   |   |   |   |\n| - |   |   |   | × |   |   |   |   |\n| 63 |   | 55 | + | 20 | = | ? |   |   |\n| = |   |   |   | = |   |   |   |   |\n| ? |   |   |   | ? | ÷ | 10 | = | 4 |",
+        "markdown_answer": "|   |   | 39 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n| 96 |   |   |   | 2 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 75 |   |   |\n|   |   |   |   |   |   |   |   |   |\n| 33 |   |   |   | 40 |   |   |   |   |",
+        "markdown_answer_step": "|   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n| step3 |   |   |   | step2 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n| step4 |   |   |   | step1 |   |   |   |   |",
+        "solutions": "Across\n96÷48=2\n55+20=75\n40÷10=4\n\nDown\n39+9=48\n96-63=33\n2×20=40",
+        "solving_steps": {
+          "step1": [
+            "55+20=75",
+            "40÷10=4",
+            "39+9=48"
+          ],
+          "step2": [
+            "2×20=40"
+          ],
+          "step3": [
+            "96÷48=2"
+          ],
+          "step4": [
+            "96-63=33"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0168",
+        "version": 2,
+        "seed": 168,
+        "difficulty": "hard",
+        "givens": [
+          null,
+          9,
+          null,
+          48,
+          null,
+          63,
+          55,
+          20,
+          null,
+          null,
+          null,
+          10,
+          4
+        ],
+        "bank": [
+          2,
+          33,
+          39,
+          40,
+          75,
+          96
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              3
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              2,
+              5,
+              9
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              4,
+              7,
+              10
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              10,
+              11,
+              12
+            ],
+            "operator": "/"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 8
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 6,
+          "rounds": 4,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0168"
+        }
+      },
+      "solution": [
+        39,
+        9,
+        96,
+        48,
+        2,
+        63,
+        55,
+        20,
+        75,
+        33,
+        40,
+        10,
+        4
+      ]
+    },
+    {
+      "index": 170,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0171.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0171_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "medium",
+        "range": [
+          3,
+          53
+        ],
+        "markdown_table": "|   |   | ? |   |   |   |   |\n|   |   | - |   |   |   |   |\n|   |   | 19 |   |   |   |   |\n|   |   | = |   |   |   |   |\n|   |   | 5 | × | 4 | = | ? |\n|   |   |   |   | + |   | + |\n|   |   |   |   | 47 |   | 15 |\n|   |   |   |   | = |   | = |\n| 37 | + | ? | = | ? |   | 35 |",
+        "markdown_answer": "|   |   | 24 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 20 |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | 14 |   | 51 |   |   |",
+        "markdown_answer_step": "|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | step2 |   | step1 |   |   |",
+        "solutions": "Across\n5×4=20\n37+14=51\n\nDown\n24-19=5\n4+47=51\n20+15=35",
+        "solving_steps": {
+          "step1": [
+            "5×4=20",
+            "24-19=5",
+            "4+47=51",
+            "20+15=35"
+          ],
+          "step2": [
+            "37+14=51"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0171",
+        "version": 2,
+        "seed": 171,
+        "difficulty": "medium",
+        "givens": [
+          null,
+          19,
+          5,
+          4,
+          null,
+          47,
+          15,
+          37,
+          null,
+          null,
+          35
+        ],
+        "bank": [
+          14,
+          20,
+          24,
+          51
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              3,
+              5,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              4,
+              6,
+              10
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 7,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 6
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 2,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0171"
+        }
+      },
+      "solution": [
+        24,
+        19,
+        5,
+        4,
+        20,
+        47,
+        15,
+        37,
+        14,
+        51,
+        35
+      ]
+    },
+    {
+      "index": 182,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0183.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0183_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          3,
+          104
+        ],
+        "markdown_table": "|   |   |   |   | 12 |   |   |\n|   |   |   |   | + |   |   |\n|   |   | ? | - | 23 | = | 24 |\n|   |   | - |   | = |   |   |\n| 5 | × | 7 | = | ? |   |   |\n| + |   | = |   |   |   |   |\n| ? |   | 40 |   |   |   |   |\n| = |   |   |   |   |   |   |\n| 82 |   |   |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | 47 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   | 35 |   |   |\n|   |   |   |   |   |   |   |\n| 77 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |\n| step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |",
+        "solutions": "Across\n47-23=24\n5×7=35\n\nDown\n12+23=35\n47-7=40\n5+77=82",
+        "solving_steps": {
+          "step1": [
+            "47-23=24",
+            "5×7=35",
+            "12+23=35",
+            "47-7=40",
+            "5+77=82"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0183",
+        "version": 2,
+        "seed": 183,
+        "difficulty": "easy",
+        "givens": [
+          12,
+          null,
+          23,
+          24,
+          5,
+          7,
+          null,
+          null,
+          40,
+          82
+        ],
+        "bank": [
+          35,
+          47,
+          77
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              2,
+              6
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              1,
+              5,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              4,
+              5,
+              6
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              4,
+              7,
+              9
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 7,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 0
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 3,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0183"
+        }
+      },
+      "solution": [
+        12,
+        47,
+        23,
+        24,
+        5,
+        7,
+        35,
+        77,
+        40,
+        82
+      ]
+    },
+    {
+      "index": 207,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0208.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0208_blank.png",
+        "problems": 7,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          5,
+          64
+        ],
+        "markdown_table": "| 41 | + | ? | = | ? |   | 63 | ÷ | ? | = | 7 |\n|   |   |   |   | - |   | - |   |   |   |   |\n|   |   | ? |   | 52 | - | 15 | = | ? |   |   |\n|   |   | - |   | = |   | = |   |   |   |   |\n|   |   | ? | × | 6 | = | ? |   |   |   |   |\n|   |   | = |   |   |   |   |   |   |   |   |\n|   |   | 24 |   |   |   |   |   |   |   |   |",
+        "markdown_answer": "|   |   | 17 |   | 58 |   |   |   | 9 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 32 |   |   |   |   |   | 37 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 8 |   |   |   | 48 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   | step2 |   | step1 |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step3 |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step2 |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |",
+        "solutions": "Across\n41+17=58\n63÷9=7\n52-15=37\n8×6=48\n\nDown\n58-52=6\n63-15=48\n32-8=24",
+        "solving_steps": {
+          "step1": [
+            "63÷9=7",
+            "52-15=37",
+            "58-52=6",
+            "63-15=48"
+          ],
+          "step2": [
+            "41+17=58",
+            "8×6=48"
+          ],
+          "step3": [
+            "32-8=24"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0208",
+        "version": 2,
+        "seed": 208,
+        "difficulty": "hard",
+        "givens": [
+          41,
+          null,
+          null,
+          63,
+          null,
+          7,
+          null,
+          52,
+          15,
+          null,
+          null,
+          6,
+          null,
+          24
+        ],
+        "bank": [
+          8,
+          9,
+          17,
+          32,
+          37,
+          48,
+          58
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              7,
+              11
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              3,
+              8,
+              12
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              10,
+              13
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              10,
+              11,
+              12
+            ],
+            "operator": "*"
+          }
+        ],
+        "layout": {
+          "rows": 7,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 0,
+              "col": 10
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 2
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 7,
+          "rounds": 3,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0208"
+        }
+      },
+      "solution": [
+        41,
+        17,
+        58,
+        63,
+        9,
+        7,
+        32,
+        52,
+        15,
+        37,
+        8,
+        6,
+        48,
+        24
+      ]
+    },
+    {
+      "index": 210,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0211.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0211_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          5,
+          62
+        ],
+        "markdown_table": "| ? | ÷ | 7 | = | 6 |   |   |   |   |\n|   |   | + |   |   |   |   |   |   |\n|   |   | 26 |   |   |   | 9 |   |   |\n|   |   | = |   |   |   | + |   |   |\n|   |   | ? | - | 11 | = | 22 |   |   |\n|   |   |   |   | × |   | = |   |   |\n|   |   |   |   | 5 | + | ? | = | 36 |\n|   |   |   |   | = |   |   |   |   |\n|   |   |   |   | ? |   |   |   |   |",
+        "markdown_answer": "| 42 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 33 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 31 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 55 |   |   |   |   |",
+        "markdown_answer_step": "| step1 |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |",
+        "solutions": "Across\n42÷7=6\n33-11=22\n5+31=36\n\nDown\n7+26=33\n9+22=31\n11×5=55",
+        "solving_steps": {
+          "step1": [
+            "42÷7=6",
+            "33-11=22",
+            "5+31=36",
+            "7+26=33",
+            "9+22=31",
+            "11×5=55"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0211",
+        "version": 2,
+        "seed": 211,
+        "difficulty": "easy",
+        "givens": [
+          null,
+          7,
+          6,
+          26,
+          9,
+          null,
+          11,
+          22,
+          5,
+          null,
+          36,
+          null
+        ],
+        "bank": [
+          31,
+          33,
+          42,
+          55
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              1,
+              3,
+              5
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              4,
+              7,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              8,
+              11
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              8,
+              9,
+              10
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0211"
+        }
+      },
+      "solution": [
+        42,
+        7,
+        6,
+        26,
+        9,
+        33,
+        11,
+        22,
+        5,
+        31,
+        36,
+        55
+      ]
+    },
+    {
+      "index": 211,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0212.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0212_blank.png",
+        "problems": 7,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          5,
+          52
+        ],
+        "markdown_table": "| ? |   | ? | + | 31 | = | 38 |   |   |\n| ÷ |   | × |   |   |   |   |   |   |\n| 6 | × | 5 | = | ? |   |   |   |   |\n| = |   | = |   | - |   |   |   |   |\n| 8 |   | 35 |   | 10 | + | 37 | = | ? |\n|   |   |   |   | = |   |   |   |   |\n| 39 | - | ? | = | 20 |   |   |   |   |",
+        "markdown_answer": "| 48 |   | 7 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 30 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 47 |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 19 |   |   |   |   |   |   |",
+        "markdown_answer_step": "| step1 |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |",
+        "solutions": "Across\n7+31=38\n6×5=30\n10+37=47\n39-19=20\n\nDown\n48÷6=8\n7×5=35\n30-10=20",
+        "solving_steps": {
+          "step1": [
+            "7+31=38",
+            "6×5=30",
+            "10+37=47",
+            "39-19=20",
+            "48÷6=8",
+            "7×5=35",
+            "30-10=20"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0212",
+        "version": 2,
+        "seed": 212,
+        "difficulty": "easy",
+        "givens": [
+          null,
+          null,
+          31,
+          38,
+          6,
+          5,
+          null,
+          8,
+          35,
+          10,
+          37,
+          null,
+          39,
+          null,
+          20
+        ],
+        "bank": [
+          7,
+          19,
+          30,
+          47,
+          48
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              4,
+              7
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              5,
+              8
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              4,
+              5,
+              6
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              6,
+              9,
+              14
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              12,
+              13,
+              14
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 7,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0212"
+        }
+      },
+      "solution": [
+        48,
+        7,
+        31,
+        38,
+        6,
+        5,
+        30,
+        8,
+        35,
+        10,
+        37,
+        47,
+        39,
+        19,
+        20
+      ]
+    },
+    {
+      "index": 222,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0223.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0223_blank.png",
+        "problems": 10,
+        "operators": "+-*/",
+        "difficulty": "hard",
+        "range": [
+          5,
+          53
+        ],
+        "markdown_table": "| 17 | + | 11 | = | ? |   |   |   |   |   |   |\n|   |   |   |   | - |   |   |   |   |   |   |\n|   |   | 38 |   | ? |   |   |   |   |   |   |\n|   |   | - |   | = |   |   |   |   |   |   |\n|   |   | ? | - | 9 | = | ? |   |   |   |   |\n|   |   | = |   |   |   | × |   |   |   |   |\n|   |   | 24 |   | ? | + | 6 | = | ? |   | 7 |\n|   |   |   |   |   |   | = |   | + |   | × |\n|   |   |   |   |   |   | ? | ÷ | 5 | = | ? |\n|   |   |   |   |   |   |   |   | = |   | = |\n|   |   |   |   | 10 | × | 5 | = | ? |   | ? |",
+        "markdown_answer": "|   |   |   |   | 28 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 19 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 14 |   |   |   | 5 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 39 |   |   |   | 45 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 30 |   |   |   | 6 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 50 |   | 42 |",
+        "markdown_answer_step": "|   |   |   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step2 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   | step2 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step3 |   |   |   | step2 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step3 |   |   |   | step4 |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |   | step5 |",
+        "solutions": "Across\n17+11=28\n14-9=5\n39+6=45\n30÷5=6\n10×5=50\n\nDown\n28-19=9\n38-14=24\n5×6=30\n45+5=50\n7×6=42",
+        "solving_steps": {
+          "step1": [
+            "17+11=28",
+            "10×5=50",
+            "38-14=24"
+          ],
+          "step2": [
+            "14-9=5",
+            "28-19=9",
+            "45+5=50"
+          ],
+          "step3": [
+            "39+6=45",
+            "5×6=30"
+          ],
+          "step4": [
+            "30÷5=6"
+          ],
+          "step5": [
+            "7×6=42"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0223",
+        "version": 2,
+        "seed": 223,
+        "difficulty": "hard",
+        "givens": [
+          17,
+          11,
+          null,
+          38,
+          null,
+          null,
+          9,
+          null,
+          24,
+          null,
+          6,
+          null,
+          7,
+          null,
+          5,
+          null,
+          10,
+          5,
+          null,
+          null
+        ],
+        "bank": [
+          5,
+          6,
+          14,
+          19,
+          28,
+          30,
+          39,
+          42,
+          45,
+          50
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              2
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              2,
+              4,
+              6
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              5,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              5,
+              6,
+              7
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              7,
+              10,
+              13
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              11,
+              14,
+              18
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              12,
+              15,
+              19
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              13,
+              14,
+              15
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              16,
+              17,
+              18
+            ],
+            "operator": "*"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0
+            },
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 10
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 10
+            },
+            {
+              "row": 10,
+              "col": 4
+            },
+            {
+              "row": 10,
+              "col": 6
+            },
+            {
+              "row": 10,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 10
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 10,
+          "rounds": 5,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0223"
+        }
+      },
+      "solution": [
+        17,
+        11,
+        28,
+        38,
+        19,
+        14,
+        9,
+        5,
+        24,
+        39,
+        6,
+        45,
+        7,
+        30,
+        5,
+        6,
+        10,
+        5,
+        50,
+        42
+      ]
+    },
+    {
+      "index": 230,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0231.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0231_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          5,
+          72
+        ],
+        "markdown_table": "|   |   |   |   | 13 |\n|   |   |   |   | + |\n| ? |   |   |   | 27 |\n| + |   |   |   | = |\n| 52 | - | 12 | = | ? |\n| = |   | × |   |   |\n| 70 | ÷ | 5 | = | ? |\n|   |   | = |   |   |\n|   |   | ? |   |   |",
+        "markdown_answer": "|   |   |   |   |   |\n|   |   |   |   |   |\n| 18 |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   | 40 |\n|   |   |   |   |   |\n|   |   |   |   | 14 |\n|   |   |   |   |   |\n|   |   | 60 |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |\n|   |   |   |   |   |\n| step1 |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   | step1 |\n|   |   |   |   |   |\n|   |   |   |   | step1 |\n|   |   |   |   |   |\n|   |   | step1 |   |   |",
+        "solutions": "Across\n52-12=40\n70÷5=14\n\nDown\n13+27=40\n18+52=70\n12×5=60",
+        "solving_steps": {
+          "step1": [
+            "52-12=40",
+            "70÷5=14",
+            "13+27=40",
+            "18+52=70",
+            "12×5=60"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0231",
+        "version": 2,
+        "seed": 231,
+        "difficulty": "easy",
+        "givens": [
+          13,
+          null,
+          27,
+          52,
+          12,
+          null,
+          70,
+          5,
+          null,
+          null
+        ],
+        "bank": [
+          14,
+          18,
+          40,
+          60
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              2,
+              5
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              3,
+              6
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              4,
+              7,
+              9
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "/"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 5,
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 2
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0231"
+        }
+      },
+      "solution": [
+        13,
+        18,
+        27,
+        52,
+        12,
+        40,
+        70,
+        5,
+        14,
+        60
+      ]
+    },
+    {
+      "index": 232,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0233.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0233_blank.png",
+        "problems": 11,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          5,
+          81
+        ],
+        "markdown_table": "|   |   | ? |   | 42 | + | 21 | = | ? |   |   |\n|   |   | × |   | + |   |   |   |   |   |   |\n| ? | - | 13 | = | 12 |   | ? | + | 32 | = | 39 |\n| + |   | = |   | = |   | + |   |   |   |   |\n| 55 |   | 65 | - | ? | = | 11 |   |   |   |   |\n| = |   |   |   |   |   | = |   |   |   |   |\n| 80 | ÷ | ? | = | 10 |   | 18 | + | ? | = | 79 |\n|   |   |   |   | + |   |   |   |   |   |   |\n|   |   |   |   | ? |   |   |   |   |   |   |\n|   |   |   |   | = |   |   |   |   |   |   |\n|   |   |   |   | 70 |   |   |   |   |   |   |",
+        "markdown_answer": "|   |   | 5 |   |   |   |   |   | 63 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n| 25 |   |   |   |   |   | 7 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 54 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | 8 |   |   |   |   |   | 61 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 60 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   | step1 |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n| step1 |   |   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |   |   |",
+        "solutions": "Across\n42+21=63\n25-13=12\n7+32=39\n65-54=11\n80÷8=10\n18+61=79\n\nDown\n5×13=65\n42+12=54\n25+55=80\n7+11=18\n10+60=70",
+        "solving_steps": {
+          "step1": [
+            "42+21=63",
+            "25-13=12",
+            "7+32=39",
+            "65-54=11",
+            "80÷8=10",
+            "18+61=79",
+            "5×13=65",
+            "42+12=54",
+            "25+55=80",
+            "7+11=18",
+            "10+60=70"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0233",
+        "version": 2,
+        "seed": 233,
+        "difficulty": "easy",
+        "givens": [
+          null,
+          42,
+          21,
+          null,
+          null,
+          13,
+          12,
+          null,
+          32,
+          39,
+          55,
+          65,
+          null,
+          11,
+          80,
+          null,
+          10,
+          18,
+          null,
+          79,
+          null,
+          70
+        ],
+        "bank": [
+          5,
+          7,
+          8,
+          25,
+          54,
+          60,
+          61,
+          63
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              5,
+              11
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              1,
+              2,
+              3
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              6,
+              12
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              4,
+              5,
+              6
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              4,
+              10,
+              14
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              7,
+              13,
+              17
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              11,
+              12,
+              13
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              14,
+              15,
+              16
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              16,
+              20,
+              21
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              17,
+              18,
+              19
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 11,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 0,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 8
+            },
+            {
+              "row": 2,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 10
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 10,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 8,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0233"
+        }
+      },
+      "solution": [
+        5,
+        42,
+        21,
+        63,
+        25,
+        13,
+        12,
+        7,
+        32,
+        39,
+        55,
+        65,
+        54,
+        11,
+        80,
+        8,
+        10,
+        18,
+        61,
+        79,
+        60,
+        70
+      ]
+    },
+    {
+      "index": 234,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0235.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0235_blank.png",
+        "problems": 5,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          4,
+          83
+        ],
+        "markdown_table": "|   |   | 42 |   |   |\n|   |   | - |   |   |\n|   |   | ? |   | 48 |\n|   |   | = |   | + |\n| ? | - | 12 | = | 20 |\n| ÷ |   |   |   | = |\n| 8 |   |   |   | ? |\n| = |   |   |   |   |\n| 4 | × | 18 | = | ? |",
+        "markdown_answer": "|   |   |   |   |   |\n|   |   |   |   |   |\n|   |   | 30 |   |   |\n|   |   |   |   |   |\n| 32 |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   | 68 |\n|   |   |   |   |   |\n|   |   |   |   | 72 |",
+        "markdown_answer_step": "|   |   |   |   |   |\n|   |   |   |   |   |\n|   |   | step1 |   |   |\n|   |   |   |   |   |\n| step1 |   |   |   |   |\n|   |   |   |   |   |\n|   |   |   |   | step1 |\n|   |   |   |   |   |\n|   |   |   |   | step1 |",
+        "solutions": "Across\n32-12=20\n4×18=72\n\nDown\n42-30=12\n48+20=68\n32÷8=4",
+        "solving_steps": {
+          "step1": [
+            "32-12=20",
+            "4×18=72",
+            "42-30=12",
+            "48+20=68",
+            "32÷8=4"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0235",
+        "version": 2,
+        "seed": 235,
+        "difficulty": "easy",
+        "givens": [
+          42,
+          null,
+          48,
+          null,
+          12,
+          20,
+          8,
+          null,
+          4,
+          18,
+          null
+        ],
+        "bank": [
+          30,
+          32,
+          68,
+          72
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              1,
+              4
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              5,
+              7
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              6,
+              8
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              8,
+              9,
+              10
+            ],
+            "operator": "*"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 5,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 0
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0235"
+        }
+      },
+      "solution": [
+        42,
+        30,
+        48,
+        32,
+        12,
+        20,
+        8,
+        68,
+        4,
+        18,
+        72
+      ]
+    },
+    {
+      "index": 243,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0244.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0244_blank.png",
+        "problems": 6,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          3,
+          93
+        ],
+        "markdown_table": "|   |   | 89 |   |   |   | ? |   |   |\n|   |   | - |   |   |   | - |   |   |\n| 86 | - | 23 | = | ? |   | 10 |   |   |\n|   |   | = |   |   |   | = |   |   |\n|   |   | ? | ÷ | 3 | = | 22 |   |   |\n|   |   |   |   | × |   |   |   |   |\n|   |   |   |   | ? | + | 55 | = | 83 |\n|   |   |   |   | = |   |   |   |   |\n|   |   |   |   | 84 |   |   |   |   |",
+        "markdown_answer": "|   |   |   |   |   |   | 32 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 63 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 66 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 28 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |",
+        "markdown_answer_step": "|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |",
+        "solutions": "Across\n86-23=63\n66÷3=22\n28+55=83\n\nDown\n89-23=66\n32-10=22\n3×28=84",
+        "solving_steps": {
+          "step1": [
+            "86-23=63",
+            "66÷3=22",
+            "28+55=83",
+            "89-23=66",
+            "32-10=22",
+            "3×28=84"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0244",
+        "version": 2,
+        "seed": 244,
+        "difficulty": "easy",
+        "givens": [
+          89,
+          null,
+          86,
+          23,
+          null,
+          10,
+          null,
+          3,
+          22,
+          null,
+          55,
+          83,
+          84
+        ],
+        "bank": [
+          28,
+          32,
+          63,
+          66
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              3,
+              6
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              1,
+              5,
+              8
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              2,
+              3,
+              4
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              6,
+              7,
+              8
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              7,
+              9,
+              12
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              9,
+              10,
+              11
+            ],
+            "operator": "+"
+          }
+        ],
+        "layout": {
+          "rows": 9,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 2
+            },
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 2,
+              "col": 2
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 4
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 4,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0244"
+        }
+      },
+      "solution": [
+        89,
+        32,
+        86,
+        23,
+        63,
+        10,
+        66,
+        3,
+        22,
+        28,
+        55,
+        83,
+        84
+      ]
+    },
+    {
+      "index": 244,
+      "original": {
+        "img": "test_images_hr/math_puzzle_0245.png",
+        "img_blank": "test_images_blank_hr/math_puzzle_0245_blank.png",
+        "problems": 7,
+        "operators": "+-*/",
+        "difficulty": "easy",
+        "range": [
+          3,
+          78
+        ],
+        "markdown_table": "|   |   |   |   |   |   | 6 |   |   |\n|   |   |   |   |   |   | + |   |   |\n|   |   |   |   | 78 |   | ? |   |   |\n|   |   |   |   | - |   | = |   |   |\n|   |   | 4 | × | ? | = | 48 |   |   |\n|   |   | × |   | = |   |   |   |   |\n|   |   | 16 |   | 66 | + | ? | = | 75 |\n|   |   | = |   |   |   |   |   | ÷ |\n| 72 | - | ? | = | 8 |   |   |   | 3 |\n|   |   |   |   |   |   |   |   | = |\n|   |   |   |   |   |   |   |   | ? |",
+        "markdown_answer": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 42 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | 12 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | 9 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | 64 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | 25 |",
+        "markdown_answer_step": "|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   | step1 |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   | step1 |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   | step1 |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   |   |\n|   |   |   |   |   |   |   |   | step1 |",
+        "solutions": "Across\n4×12=48\n66+9=75\n72-64=8\n\nDown\n6+42=48\n78-12=66\n4×16=64\n75÷3=25",
+        "solving_steps": {
+          "step1": [
+            "4×12=48",
+            "66+9=75",
+            "72-64=8",
+            "6+42=48",
+            "78-12=66",
+            "4×16=64",
+            "75÷3=25"
+          ]
+        }
+      },
+      "puzzle": {
+        "id": "hf-crossmath-0245",
+        "version": 2,
+        "seed": 245,
+        "difficulty": "easy",
+        "givens": [
+          6,
+          78,
+          null,
+          4,
+          null,
+          48,
+          16,
+          66,
+          null,
+          75,
+          72,
+          null,
+          8,
+          3,
+          null
+        ],
+        "bank": [
+          9,
+          12,
+          25,
+          42,
+          64
+        ],
+        "equations": [
+          {
+            "cells": [
+              0,
+              2,
+              5
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              1,
+              4,
+              7
+            ],
+            "operator": "-"
+          },
+          {
+            "cells": [
+              3,
+              4,
+              5
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              3,
+              6,
+              11
+            ],
+            "operator": "*"
+          },
+          {
+            "cells": [
+              7,
+              8,
+              9
+            ],
+            "operator": "+"
+          },
+          {
+            "cells": [
+              9,
+              13,
+              14
+            ],
+            "operator": "/"
+          },
+          {
+            "cells": [
+              10,
+              11,
+              12
+            ],
+            "operator": "-"
+          }
+        ],
+        "layout": {
+          "rows": 11,
+          "cols": 9,
+          "cells": [
+            {
+              "row": 0,
+              "col": 6
+            },
+            {
+              "row": 2,
+              "col": 4
+            },
+            {
+              "row": 2,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 2
+            },
+            {
+              "row": 4,
+              "col": 4
+            },
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 2
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 8,
+              "col": 0
+            },
+            {
+              "row": 8,
+              "col": 2
+            },
+            {
+              "row": 8,
+              "col": 4
+            },
+            {
+              "row": 8,
+              "col": 8
+            },
+            {
+              "row": 10,
+              "col": 8
+            }
+          ]
+        },
+        "rating": {
+          "deductions": 5,
+          "rounds": 1,
+          "branches": 0
+        },
+        "source": {
+          "dataset": "xuyige/CrossMath",
+          "revision": "b6cb3a1ff374af296786d74459cc16a931d97bc2",
+          "file": "Original/testset_hr.jsonl",
+          "license": "CC-BY-NC-ND-4.0",
+          "url": "https://huggingface.co/datasets/xuyige/CrossMath",
+          "sha256": "abb6545de7723779acdc831ec355d1ba6c274459db020c1bb1076e84dcdfdd9a",
+          "record": "0245"
+        }
+      },
+      "solution": [
+        6,
+        78,
+        42,
+        4,
+        12,
+        48,
+        16,
+        66,
+        9,
+        75,
+        72,
+        64,
+        8,
+        3,
+        25
+      ]
+    }
+  ]
+}

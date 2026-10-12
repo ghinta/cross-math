@@ -2,7 +2,7 @@
 
 Werbefreie Cross-Platform-App mit einer von Apple Liquid Glass inspirierten Oberfläche, gemeinsamem Rust-Kern und installierbarer Offline-PWA.
 
-Die App enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemeinsames Tagesrätsel, Notizen, Undo/Redo, kostenlose Hinweise, Pause, Statistiken, Light/Dark Mode, Einstellungen für reduzierte Bewegung/Transparenz und exportierbare lokale Spielstände. Alle Zahlen stammen aus dem eigenen Generator; es werden keine fremden Leveldaten verwendet.
+Die App enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemeinsames Tagesrätsel, Notizen, Undo/Redo, kostenlose Hinweise, Pause, Statistiken, Light/Dark Mode, Einstellungen für reduzierte Bewegung/Transparenz und exportierbare lokale Spielstände. Im freien Spiel stehen unveränderte, geprüfte CrossMath-Originalaufgaben und der eigene Generator zur Auswahl. Das Tagesrätsel bleibt beim eigenen Generator, damit der begrenzte Originalkatalog keine täglichen Wiederholungen erzwingt.
 
 ## Starten
 
@@ -31,7 +31,7 @@ npm run preview
 
 ### GitHub Pages
 
-Im Repository unter **Settings → Pages → Build and deployment → Source** einmal **GitHub Actions** auswählen. Danach baut und veröffentlicht `.github/workflows/pages.yml` jeden Push auf `main`. Der Workflow übernimmt den von GitHub gemeldeten Pfad für Assets, Manifest, Service Worker und Offline-Navigation. Bei diesem Repository lautet die erwartete Adresse `https://ghinta.github.io/cross-math/`; sie ist erst nach einer erfolgreichen Deployment-Ausführung erreichbar.
+Im Repository unter **Settings → Pages → Build and deployment → Source** einmal **GitHub Actions** auswählen. Danach baut und veröffentlicht `.github/workflows/pages.yml` jeden Push auf `main`. Der Workflow übernimmt den von GitHub gemeldeten Pfad für Assets, Manifest, Service Worker und Offline-Navigation. Bei diesem Repository lautet die erwartete Adresse `https://ghinta.github.io/cross-math/`; der Workflow prüft nach der Veröffentlichung die tatsächlich ausgelieferte Revision und Prüfsummen von HTML, JavaScript, WASM und weiteren Build-Dateien. Ein grüner Deploy-Schritt allein reicht nicht.
 
 Den Pages-Build lokal prüfen:
 
@@ -67,10 +67,10 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Der Browser-Test nutzt vorhandenes `/usr/bin/chromium`, falls verfügbar; sonst das von Playwright installierte Chromium. Die Tests starten und stoppen ihren eigenen Preview-Server.
+Der Browser-Test nutzt vorhandenes `/usr/bin/chromium`, falls verfügbar; sonst das von Playwright installierte Chromium. Die Tests starten und stoppen ihren eigenen Preview-Server. Ein zusätzlicher Test wechselt eine gecachte alte PWA auf die neue Version und prüft den Erhalt des Spielstands sowie die Erkennung eines weiteren Updates.
 
 - Rust: 288 neue Aufgaben plus alle 36 mitgelieferten Rechenkreuze werden mit unabhängig implementierter Arithmetik und vollständiger Zahlenpermutation auf genau eine Lösung geprüft. Jeder Rechenschritt wird gegen den damaligen Zahlenvorrat nachgerechnet. Die Prüfungen der alten Engine bleiben erhalten.
-- WASM: 36 neue Aufgaben werden mit dem nativen Katalog verglichen; 36 neue und 36 alte Aufgaben werden geprüft und über Hinweise vollständig gelöst.
+- WASM: 36 generierte Aufgaben werden mit dem nativen Katalog verglichen; 36 neue, 36 alte und 32 CrossMath-Originalaufgaben werden geprüft und über Hinweise vollständig gelöst. Die Originale werden zusätzlich gegen die Antworten und unveränderten Vorgaben der Quelle kontrolliert.
 - Frontend: Zahlenverbrauch, doppelte Kacheln, Notizen, History und Importvalidierung.
 - Browser: Eingabe, konkrete Hinweise, Wiederherstellung, alte Spielstände, Tagesrätsel, Schwierigkeitswechsel, Offline-Neustart und Offline-Generierung. Brett, Zahlen und Aktionen werden unter anderem bei 320×568, 375×667, 390×844, 667×375 und 900×600 Pixeln auf Sichtbarkeit ohne Scrollen geprüft.
 
@@ -86,13 +86,30 @@ Formatversion 1 bleibt über `crates/core/src/legacy.rs` unterstützt. Laufende 
 
 Die Spielansicht nutzt die verfügbare dynamische Bildschirmhöhe und sichere Randabstände. Auf dem Handy liegt der Zahlenvorrat unter dem Brett, auf breiten Bildschirmen daneben. Hinweise, Einstellungen und Regeln öffnen eigene Dialoge; umfangreiche Dialoginhalte können innerhalb des Dialogs scrollen. Das Spielfeld und der Zahlenvorrat benötigen keinen Scrollbereich.
 
-36 eigene, vorab geprüfte Aufgaben liegen in `src/data/puzzles.json`. Sie ermöglichen den unmittelbaren ersten Start und dienen bei einem Generierungsfehler als Reserve. Regeneration: `cargo run -p cross-math-core --release --example catalog > src/data/puzzles.json`.
+36 eigene, vorab geprüfte Aufgaben liegen in `src/data/puzzles.json`. Sie dienen im Generator-Modus als geprüfte Reserve bei einem Generierungsfehler. Regeneration: `cargo run -p cross-math-core --release --example catalog > src/data/puzzles.json`.
 
 ### Hugging-Face-Datensätze
 
-Geprüft am 11. Oktober 2026: [xuyige/CrossMath](https://huggingface.co/datasets/xuyige/CrossMath) enthält 1.000 Benchmark-Zeilen mit mehreren Darstellungen; [xuyige/CrossMath-Train](https://huggingface.co/datasets/xuyige/CrossMath-Train) enthält 5.000 Aufgaben einschließlich Tabellen, Antworten und Schritten. Beide weisen `CC BY-NC-ND 4.0` aus. Die Lizenz erlaubt nichtkommerzielle Weitergabe mit Namensnennung, untersagt jedoch die Weitergabe bearbeiteten Materials; reine Formatänderungen gelten laut [Creative Commons](https://creativecommons.org/licenses/by-nc-nd/4.0/) nicht automatisch als Bearbeitung. Eine Freigabe für den konkreten Einsatz in der interaktiven App wurde nicht festgestellt. Die App übernimmt deshalb keine Aufgaben, Bilder oder Lösungen daraus.
+Der [1k-Benchmark xuyige/CrossMath](https://huggingface.co/datasets/xuyige/CrossMath) enthält 250 unterschiedliche Originalrätsel in vier Bildvarianten, nicht 1.000 unterschiedliche Aufgaben. Die Datei `Original/testset_hr.jsonl` enthält die 250 Originale. Die App verwendet 32 davon unverändert: 11 leichte, neun mittlere und zwölf schwere. 160 Originale überschreiten 11×11 Rasterpositionen; 58 weitere haben dreistellige Zahlen. Diese werden im aktuellen Bildschirmformat ausgelassen, anstatt Vorgaben oder Bretter zu verändern. Der eigene Generator bleibt in den Einstellungen wählbar.
 
-Die [Veröffentlichung zum Benchmark](https://arxiv.org/abs/2604.16256) beschreibt menschliche Prüfung der gleichen Informationen in Bild- und Textvarianten. Daraus folgt keine pauschale Garantie für eindeutige, ohne Raten lösbare App-Level. Falls später externe Aufgaben aufgenommen werden, benötigen sie eine passende Nutzungsfreigabe, festgehaltene Quelle/Revision und denselben vollständigen Rechenweg sowie dieselbe Eindeutigkeitsprüfung. Der Import von Spielständen prüft neue Aufgaben zusätzlich mathematisch in der Rust-Engine; reine Strukturprüfung reicht nicht.
+Die Datensatzlizenz ist **CC BY-NC-ND 4.0**. Die App wird nichtkommerziell verwendet. Zahlen, Operatoren, Positionen, freie Felder und Antworten bleiben identisch; lediglich das Datenformat wird technisch umgesetzt. [CC erklärt ausdrücklich](https://creativecommons.org/faq/#can-i-take-a-cc-licensed-work-and-use-it-in-a-different-format), dass ein anderes Format auch unter ND zulässig ist. Quelle, Autoren, Lizenz und technischer Formatwechsel werden in der App und in [NOTICE.md](NOTICE.md) genannt. Für diese unveränderte nichtkommerzielle Verwendung wird keine weitere Freigabe vorausgesetzt. Die Aufgaben werden nicht unter die MIT-Lizenz des eigenen Codes gestellt.
+
+`src/data/crossmath-originals.json` enthält Originaldatensätze, formatierte App-Aufgaben, Antworten und Quellenrevision. `src/data/crossmath-audit.json` dokumentiert die Auswahl und alle ausgeschlossenen Datensatzzeilen. Die Revision ist `b6cb3a1ff374af296786d74459cc16a931d97bc2`; der SHA-256 der Quelldatei ist mitgespeichert. Regeneration mit der unveränderten Quelldatei:
+
+```bash
+npm run build:wasm
+node scripts/import-crossmath.mjs /pfad/zu/Original/testset_hr.jsonl
+npm run check
+npm run test:wasm
+```
+
+Der Import prüft die vollständigen Autorenantworten unabhängig arithmetisch, kontrolliert deren Gleichungsliste und lässt nur Aufgaben mit eindeutiger Lösung und vollständigem Einzelschritt-Rechenweg zu. Rust-Tests verwenden einen zweiten vollständigen Zahlenpermutationsprüfer und vergleichen jede Vorgabe mit der unveränderten Originaltabelle. Die [Benchmark-Veröffentlichung](https://arxiv.org/abs/2604.16256) allein ersetzt diese Qualitätsprüfung nicht.
+
+### Updates und Build-Prüfung
+
+Die App prüft den Service Worker beim Start, beim Zurückkehren, nach Wiederverbindung und einmal pro Minute im sichtbaren Tab. Verfügbare Updates werden angeboten und erst nach dem Speichern übernommen. „Einstellungen → Update prüfen“ löst eine zusätzliche Prüfung aus. Die Einstellungen zeigen die Commit-Kennung; `version.json` enthält die vollständige Revision und Prüfsummen der fertig geschriebenen Build-Dateien. `scripts/verify-deployment.mjs` prüft diese Dateien nach dem tatsächlichen Pages-Deploy mit umgangenem HTTP-Cache.
+
+Die Rust-Action ist auf den geprüften `stable`-Commit fixiert; `toolchain: 1.99.0` wählt den tatsächlichen Compiler. Dependabot behandelt diese Compiler-Tags nicht länger als Action-Versionen. Der fehlerhafte Vorschlag auf Rust 1.120.0 war ein unveröffentlichter Dependabot-PR und kein fehlgeschlagener Pages-Build des Hauptzweigs.
 
 Der Startwert, die Generatorversion und geordnete Solver-Datenstrukturen garantieren reproduzierbare Aufgaben zwischen nativen und WASM-Builds. Das konkrete Rätsel wird im Spielstand gespeichert. Tagesrätsel wechseln weltweit um 00:00 UTC; das zugehörige Datum bleibt auch beim Weiterspielen über Mitternacht erhalten.
 

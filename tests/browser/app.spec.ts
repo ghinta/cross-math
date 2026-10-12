@@ -31,7 +31,8 @@ test('play, notes, undo/redo, pause and persisted restore', async ({ page }) => 
 test('hints complete the puzzle and statistics survive reload', async ({ page }) => {
   await page.goto('./');
   await expect(page.locator('.puzzle-grid')).toBeVisible();
-  for (let i = 0; i < 6; i++) {
+  const freeFields = await page.locator('.number-cell.editable').count();
+  for (let i = 0; i < freeFields; i++) {
     await page.getByRole('button', { name: 'Hinweis', exact: true }).click();
     await page.getByRole('button', { name: 'Zahl einsetzen' }).click();
   }
@@ -51,12 +52,12 @@ test('daily game preserves free game and all difficulties generate', async ({ pa
   const free = await page.locator('.puzzle-grid').textContent();
   await page.getByRole('button', { name: 'Tagesrätsel', exact: true }).first().click();
   await expect(page.locator('.game-title')).toContainText('Tagesrätsel');
-  await expect(page.locator('.number-counter')).toContainText('9');
+  await expect(page.locator('.number-counter')).toContainText(String(await page.locator('.number-cell.editable').count()));
   await page.getByRole('button', { name: 'Freies Spiel', exact: true }).click();
   await expect(page.locator('.puzzle-grid')).toHaveText(free!);
   await page.getByRole('button', { name: 'Schwer', exact: true }).click();
   await expect(page.locator('.level-tag')).toHaveText('Schwer');
-  await expect(page.locator('.number-counter')).toContainText('12');
+  await expect(page.locator('.number-counter')).toContainText(String(await page.locator('.number-cell.editable').count()));
   await page.getByRole('button', { name: 'Mittel', exact: true }).click();
   await expect(page.locator('.level-tag')).toHaveText('Mittel');
 });
@@ -68,6 +69,9 @@ test('PWA restarts offline and generates new puzzles offline', async ({ page, co
     await navigator.serviceWorker.ready;
     if (!navigator.serviceWorker.controller) await new Promise<void>(resolve => navigator.serviceWorker.addEventListener('controllerchange', () => resolve(), { once: true }));
   });
+  await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
+  await page.getByRole('button', { name: 'Generator', exact: true }).click();
+  await page.getByRole('button', { name: 'Schließen', exact: true }).click();
   await context.setOffline(true);
   await page.reload();
   await expect(page.locator('.puzzle-grid')).toBeVisible();
@@ -205,4 +209,15 @@ test('import rejects a structurally valid task with multiple solutions', async (
   value.session={puzzle,board:puzzle.givens,notes:{},undo:[],redo:[],elapsed:0,hints:0,mode:'free',day:null,completed:false};
   await page.locator('input[type=file]').setInputFiles({ name:'ambiguous.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(value)) });
   await expect(page.getByRole('alert')).toContainText('keine geprüfte eindeutige Lösung');
+});
+
+test('original tasks have attribution and the generator remains selectable', async ({ page }) => {
+  await page.goto('./'); await expect(page.locator('.game-card')).toHaveAttribute('data-puzzle-source','crossmath');
+  await page.getByRole('button',{name:'Einstellungen',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Originalaufgaben',exact:true})).toHaveAttribute('aria-pressed','true');
+  await expect(page.locator('.source-attribution')).toContainText('CC BY-NC-ND 4.0');
+  await page.getByRole('button',{name:'Generator',exact:true}).click();
+  await page.getByRole('button',{name:'Schließen',exact:true}).click();
+  await page.getByRole('button',{name:'Schwer',exact:true}).click();
+  await expect(page.locator('.game-card')).toHaveAttribute('data-puzzle-source','generator');
 });

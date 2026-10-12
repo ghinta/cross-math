@@ -265,3 +265,12 @@ main { display: grid; grid-template-rows: 44px minmax(0,1fr); gap: 12px; }
 [data-glass='opaque'][data-theme='dark'] .glass { background: #293b47; }
 @media (prefers-reduced-transparency: reduce) { .glass { background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none; } }
 @supports not (backdrop-filter: blur(1px)) { .glass { background: var(--surface); } }
+
+.legacy-upgrade { color: var(--accent); font-size: 10px; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+.source-group { margin-bottom: 22px; }
+.source-copy { color: var(--muted); font-size: 11px; margin-top: 10px; }
+.source-attribution { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 18px; font-size: 12px; }
+.source-attribution strong { font-weight: 550; }
+.source-attribution p { color: var(--muted); font-size: 11px; line-height: 1.7; margin-top: 8px; }
+.source-attribution a { text-decoration: underline; text-underline-offset: 3px; }
+.app-version { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; margin-top: 18px; }

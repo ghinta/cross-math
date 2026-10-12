@@ -5,7 +5,7 @@ import type { Check as BoardCheck, Difficulty, CrosswordPuzzle, Hint, Puzzle, Sa
 import { dailyDate, dailySeed, engine, randomSeed } from './engine';
 import { clearCell, commit, newSession, place, remainingNumbers, toggleNote, travel } from './game';
 import { emptySave, loadSave, parseSave, saveGame } from './storage';
-import catalog from './data/puzzles.json';
+import { generatedPuzzles, originalPuzzles, originalSource, pickOriginal } from './catalog';
 
 const levels: { id: Difficulty; label: string; detail: string }[] = [
   { id: 'easy', label: 'Leicht', detail: 'Sechs freie Felder. Addition und Subtraktion.' },
@@ -109,7 +109,10 @@ export default function App() {
   const generating = useRef(0);
   const inputBuffer = useRef('');
   const inputTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW();
+  const registrationRef = useRef<ServiceWorkerRegistration | undefined>(undefined);
+  const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
+    onRegisteredSW(_url, registration) { registrationRef.current = registration; void registration?.update().catch(() => {}); },
+  });
   const mode = save?.activeMode ?? 'free';
   const session = mode === 'free' ? save?.session : save?.daily;
   const settings = save?.settings ?? emptySave().settings;
@@ -120,7 +123,7 @@ export default function App() {
     let active = true;
     loadSave().then(value => {
       if (!active) return;
-      if (!value.session && catalog.length) value.session = newSession((catalog as Puzzle[])[0]);
+      if (!value.session) value.session = newSession(value.settings.puzzleSource === 'generator' ? generatedPuzzles[0] : originalPuzzles.find(p => p.difficulty === 'easy')!);
       if (value.activeMode === 'daily' && (!value.daily || value.daily.day !== dailyDate())) value.activeMode = 'free';
       setSave(value);
       const s = value.activeMode === 'daily' ? value.daily : value.session;
@@ -148,6 +151,21 @@ export default function App() {
     const onInstall = (e: Event) => { e.preventDefault(); setInstallPrompt(e as typeof installPrompt); };
     addEventListener('online', onOnline); addEventListener('offline', onOnline); addEventListener('beforeinstallprompt', onInstall);
     return () => { removeEventListener('online', onOnline); removeEventListener('offline', onOnline); removeEventListener('beforeinstallprompt', onInstall); };
+  }, []);
+
+  async function checkForUpdate(manual = false) {
+    if (!navigator.onLine) { if (manual) setMessage('Du bist offline. Prüfe das Update mit einer Internetverbindung.'); return; }
+    try {
+      const registration = registrationRef.current ?? await navigator.serviceWorker.getRegistration();
+      await registration?.update();
+      if (manual) setMessage(registration?.waiting ? 'Eine neue Version ist bereit. Schließe die Einstellungen und wähle „Jetzt aktualisieren“.' : 'Update-Prüfung abgeschlossen. Verfügbare Updates werden angezeigt.');
+    } catch { if (manual) setMessage('Das Update konnte nicht geprüft werden. Versuche es erneut.'); }
+  }
+  useEffect(() => {
+    const update = () => { if (document.visibilityState === 'visible') void checkForUpdate(); };
+    addEventListener('online', update); addEventListener('focus', update); document.addEventListener('visibilitychange', update);
+    const timer = setInterval(update, 60_000);
+    return () => { removeEventListener('online', update); removeEventListener('focus', update); document.removeEventListener('visibilitychange', update); clearInterval(timer); };
   }, []);
 
   const changeSession = useCallback((change: (s: Session) => Session) => {
@@ -192,15 +210,17 @@ export default function App() {
     setBusy(true); setMessage(''); setHint(null); setPaused(false); setConfirm(null);
     const seed = nextMode === 'daily' ? dailySeed(dailyDate()) : randomSeed();
     try {
-      const puzzle = await engine.generate(seed, difficulty);
+      const useOriginal = nextMode === 'free' && settings.puzzleSource === 'crossmath';
+      const puzzle = useOriginal ? pickOriginal(seed, difficulty, saveRef.current?.stats.solved) : await engine.generate(seed, difficulty);
+      if (useOriginal) await engine.verify(puzzle);
       if (request !== generating.current) return;
       setSave(value => ({ ...(value ?? emptySave()), activeMode: nextMode, [nextMode === 'free' ? 'session' : 'daily']: newSession(puzzle, nextMode, nextMode === 'daily' ? dailyDate() : null) }));
       setSelected(puzzle.givens.findIndex(n => n === null)); setNoting(false);
     } catch (error) {
       if (request !== generating.current) return;
       if (nextMode === 'free') {
-        const available = (catalog as Puzzle[]).filter(p => p.difficulty === difficulty && !saveRef.current?.stats.solved.includes(p.id));
-        const pool = available.length ? available : (catalog as Puzzle[]).filter(p => p.difficulty === difficulty);
+        const available = generatedPuzzles.filter(p => p.difficulty === difficulty && !saveRef.current?.stats.solved.includes(p.id));
+        const pool = available.length ? available : generatedPuzzles.filter(p => p.difficulty === difficulty);
         const puzzle = pool[seed % pool.length];
         if (puzzle) {
           setSave(value => ({ ...(value ?? emptySave()), activeMode: 'free', session: newSession(puzzle) }));
@@ -346,14 +366,14 @@ export default function App() {
       {message && <div className="notice glass" role="status"><span>{message}</span><button className="icon-button" aria-label="Meldung schließen" onClick={() => setMessage('')}><X size={17} /></button></div>}
 
       <div className="play-layout">
-        <section className={`game-card ${session?.completed ? 'solved' : ''}`} aria-label="Spielbereich">
+        <section data-puzzle-id={session?.puzzle.id} data-puzzle-source={session?.puzzle.version === 2 && session.puzzle.source ? 'crossmath' : 'generator'} className={`game-card ${session?.completed ? 'solved' : ''}`} aria-label="Spielbereich">
           <div className="game-heading"><div className="game-title"><span className="level-dot" /><span>{mode === 'daily' ? `Tagesrätsel · ${dayLabel(session?.day ?? dailyDate())}` : 'Rätsel'}</span><span className="level-tag">{level.label}</span></div><div className="game-clock">{settings.showTimer && <><Clock3 size={15} /><span>{timeLabel(session?.elapsed ?? 0)}</span></>}<button className="icon-button" aria-label={paused ? 'Fortsetzen' : 'Pause'} disabled={!session || session.completed} onClick={() => setPaused(v => !v)}>{paused ? <Play size={15} /> : <Pause size={15} />}</button></div></div>
           <div className="board-area">
             {session && !paused && !busy && <Board session={session} selected={selected} onSelect={cell => { setSelected(cell); setHint(null); }} check={check} showErrors={settings.checkErrors} />}
             {(!session || busy) && <div className="board-state"><div className="loading-cross">✦</div><p>Rätsel wird erzeugt …</p></div>}
             {paused && !busy && <div className="board-state"><span className="pause-symbol"><Pause size={32} /></span><h2>Spiel pausiert</h2><button className="primary-button" onClick={() => setPaused(false)}>Spiel fortsetzen <Play size={16} /></button></div>}
           </div>
-          <div className="board-footer"><span className="board-rule">{session?.completed ? <strong role="status">Rätsel gelöst.</strong> : 'Feld wählen · Zahl einsetzen'}</span><div className="equation-progress" aria-label={`${check?.equations.filter(s => s === 'valid').length ?? 0} von ${session?.puzzle.equations.length ?? 0} Gleichungen erfüllt`}>{session?.puzzle.equations.map((_, i) => <span className={check?.equations[i] === 'valid' ? 'done' : ''} key={i} />)}</div></div>
+          <div className="board-footer"><span className="board-rule">{session?.completed ? <strong role="status">Rätsel gelöst.</strong> : session?.puzzle.version === 1 ? <button className="legacy-upgrade" onClick={() => askNew(level.id)}>Altes Rätsel · Neues Brett starten</button> : 'Feld wählen · Zahl einsetzen'}</span><div className="equation-progress" aria-label={`${check?.equations.filter(s => s === 'valid').length ?? 0} von ${session?.puzzle.equations.length ?? 0} Gleichungen erfüllt`}>{session?.puzzle.equations.map((_, i) => <span className={check?.equations[i] === 'valid' ? 'done' : ''} key={i} />)}</div></div>
           <section className="numbers-card glass">
             <div className="side-heading"><span className="eyebrow">{noting ? 'NOTIZEN' : 'VERFÜGBARE ZAHLEN'}</span><span className="number-counter">{total - filled}<span> / {total}</span></span></div>
             <div className="number-bank" aria-label="Verfügbare Zahlen">{[...new Set(session?.puzzle.bank ?? [])].map(n => {
@@ -380,9 +400,14 @@ export default function App() {
     {hint && <Modal title="Hinweis" onClose={() => setHint(null)}><p className="modal-copy hint-explanation" role="status">{hint.explanation}</p><button className="primary-button full-width" onClick={applyHint}>Zahl einsetzen <ArrowRight size={16} /></button></Modal>}
     {confirm && <Modal title="Ein neues Rätsel?" onClose={() => setConfirm(null)}><p className="modal-copy">Damit beendest du dein aktuelles freies Rätsel. Deine gelösten Rätsel und Statistiken bleiben gespeichert.</p><div className="modal-actions"><button className="secondary-button" onClick={() => setConfirm(null)}>Weiterspielen</button><button className="primary-button" onClick={() => void start(confirm)}>Neues Rätsel <ArrowRight size={16} /></button></div></Modal>}
     {modal === 'help' && <Modal title="Spielregeln" onClose={() => setModal(null)}><p className="modal-copy">Fülle die freien Zahlenfelder so, dass jede waagrechte und senkrechte Gleichung stimmt.</p><ol className="rule-list"><li><span>1</span><div><strong>Feld auswählen und Zahl einsetzen.</strong><p>Tippe ein freies Feld an und wähle eine Zahl aus deinem Vorrat. Jede Kachel wird einmal benutzt.</p></div></li><li><span>2</span><div><strong>Zeilen und Spalten prüfen.</strong><p>An Kreuzungen gilt dieselbe Zahl für beide Gleichungen. Ergebnisse können ebenfalls freie Felder sein.</p></div></li><li><span>3</span><div><strong>Punkt vor Strich.</strong><p>Multiplikation und Division kommen vor Addition und Subtraktion. Gleichrangige Zeichen rechnest du von links nach rechts.</p><div className="math-example">2 + 3 × 4 = <strong>14</strong></div></div></li></ol><div className="help-footer"><Pencil size={17} /><p>Aktiviere Notizen, um mögliche Zahlen im ausgewählten Feld zu markieren.</p></div><p className="keyboard-help">Tastatur: Pfeile wählen ein Feld · Zahlen eingeben · Entf entfernen · N Notizen · Strg/⌘ Z zurück. Das Tagesrätsel wechselt um 00:00 UTC.</p><button className="primary-button full-width" onClick={() => setModal(null)}>Verstanden <Check size={17} /></button></Modal>}
-    {modal === 'settings' && <Modal title="Einstellungen" onClose={() => setModal(null)}><div className="setting-group"><span className="eyebrow">ERSCHEINUNGSBILD</span><div className="theme-switch glass">{([{ value: 'light', label: 'Hell', icon: Sun }, { value: 'dark', label: 'Dunkel', icon: Moon }, { value: 'system', label: 'System', icon: Settings2 }] as const).map(({ value, label, icon: Icon }) => <button key={value} className={settings.theme === value ? 'active' : ''} aria-pressed={settings.theme === value} onClick={() => updateSetting('theme', value)}><Icon size={17} />{label}</button>)}</div></div>
+    {modal === 'settings' && <Modal title="Einstellungen" onClose={() => setModal(null)}>
+      <div className="setting-group source-group"><span className="eyebrow">AUFGABEN IM FREIEN SPIEL</span><div className="theme-switch glass"><button aria-pressed={settings.puzzleSource === 'crossmath'} className={settings.puzzleSource === 'crossmath' ? 'active' : ''} onClick={() => updateSetting('puzzleSource', 'crossmath')}>Originalaufgaben</button><button aria-pressed={settings.puzzleSource === 'generator'} className={settings.puzzleSource === 'generator' ? 'active' : ''} onClick={() => updateSetting('puzzleSource', 'generator')}>Generator</button></div><p className="source-copy">Die Auswahl gilt ab dem nächsten freien Rätsel.</p></div>
+      <div className="setting-group"><span className="eyebrow">ERSCHEINUNGSBILD</span><div className="theme-switch glass">{([{ value: 'light', label: 'Hell', icon: Sun }, { value: 'dark', label: 'Dunkel', icon: Moon }, { value: 'system', label: 'System', icon: Settings2 }] as const).map(({ value, label, icon: Icon }) => <button key={value} className={settings.theme === value ? 'active' : ''} aria-pressed={settings.theme === value} onClick={() => updateSetting('theme', value)}><Icon size={17} />{label}</button>)}</div></div>
       <div className="setting-toggles">{([{ key: 'reduceMotion', title: 'Weniger Bewegung', text: 'Animationen und Übergänge deaktivieren.' }, { key: 'opaque', title: 'Weniger Transparenz', text: 'Glaseffekte reduzieren und den Kontrast erhöhen.' }, { key: 'showTimer', title: 'Zeit anzeigen', text: 'Die verstrichene Spielzeit anzeigen.' }, { key: 'checkErrors', title: 'Fehler direkt anzeigen', text: 'Falsche vollständige Gleichungen markieren.' }] as const).map(item => <label className="setting-row" key={item.key}><span><strong>{item.title}</strong><small>{item.text}</small></span><input type="checkbox" checked={settings[item.key]} onChange={e => updateSetting(item.key, e.target.checked)} /><span className="toggle" aria-hidden="true" /></label>)}</div>
-      <div className="backup-section"><span className="eyebrow">SPIELSTAND</span><p>Exportiere deinen Spielstand, um ihn zu sichern oder auf einem anderen Gerät wiederherzustellen.</p><div className="backup-buttons"><button className="secondary-button" onClick={() => void exportSave()}><Download size={16} />Sichern</button><button className="secondary-button" onClick={() => fileInput.current?.click()}><Upload size={16} />Wiederherstellen</button></div>{backupError && <p className="backup-error" role="alert">{backupError}</p>}<input ref={fileInput} type="file" accept="application/json,.json" hidden onChange={e => { const file = e.target.files?.[0]; if (file) void importSave(file); }} /></div></Modal>}
+      <div className="backup-section"><span className="eyebrow">SPIELSTAND</span><p>Exportiere deinen Spielstand, um ihn zu sichern oder auf einem anderen Gerät wiederherzustellen.</p><div className="backup-buttons"><button className="secondary-button" onClick={() => void exportSave()}><Download size={16} />Sichern</button><button className="secondary-button" onClick={() => fileInput.current?.click()}><Upload size={16} />Wiederherstellen</button></div>{backupError && <p className="backup-error" role="alert">{backupError}</p>}<input ref={fileInput} type="file" accept="application/json,.json" hidden onChange={e => { const file = e.target.files?.[0]; if (file) void importSave(file); }} /></div>
+      <div className="source-attribution"><strong>CrossMath · {originalPuzzles.length} Originalaufgaben</strong><p>Yige Xu, Yongjie Wang, Zizhuo Wu, Kaisong Song, Jun Lin und Zhiqi Shen. Aufgaben unverändert; Darstellung technisch in das App-Format übertragen.</p><p><a href={originalSource.url} target="_blank" rel="noreferrer">Datensatz</a> · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noreferrer">CC BY-NC-ND 4.0</a></p></div>
+      <div className="app-version"><span>Version {__BUILD_REVISION__.slice(0, 7)}</span><button className="secondary-button" onClick={() => void checkForUpdate(true)}>Update prüfen</button></div>
+      </Modal>}
     {modal === 'stats' && <Modal title="Statistik" onClose={() => setModal(null)}><div className="stats-total"><Trophy size={28} /><strong>{save?.stats.solved.length ?? 0}</strong><span>gelöste Rätsel</span></div><div className="stat-rows">{levels.map(item => <div key={item.id}><span>{item.label}</span><span>{save?.stats.best[item.id] !== undefined ? timeLabel(save.stats.best[item.id]!) : 'Keine Zeit gespeichert'}<small>Beste Zeit</small></span></div>)}</div><div className="stats-daily"><CalendarDays size={20} /><span><strong>{save?.stats.dailyDates.length ?? 0} Tagesrätsel gelöst</strong><small>Neues Tagesrätsel täglich um 00:00 UTC.</small></span></div></Modal>}
     {installHelp && <Modal title="App installieren" onClose={() => setInstallHelp(false)}><p className="modal-copy">Öffne das Menü deines Browsers und wähle „App installieren“ oder „Zum Home-Bildschirm hinzufügen“. Auf dem iPhone findest du die Option im Teilen-Menü.</p><div className="help-footer"><WifiOff size={20} /><p>Nach dem ersten Laden kannst du auch ohne Internet neue Rätsel spielen.</p></div><button className="primary-button full-width" onClick={() => setInstallHelp(false)}>Verstanden <Check size={17} /></button></Modal>}
   </div>;

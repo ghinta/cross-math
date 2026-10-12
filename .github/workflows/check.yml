@@ -14,8 +14,9 @@ jobs:
           node-version-file: .nvmrc
           check-latest: true
           cache: npm
-      - uses: dtolnay/rust-toolchain@1.99.0
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249 # stable; compiler version is configured below
         with:
+          toolchain: 1.99.0
           targets: wasm32-unknown-unknown
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2.9.2
@@ -48,8 +49,9 @@ jobs:
           node-version-file: .nvmrc
           check-latest: true
           cache: npm
-      - uses: dtolnay/rust-toolchain@1.99.0
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249 # stable; compiler version is configured below
         with:
+          toolchain: 1.99.0
           targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@v2.9.2
       - if: runner.os == 'Linux'

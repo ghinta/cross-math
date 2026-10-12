@@ -10,6 +10,7 @@ interface PuzzleBase {
 export interface LegacyPuzzle extends PuzzleBase { version: 1; equations: Equation[] }
 export interface CrosswordPuzzle extends PuzzleBase {
   version: 2; equations: { cells: number[]; operator: Operator }[];
+  source?: { dataset: string; revision: string; file: string; license: string; url: string; sha256: string; record: string };
   layout: { rows: number; cols: number; cells: { row: number; col: number }[] };
 }
 export type Puzzle = LegacyPuzzle | CrosswordPuzzle;
@@ -21,6 +22,6 @@ export interface Session {
   undo: Snapshot[]; redo: Snapshot[]; elapsed: number; hints: number;
   mode: 'free' | 'daily'; day: string | null; completed: boolean;
 }
-export interface Settings { theme: 'system' | 'light' | 'dark'; reduceMotion: boolean; opaque: boolean; showTimer: boolean; checkErrors: boolean }
+export interface Settings { puzzleSource: 'crossmath' | 'generator'; theme: 'system' | 'light' | 'dark'; reduceMotion: boolean; opaque: boolean; showTimer: boolean; checkErrors: boolean }
 export interface Stats { solved: string[]; best: Partial<Record<Difficulty, number>>; dailyDates: string[] }
 export interface Save { version: 1; activeMode: 'free' | 'daily'; session: Session | null; daily: Session | null; settings: Settings; stats: Stats }
