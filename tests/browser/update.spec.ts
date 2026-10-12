@@ -5,16 +5,12 @@ import { resolve } from 'node:path';
 import legacy from '../data/legacy-puzzles.json' with { type: 'json' };
 import { verifyDeployment } from '../../scripts/verify-deployment.mjs';
 
-test('an old cached PWA updates, preserves its game, and detects the next update', async ({ browser }) => {
+test('an old cached PWA with no update UI refreshes automatically and preserves its game twice', async ({ browser }) => {
   const base = process.env.E2E_BASE_PATH ?? '/';
   let stage = 0;
-  const oldHtml = `<!doctype html><html><body><h1>Alte Version</h1><button hidden id="update">Jetzt aktualisieren</button><script>
-    let wasControlled=!!navigator.serviceWorker.controller;
-    navigator.serviceWorker.addEventListener('controllerchange',()=>{if(wasControlled)location.reload();else wasControlled=true;});
-    navigator.serviceWorker.register(${JSON.stringify(`${base}sw.js`)}).then(reg=>{
-      function prompt(){if(reg.waiting){document.getElementById('update').hidden=false;document.getElementById('update').onclick=()=>reg.waiting.postMessage({type:'SKIP_WAITING'});}}
-      reg.addEventListener('updatefound',()=>reg.installing.addEventListener('statechange',prompt));prompt();reg.update();
-    });</script></body></html>`;
+  const oldHtml = `<!doctype html><html><body><h1>Alte Version</h1><script>
+    navigator.serviceWorker.register(${JSON.stringify(`${base}sw.js`)}).then(reg=>reg.update());
+    </script></body></html>`;
   const oldWorker = `self.addEventListener('install',e=>e.waitUntil(caches.open('previous-pwa').then(c=>c.add(${JSON.stringify(base)}))));
     self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
     self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request))));
@@ -51,15 +47,14 @@ test('an old cached PWA updates, preserves its game, and detects the next update
     await page.reload(); await expect(page.getByRole('heading', { name: 'Alte Version' })).toBeVisible();
     stage = 1;
     await verifyDeployment(url, revision);
-    await page.reload(); // Old cached HTML remains until its update is accepted.
-    await page.getByRole('button', { name: 'Jetzt aktualisieren' }).click();
+    await page.reload(); // The new worker must recover even this early client.
     await expect(page.locator('.legacy-upgrade')).toBeVisible();
     await expect(page.locator(`[data-cell="${cell}"] .number-value`)).toHaveText(String(board[cell]));
     await expect(page.getByRole('heading', { name: 'Alte Version' })).toHaveCount(0);
     stage = 2;
+    const navigation = page.waitForEvent('framenavigated', { predicate: frame => frame === page.mainFrame() });
     await page.evaluate(() => window.dispatchEvent(new Event('online')));
-    await expect(page.locator('.update-toast')).toBeVisible();
-    await page.getByRole('button', { name: 'Jetzt aktualisieren' }).click();
+    await navigation;
     await expect(page.locator('.legacy-upgrade')).toBeVisible();
     await expect(page.locator(`[data-cell="${cell}"] .number-value`)).toHaveText(String(board[cell]));
     await page.locator('.legacy-upgrade').click();

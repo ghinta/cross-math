@@ -28,15 +28,24 @@ jobs:
         with:
           toolchain: 1.99.0
           targets: wasm32-unknown-unknown
+          components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2.9.2
       - uses: actions/configure-pages@v6.0.0
         id: pages
       - run: npm ci
+      - name: Audit action runtimes including composite dependencies
+        run: npm run check:actions
       - run: cargo install wasm-bindgen-cli --version 0.2.129 --locked
       - run: npm run build
         env:
           VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
       - run: npm run test:wasm
+      - run: npm run check
+      - run: npx playwright install --with-deps chromium
+      - name: Test the actual Pages base path before publishing
+        run: npm run test:e2e
+        env:
+          E2E_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
       - uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: dist
@@ -55,8 +64,21 @@ jobs:
         with:
           node-version-file: .nvmrc
           check-latest: true
+          cache: npm
       - name: Verify published revision and artifact checksums
         run: node scripts/verify-deployment.mjs
         env:
           DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
           EXPECTED_REVISION: ${{ github.sha }}
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Verify the canonical website in a real browser, including offline restart
+        run: node scripts/smoke-live.mjs
+        env:
+          DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_REVISION: ${{ github.sha }}
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: published-website
+          path: artifacts/

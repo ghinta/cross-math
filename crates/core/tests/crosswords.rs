@@ -56,7 +56,7 @@ fn reference_count(p: &Puzzle, board: &mut Vec<Option<i32>>, bank: &mut Vec<i32>
 }
 fn audit(p: &Puzzle) {
     p.validate().unwrap();
-    assert!(p.layout.rows <= 11 && p.layout.cols <= 11);
+    assert!(p.layout.rows <= 21 && p.layout.cols <= 21);
     let solutions = solve(p, 2);
     assert_eq!(solutions.len(), 1, "{}", p.id);
     let trace = proof(p).unwrap();
@@ -139,7 +139,7 @@ fn original_crossmath_tasks_match_the_authors_answers_and_unchanged_clues() {
     let data: serde_json::Value =
         serde_json::from_str(include_str!("../../../src/data/crossmath-originals.json")).unwrap();
     let records = data["records"].as_array().unwrap();
-    assert_eq!(records.len(), 32);
+    assert_eq!(records.len(), 242);
     for record in records {
         let p: Puzzle = serde_json::from_value(record["puzzle"].clone()).unwrap();
         audit(&p);

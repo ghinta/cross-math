@@ -21,6 +21,8 @@ jobs:
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2.9.2
       - run: npm ci
+      - name: Audit action runtimes including composite dependencies
+        run: npm run check:actions
       - run: cargo install wasm-bindgen-cli --version 0.2.129 --locked
       - run: cargo fmt --all -- --check
       - run: npm run build

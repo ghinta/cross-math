@@ -62,14 +62,14 @@ impl Puzzle {
             || self.id.len() > 100
             || self.id.is_empty()
             || self.layout.cells.len() != n
-            || !(5..=11).contains(&self.layout.rows)
-            || !(5..=11).contains(&self.layout.cols)
+            || !(5..=21).contains(&self.layout.rows)
+            || !(5..=21).contains(&self.layout.cols)
             || self.bank.len() != self.givens.iter().filter(|n| n.is_none()).count()
             || self
                 .bank
                 .iter()
                 .chain(self.givens.iter().flatten())
-                .any(|n| !(1..=99).contains(n))
+                .any(|n| !(1..=999).contains(n))
         {
             return Err("Invalid crossword format or inventory".into());
         }

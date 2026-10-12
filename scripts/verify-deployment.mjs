@@ -13,6 +13,8 @@ export async function verifyDeployment(base, expected) {
   assert.equal(version.revision, expected, 'Pages is serving another revision');
   assert(version.files['index.html'], 'Release manifest must include index.html');
   assert(Object.keys(version.files).some(p => p.endsWith('.wasm')), 'WASM is missing from release');
+  assert(version.files['sw.js'] && version.files['sw-update-v1.js'], 'Update worker is missing from release manifest');
+  assert(Object.keys(version.files).some(p => p.startsWith('puzzles/')), 'Static puzzle packs are missing from release manifest');
   for (const [path, hash] of Object.entries(version.files)) {
     assert(!path.startsWith('/') && !path.includes('..') && !path.includes(':'), 'Unexpected artifact path');
     assert.equal(createHash('sha256').update(await get(path)).digest('hex'), hash, `Published bytes differ: ${path}`);

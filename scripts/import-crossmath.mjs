@@ -1,5 +1,5 @@
 // Unchanged original tasks, re-encoded for the app. No clue/number/layout edits.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { initSync, verify, hint, check } from '../src/wasm/cross_math_core.js';
@@ -26,7 +26,6 @@ for (const [index, original] of rows.entries()) {
     const height = table.length, width = table[0].length;
     assert(table.every(row => row.length === width));
     assert.equal(answer.length, height); assert(answer.every(row => row.length === width));
-    if (height > 11 || width > 11) { rejected.push({ index, reason: 'screen_dimensions' }); continue; }
     const cells = [], givens = [], solution = [], bank = [], indices = new Map();
     for (let row = 0; row < height; row++) for (let col = 0; col < width; col++) {
       const value = table[row][col];
@@ -38,7 +37,6 @@ for (const [index, original] of rows.entries()) {
       solution.push(n); givens.push(value === '?' ? null : n);
       if (value === '?') bank.push(n);
     }
-    if (solution.some(n => n > 99)) { rejected.push({ index, reason: 'number_range' }); continue; }
     const equations = [];
     for (const { row, col } of cells) for (const [dy, dx] of [[0, 1], [1, 0]]) {
       if (row + 4 * dy >= height || col + 4 * dx >= width) continue;
@@ -81,5 +79,22 @@ const report = { source, inputRows: rows.length, accepted: accepted.length,
 assert(accepted.length > 0 && Object.values(report.difficulties).every(n => n > 0));
 writeFileSync(new URL('../src/data/crossmath-originals.json', import.meta.url), JSON.stringify({ source, records: accepted }, null, 2) + '\n');
 writeFileSync(new URL('../src/data/crossmath-audit.json', import.meta.url), JSON.stringify(report, null, 2) + '\n');
+// Keep original records for auditing; ship only mathematical data to players.
+const compact = r => [r.puzzle.source.record, r.puzzle.difficulty, r.puzzle.layout.rows, r.puzzle.layout.cols,
+  r.puzzle.layout.cells.map(p => [p.row, p.col]), r.puzzle.givens, r.puzzle.bank,
+  r.puzzle.equations.map(eq => [eq.cells, eq.operator]), r.puzzle.rating];
+const starters = ['easy', 'medium', 'hard'].flatMap(d => accepted.filter(r => r.puzzle.difficulty === d).slice(0, 4));
+const packs = [];
+mkdirSync(new URL('../public/puzzles/', import.meta.url), { recursive: true });
+for (let i = 0; i < accepted.length; i += 100) {
+  const records = accepted.slice(i, i + 100);
+  const contents = JSON.stringify(records.map(compact));
+  const hash = createHash('sha256').update(contents).digest('hex');
+  const file = `crossmath-${hash.slice(0, 16)}.json`;
+  writeFileSync(new URL(`../public/puzzles/${file}`, import.meta.url), contents);
+  packs.push({ file, sha256: hash, tasks: records.map(r => [r.puzzle.source.record, r.puzzle.difficulty]) });
+}
+writeFileSync(new URL('../src/data/crossmath-starter.json', import.meta.url), JSON.stringify(starters.map(compact)) + '\n');
+writeFileSync(new URL('../src/data/crossmath-index.json', import.meta.url), JSON.stringify({ source, count: accepted.length, difficulties: report.difficulties, packs }, null, 2) + '\n');
 console.log(JSON.stringify({ rows: rows.length, accepted: accepted.length, difficulties: report.difficulties,
   rejected: Object.fromEntries([...new Set(rejected.map(r => r.reason))].map(reason => [reason, rejected.filter(r => r.reason === reason).length])) }));

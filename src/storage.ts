@@ -5,12 +5,12 @@ const db = new Dexie('cross-math');
 db.version(1).stores({ saves: 'key' });
 const saves = db.table('saves') as Table<{ key: string; value: Save; writtenAt: number }>;
 const backupKey = 'cross-math-backup-v1';
-export const defaults: Settings = { puzzleSource: 'crossmath', theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
+export const defaults: Settings = { guided: true, puzzleSource: 'crossmath', theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
 export const emptySave = (): Save => ({ version: 1, activeMode: 'free', session: null, daily: null, settings: { ...defaults }, stats: { solved: [], best: {}, dailyDates: [] } });
 
 const object = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const natural = (v: unknown) => Number.isSafeInteger(v) && (v as number) >= 0;
-const number = (v: unknown) => Number.isInteger(v) && (v as number) >= 1 && (v as number) <= 99;
+const number = (v: unknown) => Number.isInteger(v) && (v as number) >= 1 && (v as number) <= 999;
 const board = (v: unknown, length: number): v is (number | null)[] => Array.isArray(v) && v.length === length && v.every(n => n === null || number(n));
 const date = (v: unknown): boolean => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && Number.isFinite(Date.parse(`${v}T00:00:00Z`)) && new Date(`${v}T00:00:00Z`).toISOString().slice(0, 10) === v;
 function notes(v: unknown, length: number): boolean {
@@ -23,7 +23,7 @@ function validLayout(p: Record<string, unknown>): boolean {
     && Array.isArray(eq.operators) && eq.operators.length === 2 && eq.operators.every(op => ['+', '-', '*', '/'].includes(op))
     && natural(eq.target) && (eq.target as number) > 0 && (eq.target as number) <= 999);
   if (p.version !== 2 || !object(p.layout) || !natural(p.layout.rows) || !natural(p.layout.cols)
-    || (p.layout.rows as number) < 5 || (p.layout.rows as number) > 11 || (p.layout.cols as number) < 5 || (p.layout.cols as number) > 11
+    || (p.layout.rows as number) < 5 || (p.layout.rows as number) > 21 || (p.layout.cols as number) < 5 || (p.layout.cols as number) > 21
     || !Array.isArray(p.layout.cells) || p.layout.cells.length !== p.givens.length || p.equations.length < 2 || p.equations.length > 20) return false;
   const cells = p.layout.cells;
   const occupied = new Set<string>();
@@ -63,6 +63,7 @@ export function validSession(value: unknown): value is Session | null {
     || !Array.isArray(p.bank) || p.bank.length > length || !p.bank.every(number) || !object(p.rating) || !validLayout(p)) return false;
   if (!['deductions', 'rounds', 'branches'].every(k => natural((p.rating as Record<string, unknown>)[k]))) return false;
   if (p.bank.length !== p.givens.filter(n => n === null).length) return false;
+  if (p.version === 1 && [...p.bank, ...p.givens].some(n => n !== null && (n as number) > 99)) return false;
   const validBoard = (values: unknown): boolean => {
     if (!board(values, length)) return false;
     const inventory = new Map<number, number>();
@@ -90,11 +91,12 @@ export function parseSave(text: string): Save {
   if (!['system', 'light', 'dark'].includes(v.settings.theme as string)
     || !['reduceMotion', 'opaque', 'showTimer', 'checkErrors'].every(k => typeof (v.settings as Record<string, unknown>)[k] === 'boolean')) throw new Error('Ungültige Einstellungen.');
   if (v.settings.puzzleSource !== undefined && !['crossmath', 'generator'].includes(v.settings.puzzleSource as string)) throw new Error('Ungültige Aufgabenquelle.');
+  if (v.settings.guided !== undefined && typeof v.settings.guided !== 'boolean') throw new Error('Ungültiger geführter Modus.');
   const list = (v: unknown) => Array.isArray(v) && v.length <= 10000 && v.every(s => typeof s === 'string' && s.length <= 100);
   if (!list(v.stats.solved) || !list(v.stats.dailyDates) || !object(v.stats.best)
     || !Object.entries(v.stats.best).every(([k, n]) => ['easy', 'medium', 'hard'].includes(k) && natural(n))) throw new Error('Ungültige Statistik.');
   const result = v as unknown as Save;
-  return { ...result, settings: { ...result.settings, puzzleSource: result.settings.puzzleSource ?? 'crossmath' } };
+  return { ...result, settings: { ...result.settings, guided: result.settings.guided ?? true, puzzleSource: result.settings.puzzleSource ?? 'crossmath' } };
 }
 export async function loadSave(): Promise<Save> {
   const candidates: { writtenAt: number; value: Save }[] = [];

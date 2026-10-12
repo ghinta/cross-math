@@ -39,6 +39,16 @@ export const engine = {
   check: (puzzle: Puzzle, board: Board) => request<Check>('check', { puzzle, board }),
   verify: (puzzle: Puzzle) => request<boolean>('verify', { puzzle }),
   hint: (puzzle: Puzzle, board: Board) => request<Hint>('hint', { puzzle, board }),
+  solution: async (puzzle: Puzzle): Promise<number[]> => {
+    const board = [...puzzle.givens];
+    for (let step = 0; board.includes(null) && step < puzzle.bank.length; step++) {
+      const next = await request<Hint>('hint', { puzzle, board });
+      if (next.clear_cell !== null || board[next.cell] !== null) throw new Error('Ungültiger Lösungsweg.');
+      board[next.cell] = next.value;
+    }
+    if (board.includes(null) || !(await request<Check>('check', { puzzle, board })).valid) throw new Error('Die Aufgabe konnte nicht geprüft werden.');
+    return board as number[];
+  },
 };
 
 export function dailySeed(date: string): number {

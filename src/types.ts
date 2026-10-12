@@ -22,6 +22,6 @@ export interface Session {
   undo: Snapshot[]; redo: Snapshot[]; elapsed: number; hints: number;
   mode: 'free' | 'daily'; day: string | null; completed: boolean;
 }
-export interface Settings { puzzleSource: 'crossmath' | 'generator'; theme: 'system' | 'light' | 'dark'; reduceMotion: boolean; opaque: boolean; showTimer: boolean; checkErrors: boolean }
+export interface Settings { guided: boolean; puzzleSource: 'crossmath' | 'generator'; theme: 'system' | 'light' | 'dark'; reduceMotion: boolean; opaque: boolean; showTimer: boolean; checkErrors: boolean }
 export interface Stats { solved: string[]; best: Partial<Record<Difficulty, number>>; dailyDates: string[] }
 export interface Save { version: 1; activeMode: 'free' | 'daily'; session: Session | null; daily: Session | null; settings: Settings; stats: Stats }

@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build:wasm": "node scripts/build-wasm.mjs",
-    "build": "npm run build:wasm && tsc -b && vite build",
+    "build": "npm run build:wasm && tsc -b && vite build && node scripts/finalize-release.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "test": "vitest run",
     "test:core": "cargo test -p cross-math-core",
@@ -18,9 +18,11 @@
     "test:e2e": "playwright test",
     "typecheck": "tsc -b",
     "tauri": "tauri",
-    "check": "npm run typecheck && npm test && cargo test -p cross-math-core && cargo clippy -p cross-math-core -- -D warnings"
+    "check": "npm run typecheck && npm test && cargo test -p cross-math-core && cargo clippy -p cross-math-core -- -D warnings",
+    "check:actions": "node scripts/check-actions.mjs"
   },
   "dependencies": {
+    "@noble/hashes": "2.4.0",
     "@tauri-apps/api": "2.12.3",
     "dexie": "4.4.6",
     "lucide-react": "1.55.0",

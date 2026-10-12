@@ -1,9 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
 
 const base = process.env.VITE_BASE_PATH ?? '/';
 const revision = process.env.GITHUB_SHA ?? process.env.BUILD_REVISION ?? 'local';
@@ -27,25 +24,14 @@ export default defineConfig({
     },
     workbox: {
       clientsClaim: true,
+      skipWaiting: true,
+      importScripts: ['sw-update-v1.js'],
       globPatterns: ['**/*.{js,css,html,svg,png,wasm,webmanifest}'],
       maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
       navigateFallback: `${base}index.html`,
     },
     disable: process.env.TAURI_ENV_PLATFORM !== undefined,
-  }), {
-    name: 'release-manifest', enforce: 'post',
-    generateBundle() {
-      this.emitFile({ type: 'asset', fileName: 'version.json', source: '{}' });
-    },
-    writeBundle(options, bundle) {
-      // Hash emitted files after Vite has resolved final chunk references.
-      const dir = resolve(options.dir!);
-      const files = Object.fromEntries(Object.keys(bundle).filter(name => name !== 'version.json').map(name => [name,
-        createHash('sha256').update(readFileSync(resolve(dir, name))).digest('hex'),
-      ]));
-      writeFileSync(resolve(dir, 'version.json'), JSON.stringify({ revision, files }) + '\n');
-    },
-  }],
+  })],
   clearScreen: false,
   server: { strictPort: true },
   build: { target: 'es2022' },

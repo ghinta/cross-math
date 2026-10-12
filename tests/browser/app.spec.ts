@@ -31,7 +31,7 @@ test('play, notes, undo/redo, pause and persisted restore', async ({ page }) => 
 test('hints complete the puzzle and statistics survive reload', async ({ page }) => {
   await page.goto('./');
   await expect(page.locator('.puzzle-grid')).toBeVisible();
-  const freeFields = await page.locator('.number-cell.editable').count();
+  const freeFields = await page.evaluate(() => JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value.session.puzzle.bank.length);
   for (let i = 0; i < freeFields; i++) {
     await page.getByRole('button', { name: 'Hinweis', exact: true }).click();
     await page.getByRole('button', { name: 'Zahl einsetzen' }).click();
@@ -52,12 +52,12 @@ test('daily game preserves free game and all difficulties generate', async ({ pa
   const free = await page.locator('.puzzle-grid').textContent();
   await page.getByRole('button', { name: 'Tagesrätsel', exact: true }).first().click();
   await expect(page.locator('.game-title')).toContainText('Tagesrätsel');
-  await expect(page.locator('.number-counter')).toContainText(String(await page.locator('.number-cell.editable').count()));
+  await expect(page.locator('.number-counter')).toContainText(String(await page.evaluate(() => { const s = JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value; return s[s.activeMode === 'daily' ? 'daily' : 'session'].puzzle.bank.length; })));
   await page.getByRole('button', { name: 'Freies Spiel', exact: true }).click();
   await expect(page.locator('.puzzle-grid')).toHaveText(free!);
   await page.getByRole('button', { name: 'Schwer', exact: true }).click();
   await expect(page.locator('.level-tag')).toHaveText('Schwer');
-  await expect(page.locator('.number-counter')).toContainText(String(await page.locator('.number-cell.editable').count()));
+  await expect(page.locator('.number-counter')).toContainText(String(await page.evaluate(() => { const s = JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value; return s[s.activeMode === 'daily' ? 'daily' : 'session'].puzzle.bank.length; })));
   await page.getByRole('button', { name: 'Mittel', exact: true }).click();
   await expect(page.locator('.level-tag')).toHaveText('Mittel');
 });

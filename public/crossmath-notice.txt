@@ -9,7 +9,7 @@ Die unveränderten Originalaufgaben in `src/data/crossmath-originals.json` stamm
 - Lizenztext: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.en
 - Veröffentlichung: https://arxiv.org/abs/2604.16256
 
-Technischer Formatwechsel am 12. Oktober 2026: Originaltabellen wurden mechanisch in Zahlenfelder und Gleichungen übertragen. Zahlen, Rechenzeichen, Positionen, Vorgaben, Leerfelder und Antworten wurden nicht verändert. Die Zahlenauswahl wird aus den unveränderten Autorenantworten abgeleitet. Das Paket enthält 32 Originalaufgaben; übrige Aufgaben wurden für das aktuelle Bildschirmformat ausgelassen. Originaldatensätze und Auswahlbericht bleiben erhalten.
+Technischer Formatwechsel am 12. Oktober 2026: Originaltabellen wurden mechanisch in Zahlenfelder und Gleichungen übertragen. Zahlen, Rechenzeichen, Positionen, Vorgaben, Leerfelder und Antworten wurden nicht verändert. Die Zahlenauswahl wird aus den unveränderten Autorenantworten abgeleitet. Die Sammlung enthält 242 unabhängig geprüfte Originalaufgaben in drei nachladbaren Paketen. Acht widersprüchliche Originaldatensätze wurden ausgeschlossen. Ein Startpaket mit zwölf Aufgaben wird direkt mitgeliefert. Originaldatensätze und Auswahlbericht bleiben erhalten.
 
 Die Datensatzlizenz gilt weiterhin für die Originalaufgaben. Sie verlangt Namensnennung, einen Lizenzverweis und nichtkommerzielle Verwendung. Bearbeitete Aufgaben dürfen unter dieser Lizenz nicht weitergegeben werden. Das Material wird ohne Gewähr bereitgestellt. Die unabhängige mathematische Prüfung durch dieses Projekt ist keine Gewährleistung der ursprünglichen Autoren.
 
