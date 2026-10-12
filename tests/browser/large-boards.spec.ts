@@ -72,8 +72,11 @@ test('all 242 originals download without WebCrypto and remain selectable after o
   await page.getByRole('button', { name: 'Schließen', exact: true }).click();
   await page.evaluate(() => { let seed = 20; crypto.getRandomValues = ((array: Uint32Array) => { array[0] = seed++; return array; }) as typeof crypto.getRandomValues; });
   const selected = new Set<string>();
+  const hard = originals.records.filter(r => r.puzzle.difficulty === 'hard');
   for (let i = 0; i < 7; i++) {
     await page.getByRole('button', { name: 'Schwer', exact: true }).click();
+    // Selection verifies asynchronously; wait for this specific new task.
+    await expect(page.locator('.game-card')).toHaveAttribute('data-puzzle-id', hard[20 + i].puzzle.id);
     await expect(page.locator('.game-card')).toHaveAttribute('data-puzzle-source', 'crossmath');
     await expect(page.locator('.level-tag')).toHaveText('Schwer');
     const id = (await page.locator('.game-card').getAttribute('data-puzzle-id'))!;
