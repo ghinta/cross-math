@@ -48,14 +48,15 @@ test('an old cached PWA with no update UI refreshes automatically and preserves 
     stage = 1;
     await verifyDeployment(url, revision);
     await page.reload(); // The new worker must recover even this early client.
-    await expect(page.locator('.legacy-upgrade')).toBeVisible();
+    // Includes worker installation, the save grace period and a full reload.
+    await expect(page.locator('.legacy-upgrade')).toBeVisible({ timeout: 15_000 });
     await expect(page.locator(`[data-cell="${cell}"] .number-value`)).toHaveText(String(board[cell]));
     await expect(page.getByRole('heading', { name: 'Alte Version' })).toHaveCount(0);
     stage = 2;
     const navigation = page.waitForEvent('framenavigated', { predicate: frame => frame === page.mainFrame() });
     await page.evaluate(() => window.dispatchEvent(new Event('online')));
     await navigation;
-    await expect(page.locator('.legacy-upgrade')).toBeVisible();
+    await expect(page.locator('.legacy-upgrade')).toBeVisible({ timeout: 15_000 });
     await expect(page.locator(`[data-cell="${cell}"] .number-value`)).toHaveText(String(board[cell]));
     await page.locator('.legacy-upgrade').click();
     await page.getByRole('dialog').getByRole('button', { name: 'Neues Rätsel' }).click();

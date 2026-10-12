@@ -75,7 +75,9 @@ test('PWA restarts offline and generates new puzzles offline', async ({ page, co
   await context.setOffline(true);
   await page.reload();
   await expect(page.locator('.puzzle-grid')).toBeVisible();
-  await expect(page.getByText('Du spielst offline.')).toBeVisible();
+  await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
+  await expect(page.locator('.app-info')).toContainText('Offline');
+  await page.getByRole('button', { name: 'Schließen', exact: true }).click();
   await page.getByRole('button', { name: 'Schwer', exact: true }).click();
   await expect(page.locator('.level-tag')).toHaveText('Schwer');
   await page.getByRole('button', { name: 'Hinweis', exact: true }).click();

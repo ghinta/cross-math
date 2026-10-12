@@ -27,7 +27,7 @@ npm run build
 npm run preview
 ```
 
-`dist/` auf einem statischen HTTPS-Host veröffentlichen. Die App ist nach dem ersten vollständigen Laden offline nutzbar, einschließlich neuer Rätsel und Hinweise. Der Service Worker speichert auch die WASM-Engine und den Worker. Die App bietet Updates an; der Spielstand wird vor dem Aktualisieren gesichert. Die Installation erfolgt über den Browser, auf dem iPhone über das Teilen-Menü. Der Entwicklungsserver verwendet keinen Offline-Cache.
+`dist/` auf einem statischen HTTPS-Host veröffentlichen. Die App ist nach dem ersten vollständigen Laden offline nutzbar, einschließlich neuer Rätsel und Hinweise. Der Service Worker speichert auch die WASM-Engine und den Worker. Neue Versionen werden automatisch geladen; der Spielstand wird vor dem Aktualisieren gesichert. Die Installation erfolgt über die Einstellungen oder den Browser, auf dem iPhone über das Teilen-Menü. Der Entwicklungsserver verwendet keinen Offline-Cache.
 
 ### GitHub Pages
 
@@ -84,9 +84,11 @@ Der Generator erzeugt zunächst ein vollständig korrektes Brett und entfernt nu
 
 Formatversion 1 bleibt über `crates/core/src/legacy.rs` unterstützt. Laufende alte Spiele, Notizen, Verlauf und Statistiken werden erhalten. „Neues Rätsel“ startet das größere Brett. Der Tagesrätsel-Startwert verwendet für neue Aufgaben einen versionierten Namensraum; bereits gespeicherte Tagesrätsel desselben UTC-Datums bleiben erhalten.
 
-Die Spielansicht nutzt die verfügbare dynamische Bildschirmhöhe und sichere Randabstände. Auf dem Handy liegt der Zahlenvorrat unter dem Brett, auf breiten Bildschirmen daneben. Hinweise, Einstellungen und Regeln öffnen eigene Dialoge; umfangreiche Dialoginhalte können innerhalb des Dialogs scrollen. Das Spielfeld und der Zahlenvorrat benötigen keinen Scrollbereich.
+Die Spielansicht nutzt die verfügbare dynamische Bildschirmhöhe und sichere Randabstände. Auf dem Handy liegt der Zahlenvorrat unter dem Brett, auf breiten Bildschirmen daneben. Hinweise, Einstellungen und Regeln öffnen eigene Dialoge; umfangreiche Dialoginhalte können innerhalb des Dialogs scrollen. Das Spielfeld und der Zahlenvorrat benötigen keinen Scrollbereich. Online-/Offline-Status und Installation liegen in den Einstellungen; die frühere Statuszeile reserviert keinen Platz mehr. Auf dem Handy sind Brettfelder auf 44 px begrenzt und die Vorratskacheln 34 px hoch.
 
-Arbeitsbereiche enthalten vollständige, verbundene Gleichungen und können an Kreuzungen überlappen. Die Bereiche passen sich an die verfügbare Fläche an; die Gesamtübersicht ermöglicht direkte Navigation. Auf sehr niedrigen Displays wird eine senkrechte Einzelrechnung zusätzlich waagrecht angezeigt und ausdrücklich gekennzeichnet. Übersicht/Detail sind per Knopf oder Zweifingergeste erreichbar. Der optionale geführte Modus zeigt die Lösungszahlen des sichtbaren Bereichs einschließlich ihrer Häufigkeiten. Er gibt zusätzliche Hinweise und reduziert die Schwierigkeit; „Alle Zahlen“ und das Ausschalten des Modus bleiben verfügbar. Große Vorräte werden ohne Scrollen in erreichbare Seiten aufgeteilt.
+Arbeitsbereiche enthalten mindestens zwei vollständige, verbundene Gleichungen und überlappen bei Bedarf für mehr Kontext. Die Bereiche passen sich an die verfügbare Fläche an; die Gesamtübersicht ermöglicht direkte Navigation. Auf sehr niedrigen Displays werden zwei verbundene Rechnungen als kompakte Zeilen angezeigt. Gemeinsame Felder tragen dieselbe Buchstabenmarkierung und teilen Werte, Notizen und Verlauf. Übersicht/Detail sind per Knopf oder Zweifingergeste erreichbar.
+
+Der optionale geführte Modus enthält die noch benötigten Bereichszahlen einschließlich ihrer Häufigkeiten. Zusätzliche echte Zahlen aus dem restlichen Vorrat sorgen für mindestens vier verschiedene Auswahlzahlen, sofern so viele verfügbar sind. Ein einzelnes offenes Feld verrät daher nicht allein durch eine einzige angebotene Kachel die Antwort; die letzte verbleibende Kachel bleibt natürlich einsetzbar. „Alle Zahlen“ und das Ausschalten des Modus bleiben verfügbar. Beide Einstellungen werden mit dem Spielstand gespeichert und gelten auch nach einem neuen Rätsel oder Neustart. Große Vorräte werden ohne Scrollen in erreichbare Seiten aufgeteilt. Die Palette behält beim Seitenwechsel und beim Lösen ihre Höhe, damit das Brett nicht springt.
 
 36 eigene, vorab geprüfte Aufgaben liegen in `src/data/puzzles.json`. Sie dienen im Generator-Modus als geprüfte Reserve bei einem Generierungsfehler. Regeneration: `cargo run -p cross-math-core --release --example catalog > src/data/puzzles.json`.
 

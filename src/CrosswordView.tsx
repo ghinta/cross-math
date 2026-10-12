@@ -1,16 +1,18 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight, Expand, Focus } from 'lucide-react';
 import type { Check, CrosswordPuzzle, Session } from './types';
-import { tileSpan, workAreas, type WorkArea } from './workareas';
+import { tilePixels, tileSpan, workAreas, type WorkArea } from './workareas';
 
 const symbol = (op: string) => op === '*' ? '×' : op === '/' ? '÷' : op === '-' ? '−' : op;
 interface Props { session: Session; selected: number | null; onSelect: (cell: number) => void; check: Check | null; showErrors: boolean; onVisible: (cells: number[] | null) => void }
 
-function Grid({ session, selected, onSelect, check, showErrors, area, linear }: Omit<Props, 'onVisible'> & { area: WorkArea; linear: boolean }) {
+function Grid({ session, selected, onSelect, check, showErrors, area, compact }: Omit<Props, 'onVisible'> & { area: WorkArea; compact: boolean }) {
   const p = session.puzzle as CrosswordPuzzle;
   const tiles = new Map<string, ReactNode>();
-  const positions = linear ? new Map(p.equations[area.equations[0]].cells.map((i, j) => [i, { row: 0, col: j * 2 }])) : new Map(area.cells.map(i => [i, { row: p.layout.cells[i].row - area.top, col: p.layout.cells[i].col - area.left }]));
-  for (const [index, { row, col }] of positions) {
+  const positions = compact ? area.equations.flatMap((eq, row) => p.equations[eq].cells.map((index, col) => ({ index, row: row * 2, col: col * 2 })))
+    : area.cells.map(index => ({ index, row: p.layout.cells[index].row - area.top, col: p.layout.cells[index].col - area.left }));
+  const shared = compact ? area.cells.filter(cell => positions.filter(pos => pos.index === cell).length > 1) : [];
+  for (const { index, row, col } of positions) {
     const given = p.givens[index] !== null;
     const eqs = p.equations.map((eq, i) => eq.cells.includes(index) ? i : -1).filter(i => i >= 0);
     const related = selected !== null && eqs.some(i => p.equations[i].cells.includes(selected));
@@ -19,21 +21,22 @@ function Grid({ session, selected, onSelect, check, showErrors, area, linear }: 
     const original = p.layout.cells[index];
     tiles.set(`${row},${col}`, <button key={`${row},${col}`} data-cell={index} data-digits={String(session.board[index] ?? '').length} className={`number-cell ${given ? 'given' : 'editable'} ${selected === index ? 'selected' : related ? 'related' : ''} ${error ? 'error' : ''} ${correct ? 'correct' : ''}`} aria-label={`Zeile ${original.row + 1}, Spalte ${original.col + 1}${given ? ', vorgegeben' : ''}, ${session.board[index] ?? 'leer'}`} aria-pressed={selected === index} disabled={given || session.completed} onClick={() => onSelect(index)}>
       {session.board[index] !== null ? <span className="number-value">{session.board[index]}</span> : session.notes[index]?.length ? <span className="cell-notes">{session.notes[index].join(' · ')}</span> : <span className="empty-cell" aria-hidden="true">·</span>}
+      {shared.includes(index) && <span className="linked-mark" aria-hidden="true">{String.fromCharCode(65 + shared.indexOf(index))}</span>}
     </button>);
   }
-  for (const i of area.equations) {
-    const eq = p.equations[i], [a, b] = eq.cells.map(c => positions.get(c)!);
+  for (const [row, i] of area.equations.entries()) {
+    const eq = p.equations[i], [a, b] = compact ? [{ row: row * 2, col: 0 }, { row: row * 2, col: 2 }] : eq.cells.map(c => positions.find(pos => pos.index === c)!);
     const vertical = a.col === b.col;
     for (const offset of [1, 3]) {
       const key = `${a.row + (vertical ? offset : 0)},${a.col + (vertical ? 0 : offset)}`;
       tiles.set(key, <span key={key} className={`cross-symbol ${check?.equations[i] === 'valid' ? 'correct' : ''} ${showErrors && check?.equations[i] === 'invalid' ? 'error' : ''}`} aria-hidden="true">{offset === 1 ? symbol(eq.operator) : <span className={vertical ? 'vertical-equals' : ''}>=</span>}</span>);
     }
   }
-  const rows = linear ? 1 : area.rows, cols = linear ? 5 : area.cols;
+  const rows = compact ? area.equations.length * 2 - 1 : area.rows, cols = compact ? 5 : area.cols;
   const units = (n: number) => (n + 1) / 2 + (n - 1) / 2 * .45;
   const style = { '--cols': cols, '--rows': rows, '--units-x': units(cols), '--ratio': units(cols) / units(rows), aspectRatio: `${units(cols)}/${units(rows)}`,
     gridTemplateColumns: Array.from({ length: cols }, (_, i) => `${i % 2 ? .45 : 1}fr`).join(' '), gridTemplateRows: Array.from({ length: rows }, (_, i) => `${i % 2 ? .45 : 1}fr`).join(' ') } as CSSProperties;
-  return <div className={`puzzle-grid crossword-grid ${linear ? 'linear-equation' : ''}`} style={style} aria-label={`Arbeitsbereich mit ${area.equations.length} vollständigen Gleichungen`}>{Array.from({ length: rows * cols }, (_, i) => {
+  return <div className={`puzzle-grid crossword-grid ${compact ? 'linked-equations' : ''}`} data-equations={area.equations.length} style={style} aria-label={`Arbeitsbereich mit ${area.equations.length} vollständigen Gleichungen`}>{Array.from({ length: rows * cols }, (_, i) => {
     const key = `${Math.floor(i / cols)},${i % cols}`;
     return tiles.get(key) ?? <span key={key} aria-hidden="true" />;
   })}</div>;
@@ -77,8 +80,7 @@ export default function CrosswordView(props: Props) {
     }
   }, [selected, areas]);
   useEffect(() => { onVisible(overview ? null : active.cells); }, [overview, active, onVisible]);
-  const required = (n: number) => ((n + 1) / 2 + (n - 1) / 2 * .45) * 44 + (n - 1) * 2;
-  const linear = active.equations.length === 1 && active.rows > 1 && required(active.rows) > size.height;
+  const compact = tilePixels(active.rows) > size.height || tilePixels(active.cols) > size.width;
   function chooseArea(index: number, preferred?: number) {
     setCurrent(index); setOverview(false);
     const area = areas[index];
@@ -95,7 +97,7 @@ export default function CrosswordView(props: Props) {
   return <div className="crossword-view" data-view={overview ? 'overview' : 'detail'} data-area={Math.min(current, areas.length - 1)}>
     <nav className="view-tools" aria-label="Brettansicht">
       <button className="overview-button" aria-label={overview ? 'Zum Arbeitsbereich' : 'Brettübersicht öffnen'} onClick={() => setOverview(v => !v)}><MapBoard {...{ session, selected }} area={active} small /><span>{overview ? <Focus size={15} /> : <Expand size={15} />}{overview ? 'Detail' : 'Übersicht'}</span></button>
-      <span className="area-counter" aria-live="polite">Bereich {Math.min(current, areas.length - 1) + 1} / {areas.length}{linear && <small>Senkrechte Rechnung →</small>}</span>
+      <span className="area-counter" aria-live="polite">Bereich {Math.min(current, areas.length - 1) + 1} / {areas.length}{compact && <small>Gleiche Felder sind verknüpft</small>}</span>
       <div className="area-buttons"><button aria-label="Vorheriger Bereich" onClick={() => chooseArea((current - 1 + areas.length) % areas.length)}><ChevronLeft size={19} /></button><button aria-label="Nächster Bereich" onClick={next}><ChevronRight size={19} /></button></div>
     </nav>
     <div className="board-content" ref={content} onPointerDown={e => {
@@ -110,7 +112,7 @@ export default function CrosswordView(props: Props) {
         if (scale < .8) { setOverview(true); pinch.current = null; }
       }
     }} onPointerUp={e => { pointers.current.delete(e.pointerId); pinch.current = null; }} onPointerCancel={e => { pointers.current.delete(e.pointerId); pinch.current = null; }}>
-      {overview ? <div className="puzzle-grid overview-grid"><MapBoard {...{ session, selected }} area={active} onChoose={cell => chooseArea(areas.findIndex(a => a.cells.includes(cell)), cell)} /></div> : <Grid {...props} area={active} linear={linear} />}
+      {overview ? <div className="puzzle-grid overview-grid"><MapBoard {...{ session, selected }} area={active} onChoose={cell => chooseArea(areas.findIndex(a => a.cells.includes(cell)), cell)} /></div> : <Grid {...props} area={active} compact={compact} />}
     </div>
   </div>;
 }

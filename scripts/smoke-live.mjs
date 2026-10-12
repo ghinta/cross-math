@@ -11,6 +11,8 @@ try {
   await page.goto(process.env.DEPLOYED_URL, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.game-card')).toHaveAttribute('data-puzzle-source', 'crossmath', { timeout: 30_000 });
   await expect(page.locator('.crossword-grid')).toBeVisible();
+  expect(Number(await page.locator('.crossword-grid').getAttribute('data-equations'))).toBeGreaterThanOrEqual(2);
+  await expect(page.locator('.app-footer')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Geführt an', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
   await expect(page.locator('.source-attribution')).toContainText('242 geprüfte Originalaufgaben');
@@ -27,6 +29,7 @@ try {
   await expect(page.locator('.crossword-grid')).toBeVisible();
   await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
   await expect(page.locator('.download-section')).toContainText('242 / 242');
+  await expect(page.locator('.app-info')).toContainText('Offline');
   await page.getByRole('button', { name: 'Schließen', exact: true }).click();
   await page.getByRole('button', { name: 'Hinweis', exact: true }).click();
   await expect(page.locator('.hint-explanation')).toContainText('=');

@@ -5,7 +5,7 @@ const db = new Dexie('cross-math');
 db.version(1).stores({ saves: 'key' });
 const saves = db.table('saves') as Table<{ key: string; value: Save; writtenAt: number }>;
 const backupKey = 'cross-math-backup-v1';
-export const defaults: Settings = { guided: true, puzzleSource: 'crossmath', theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
+export const defaults: Settings = { guided: true, showAllNumbers: false, puzzleSource: 'crossmath', theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
 export const emptySave = (): Save => ({ version: 1, activeMode: 'free', session: null, daily: null, settings: { ...defaults }, stats: { solved: [], best: {}, dailyDates: [] } });
 
 const object = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -92,11 +92,12 @@ export function parseSave(text: string): Save {
     || !['reduceMotion', 'opaque', 'showTimer', 'checkErrors'].every(k => typeof (v.settings as Record<string, unknown>)[k] === 'boolean')) throw new Error('Ungültige Einstellungen.');
   if (v.settings.puzzleSource !== undefined && !['crossmath', 'generator'].includes(v.settings.puzzleSource as string)) throw new Error('Ungültige Aufgabenquelle.');
   if (v.settings.guided !== undefined && typeof v.settings.guided !== 'boolean') throw new Error('Ungültiger geführter Modus.');
+  if (v.settings.showAllNumbers !== undefined && typeof v.settings.showAllNumbers !== 'boolean') throw new Error('Ungültige Zahlenauswahl.');
   const list = (v: unknown) => Array.isArray(v) && v.length <= 10000 && v.every(s => typeof s === 'string' && s.length <= 100);
   if (!list(v.stats.solved) || !list(v.stats.dailyDates) || !object(v.stats.best)
     || !Object.entries(v.stats.best).every(([k, n]) => ['easy', 'medium', 'hard'].includes(k) && natural(n))) throw new Error('Ungültige Statistik.');
   const result = v as unknown as Save;
-  return { ...result, settings: { ...result.settings, guided: result.settings.guided ?? true, puzzleSource: result.settings.puzzleSource ?? 'crossmath' } };
+  return { ...result, settings: { ...result.settings, guided: result.settings.guided ?? true, showAllNumbers: result.settings.showAllNumbers ?? false, puzzleSource: result.settings.puzzleSource ?? 'crossmath' } };
 }
 export async function loadSave(): Promise<Save> {
   const candidates: { writtenAt: number; value: Save }[] = [];

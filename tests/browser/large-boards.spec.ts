@@ -47,9 +47,12 @@ test('guided areas can complete a large original using only local tiles, without
     const board = await page.evaluate(() => JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value.session.board);
     const visible = (await page.locator('[data-cell]').evaluateAll(nodes => nodes.map(n => Number(n.getAttribute('data-cell')))));
     const expected = [...new Set(visible.filter(i => tall.puzzle.givens[i] === null && board[i] !== tall.solution[i]).map(i => tall.solution[i]))].sort((a, b) => a - b);
-    await expect.poll(async () => (await page.locator('[data-number]').evaluateAll(nodes => nodes.map(n => Number(n.getAttribute('data-number'))))).sort((a, b) => a - b)).toEqual(expected);
+    await expect.poll(async () => { const offered = await page.locator('[data-number]').evaluateAll(nodes => nodes.map(n => Number(n.getAttribute('data-number')))); return expected.every(n => offered.includes(n)); }).toBe(true);
+    const remainingValues = new Set(tall.puzzle.bank.filter(n => tall.puzzle.bank.filter(x => x === n).length > board.filter((x: number | null, i: number) => x === n && tall.puzzle.givens[i] === null).length));
+    expect(await page.locator('[data-number]').count()).toBeGreaterThanOrEqual(Math.min(4, remainingValues.size));
+    expect(Number(await page.locator('.crossword-grid').getAttribute('data-equations'))).toBeGreaterThanOrEqual(2);
     await page.locator(`[data-number="${tall.solution[cell]}"]`).click();
-    await expect(page.locator(`[data-cell="${cell}"] .number-value`)).toHaveText(String(tall.solution[cell]));
+    for (const value of await page.locator(`[data-cell="${cell}"] .number-value`).all()) await expect(value).toHaveText(String(tall.solution[cell]));
   }
   await expect(page.getByText('Rätsel gelöst.', { exact: true })).toBeVisible();
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value.session.hints)).toBe(0);
@@ -129,4 +132,64 @@ test('two-finger gestures switch between overview and readable detail', async ({
     await client.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
     await expect(page.locator('.crossword-view')).toHaveAttribute('data-view', 'detail');
   } finally { await context.close(); }
+});
+
+
+test('compact portrait uses the bottom space and remembers both number preferences', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 }); await seed(page, tall); await page.goto('./');
+  await expect(page.locator('.side-heading')).toContainText('ZAHLEN FÜR DIESEN BEREICH');
+  await expect(page.locator('.app-footer')).toHaveCount(0);
+  const card = (await page.locator('.game-card').boundingBox())!;
+  expect(844 - card.y - card.height).toBeLessThanOrEqual(8);
+  for (const cell of await page.locator('[data-cell]').all()) expect((await cell.boundingBox())!.width).toBeLessThanOrEqual(45);
+  await page.getByRole('button', { name: 'Alle Zahlen', exact: true }).click();
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Bereichszahlen', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Geführt an', exact: true }).click();
+  await page.getByRole('button', { name: 'Neues Rätsel', exact: true }).click();
+  await expect(page.locator('.game-card')).not.toHaveAttribute('data-puzzle-id', tall.puzzle.id);
+  await expect(page.getByRole('button', { name: 'Geführt aus', exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Geführt aus', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
+  await expect(page.locator('.app-info')).toContainText('Online');
+  await expect(page.getByRole('button', { name: 'App installieren', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Schließen', exact: true }).click();
+  await page.screenshot({ path: 'artifacts/cross-math-compact-portrait.png' });
+});
+
+
+test('linked equation rows share values, notes and undo on a small display', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 }); await seed(page, tall); await page.goto('./');
+  await expect(page.locator('.side-heading')).toContainText('ZAHLEN FÜR DIESEN BEREICH');
+  await page.getByRole('button', { name: 'Alle Zahlen', exact: true }).click();
+  let shared: string | null = null;
+  for (let step = 0; step < 20 && shared === null; step++) {
+    shared = await page.locator('.linked-equations .number-cell.editable').evaluateAll(nodes => {
+      const ids = nodes.map(n => n.getAttribute('data-cell'));
+      return ids.find((id, i) => ids.indexOf(id) !== i) ?? null;
+    });
+    if (shared === null) await page.getByRole('button', { name: 'Nächster Bereich' }).click();
+  }
+  expect(shared).not.toBeNull();
+  const copies = page.locator(`[data-cell="${shared}"]`), value = tall.solution[Number(shared)];
+  await expect(copies).toHaveCount(2);
+  const labels = await copies.locator('.linked-mark').allTextContents();
+  expect(labels[0]).toBe(labels[1]);
+  await copies.first().click(); await page.keyboard.type(String(value));
+  await expect(copies.locator('.number-value')).toHaveText([String(value), String(value)]);
+  await page.getByRole('button', { name: 'Rückgängig', exact: true }).click();
+  await expect(copies.locator('.empty-cell')).toHaveCount(2);
+  await page.getByRole('button', { name: 'Notizen', exact: true }).click();
+  await page.keyboard.type(String(value));
+  await expect(copies.locator('.cell-notes')).toHaveText([String(value), String(value)]);
+});
+
+test('the reported medium puzzle uses compact connected areas in portrait', async ({ page }) => {
+  const record = originals.records.find(r => r.puzzle.id === 'hf-crossmath-0007')!;
+  await page.setViewportSize({ width: 390, height: 844 }); await seed(page, record); await page.goto('./');
+  await page.getByRole('button', { name: 'Geführt an', exact: true }).click();
+  await page.getByRole('button', { name: 'Nächster Bereich' }).click();
+  expect(Number(await page.locator('.crossword-grid').getAttribute('data-equations'))).toBeGreaterThanOrEqual(2);
+  await page.screenshot({ path: 'artifacts/cross-math-medium-compact.png' });
 });

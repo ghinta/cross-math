@@ -5,18 +5,40 @@ import { emptySave, parseSave } from '../src/storage';
 import { newSession, place } from '../src/game';
 import type { CrosswordPuzzle } from '../src/types';
 
-it('large originals retain every full equation and crossing in small working areas', () => {
+it('every original retains complete connected equations, including on very small screens', () => {
   for (const record of originals.records) {
     const p = record.puzzle as CrosswordPuzzle;
-    const areas = workAreas(p, 5, 7);
-    expect(new Set(areas.flatMap(a => a.equations)).size).toBe(p.equations.length);
-    for (const area of areas) {
-      expect(area.rows).toBeLessThanOrEqual(5); expect(area.cols).toBeLessThanOrEqual(7);
-      for (const i of area.equations) {
-        expect(p.equations[i].cells.every(c => area.cells.includes(c))).toBe(true);
+    for (const [rows, cols] of [[5, 7], [1, 5], [11, 11]]) {
+      const areas = workAreas(p, rows, cols);
+      expect(new Set(areas.flatMap(a => a.equations)).size).toBe(p.equations.length);
+      for (const area of areas) {
+        expect(area.equations.length).toBeGreaterThanOrEqual(2);
+        if (area.rows > rows || area.cols > cols) expect(area.equations.length).toBe(2);
+        const connected = new Set(p.equations[area.equations[0]].cells);
+        for (let pass = 0; pass < area.equations.length; pass++) {
+          for (const i of area.equations) if (p.equations[i].cells.some(c => connected.has(c))) p.equations[i].cells.forEach(c => connected.add(c));
+        }
+        expect(connected.size).toBe(area.cells.length);
+        for (const i of area.equations) {
+          expect(p.equations[i].cells.every(c => area.cells.includes(c))).toBe(true);
+        }
       }
+      expect(new Set(areas.flatMap(a => a.cells)).size).toBe(p.givens.length);
     }
-    expect(new Set(areas.flatMap(a => a.cells)).size).toBe(p.givens.length);
+  }
+});
+
+it('one open regional field still offers alternatives from real stock and preserves the final move', () => {
+  for (const record of originals.records) {
+    const p = record.puzzle as CrosswordPuzzle;
+    const cell = p.givens.findIndex(n => n === null);
+    const choices = guidedNumbers(p, p.givens, record.solution, [cell]);
+    expect(choices.has(record.solution[cell])).toBe(true);
+    expect(choices.size).toBeGreaterThanOrEqual(Math.min(4, new Set(p.bank).size));
+    expect([...choices.keys()].every(n => p.bank.includes(n))).toBe(true);
+    const finalBoard = [...record.solution]; finalBoard[cell] = null;
+    expect([...guidedNumbers(p, finalBoard, record.solution, [cell])]).toEqual([[record.solution[cell], 1]]);
+    expect(guidedNumbers(p, record.solution, record.solution, [cell]).size).toBe(0);
   }
 });
 
