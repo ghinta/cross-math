@@ -26,16 +26,4 @@ export function travel(s: Session, direction: 'undo' | 'redo'): Session {
   const to = direction === 'undo' ? 'redo' : 'undo';
   return { ...s, ...from[from.length - 1], [direction]: from.slice(0, -1), [to]: [...s[to], snapshot(s)] };
 }
-export function clearCell(s: Session, cell: number): Session {
-  if (s.completed || s.puzzle.givens[cell] !== null) return s;
-  if (s.board[cell] !== null) return place(s, cell, null);
-  if (!s.notes[cell]?.length) return s;
-  const notes = { ...s.notes }; delete notes[cell];
-  return commit(s, [...s.board], notes);
-}
-export function toggleNote(s: Session, cell: number, value: number): Session {
-  if (s.completed || s.puzzle.givens[cell] !== null || s.board[cell] !== null || !s.puzzle.bank.includes(value)) return s;
-  const old = s.notes[cell] ?? [];
-  const values = old.includes(value) ? old.filter(n => n !== value) : [...old, value].sort((a, b) => a - b);
-  return commit(s, [...s.board], { ...s.notes, [cell]: values });
-}
+export function clearCell(s: Session, cell: number): Session { return place(s, cell, null); }

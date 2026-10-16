@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight, Expand, Focus } from 'lucide-react';
 import type { Check, CrosswordPuzzle, Session } from './types';
-import { tilePixels, tileSpan, workAreas, type WorkArea } from './workareas';
+import { tilePixels, tileSpan, wholeBoard, workAreas, type WorkArea } from './workareas';
 
 const symbol = (op: string) => op === '*' ? '×' : op === '/' ? '÷' : op === '-' ? '−' : op;
 interface Props { session: Session; selected: number | null; onSelect: (cell: number) => void; check: Check | null; showErrors: boolean; onVisible: (cells: number[] | null) => void }
@@ -20,7 +20,7 @@ function Grid({ session, selected, onSelect, check, showErrors, area, compact }:
     const correct = eqs.every(i => check?.equations[i] === 'valid');
     const original = p.layout.cells[index];
     tiles.set(`${row},${col}`, <button key={`${row},${col}`} data-cell={index} data-digits={String(session.board[index] ?? '').length} className={`number-cell ${given ? 'given' : 'editable'} ${selected === index ? 'selected' : related ? 'related' : ''} ${error ? 'error' : ''} ${correct ? 'correct' : ''}`} aria-label={`Zeile ${original.row + 1}, Spalte ${original.col + 1}${given ? ', vorgegeben' : ''}, ${session.board[index] ?? 'leer'}`} aria-pressed={selected === index} disabled={given || session.completed} onClick={() => onSelect(index)}>
-      {session.board[index] !== null ? <span className="number-value">{session.board[index]}</span> : session.notes[index]?.length ? <span className="cell-notes">{session.notes[index].join(' · ')}</span> : <span className="empty-cell" aria-hidden="true">·</span>}
+      {session.board[index] !== null ? <span className="number-value">{session.board[index]}</span> : <span className="empty-cell" aria-hidden="true">·</span>}
       {shared.includes(index) && <span className="linked-mark" aria-hidden="true">{String.fromCharCode(65 + shared.indexOf(index))}</span>}
     </button>);
   }
@@ -62,17 +62,23 @@ export default function CrosswordView(props: Props) {
   const content = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 280, height: 200 });
   const [overview, setOverview] = useState(false);
+  const [focusArea, setFocusArea] = useState(false);
   const [current, setCurrent] = useState(0);
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const pinch = useRef<number | null>(null);
+  const swipe = useRef<{ id: number; x: number; y: number; time: number; multi: boolean } | null>(null);
+  const suppressClickUntil = useRef(0);
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => setSize({ width: entry.contentRect.width, height: entry.contentRect.height }));
     if (content.current) observer.observe(content.current);
     return () => observer.disconnect();
   }, []);
-  const areas = useMemo(() => workAreas(p, tileSpan(size.height), tileSpan(size.width)), [p, size.width, size.height]);
+  const regions = useMemo(() => workAreas(p, tileSpan(size.height), tileSpan(size.width)), [p, size.width, size.height]);
+  const whole = useMemo(() => wholeBoard(p), [p]);
+  const wholeFits = size.width >= 500 && tilePixels(whole.rows) <= size.height && tilePixels(whole.cols) <= size.width;
+  const areas = useMemo(() => wholeFits && !focusArea ? [whole] : regions, [wholeFits, focusArea, whole, regions]);
   const active = areas[Math.min(current, areas.length - 1)];
-  useEffect(() => { setCurrent(0); setOverview(false); }, [p.id]);
+  useEffect(() => { setCurrent(0); setOverview(false); setFocusArea(false); }, [p.id]);
   useEffect(() => {
     if (selected !== null && !active.cells.includes(selected)) {
       const match = areas.findIndex(a => a.cells.includes(selected));
@@ -81,9 +87,9 @@ export default function CrosswordView(props: Props) {
   }, [selected, areas]);
   useEffect(() => { onVisible(overview ? null : active.cells); }, [overview, active, onVisible]);
   const compact = tilePixels(active.rows) > size.height || tilePixels(active.cols) > size.width;
-  function chooseArea(index: number, preferred?: number) {
+  function chooseArea(index: number, preferred?: number, list = areas) {
     setCurrent(index); setOverview(false);
-    const area = areas[index];
+    const area = list[index];
     const cell = preferred !== undefined && p.givens[preferred] === null ? preferred : area.cells.find(i => p.givens[i] === null && session.board[i] === null) ?? area.cells.find(i => p.givens[i] === null);
     if (cell !== undefined) onSelect(cell);
   }
@@ -94,25 +100,37 @@ export default function CrosswordView(props: Props) {
     }
     chooseArea((current + 1) % areas.length);
   }
-  return <div className="crossword-view" data-view={overview ? 'overview' : 'detail'} data-area={Math.min(current, areas.length - 1)}>
+  return <div className="crossword-view" data-view={overview ? 'overview' : 'detail'} data-area={Math.min(current, areas.length - 1)} onClickCapture={e => {
+    if (performance.now() < suppressClickUntil.current && (e.target as HTMLElement).closest('.board-content')) { e.preventDefault(); e.stopPropagation(); }
+  }}>
     <nav className="view-tools" aria-label="Brettansicht">
       <button className="overview-button" aria-label={overview ? 'Zum Arbeitsbereich' : 'Brettübersicht öffnen'} onClick={() => setOverview(v => !v)}><MapBoard {...{ session, selected }} area={active} small /><span>{overview ? <Focus size={15} /> : <Expand size={15} />}{overview ? 'Detail' : 'Übersicht'}</span></button>
-      <span className="area-counter" aria-live="polite">Bereich {Math.min(current, areas.length - 1) + 1} / {areas.length}{compact && <small>Gleiche Felder sind verknüpft</small>}</span>
-      <div className="area-buttons"><button aria-label="Vorheriger Bereich" onClick={() => chooseArea((current - 1 + areas.length) % areas.length)}><ChevronLeft size={19} /></button><button aria-label="Nächster Bereich" onClick={next}><ChevronRight size={19} /></button></div>
+      <span className="area-counter" aria-live="polite">{wholeFits && !focusArea ? 'Ganzes Brett' : `Bereich ${Math.min(current, areas.length - 1) + 1} / ${areas.length}`}{compact && <small>Gleiche Felder sind verknüpft</small>}</span>
+      <div className="area-buttons">{wholeFits && <button className="view-mode-button" onClick={() => { setFocusArea(v => !v); setOverview(false); setCurrent(0); }}>{focusArea ? 'Ganzes Brett' : 'Bereiche'}</button>}<button aria-label="Vorheriger Bereich" disabled={areas.length === 1} onClick={() => chooseArea((current - 1 + areas.length) % areas.length)}><ChevronLeft size={19} /></button><button aria-label="Nächster Bereich" disabled={areas.length === 1} onClick={next}><ChevronRight size={19} /></button></div>
     </nav>
     <div className="board-content" ref={content} onPointerDown={e => {
       pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
-      if (pointers.current.size === 2) { const [a, b] = [...pointers.current.values()]; pinch.current = Math.hypot(a.x - b.x, a.y - b.y); }
+      if (pointers.current.size === 1) swipe.current = { id: e.pointerId, x: e.clientX, y: e.clientY, time: performance.now(), multi: false };
+      if (pointers.current.size === 2) { if (swipe.current) swipe.current.multi = true; const [a, b] = [...pointers.current.values()]; pinch.current = Math.hypot(a.x - b.x, a.y - b.y); }
     }} onPointerMove={e => {
       if (!pointers.current.has(e.pointerId)) return;
       pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (pinch.current && pointers.current.size === 2) {
         const [a, b] = [...pointers.current.values()], scale = Math.hypot(a.x - b.x, a.y - b.y) / pinch.current;
-        if (scale > 1.2) { setOverview(false); pinch.current = null; }
-        if (scale < .8) { setOverview(true); pinch.current = null; }
+        if (scale > 1.2) { setOverview(false); pinch.current = null; suppressClickUntil.current = performance.now() + 250; }
+        if (scale < .8) { setOverview(true); pinch.current = null; suppressClickUntil.current = performance.now() + 250; }
       }
-    }} onPointerUp={e => { pointers.current.delete(e.pointerId); pinch.current = null; }} onPointerCancel={e => { pointers.current.delete(e.pointerId); pinch.current = null; }}>
-      {overview ? <div className="puzzle-grid overview-grid"><MapBoard {...{ session, selected }} area={active} onChoose={cell => chooseArea(areas.findIndex(a => a.cells.includes(cell)), cell)} /></div> : <Grid {...props} area={active} compact={compact} />}
+    }} onPointerUp={e => {
+      const start = swipe.current, dx = start ? e.clientX - start.x : 0, dy = start ? e.clientY - start.y : 0;
+      if (start?.id === e.pointerId && !start.multi && !overview && areas.length > 1 && performance.now() - start.time < 1000 && Math.abs(dx) >= 48 && Math.abs(dx) > Math.abs(dy) * 1.5 && start.x > 18 && start.x < innerWidth - 18) {
+        suppressClickUntil.current = performance.now() + 250;
+        if (dx < 0) next(); else chooseArea((current - 1 + areas.length) % areas.length);
+        e.preventDefault();
+      }
+      pointers.current.delete(e.pointerId); pinch.current = null;
+      if (!pointers.current.size) swipe.current = null;
+    }} onPointerCancel={e => { pointers.current.delete(e.pointerId); pinch.current = null; if (swipe.current) swipe.current.multi = true; }}>
+      {overview ? <div className="puzzle-grid overview-grid"><MapBoard {...{ session, selected }} area={active} onChoose={cell => { const index = regions.findIndex(a => a.cells.includes(cell)); setFocusArea(true); chooseArea(index, cell, regions); }} /></div> : <Grid {...props} area={active} compact={compact} />}
     </div>
   </div>;
 }

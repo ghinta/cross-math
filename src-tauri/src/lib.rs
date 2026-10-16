@@ -27,6 +27,7 @@ async fn verify_puzzle(puzzle: String) -> Result<String, String> {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_os::init())
         .invoke_handler(tauri::generate_handler![
             generate_puzzle,
             check_board,

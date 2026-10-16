@@ -41,7 +41,7 @@ jobs:
           VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
       - run: npm run test:wasm
       - run: npm run check
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - name: Test the actual Pages base path before publishing
         run: npm run test:e2e
         env:

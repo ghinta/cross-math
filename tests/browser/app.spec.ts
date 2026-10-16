@@ -1,7 +1,7 @@
 import legacy from '../data/legacy-puzzles.json' with { type: 'json' };
 import { test, expect } from '@playwright/test';
 
-test('play, notes, undo/redo, pause and persisted restore', async ({ page }) => {
+test('play, delete, undo/redo, pause and persisted restore', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('./');
@@ -17,14 +17,14 @@ test('play, notes, undo/redo, pause and persisted restore', async ({ page }) => 
   await page.getByRole('button', { name: 'Wiederholen', exact: true }).click();
   await expect(cell.locator('.number-value')).toHaveText(n!);
   await page.getByRole('button', { name: 'Zahl entfernen' }).click();
-  await page.getByRole('button', { name: 'Notizen' }).click();
   await page.locator(`[data-number="${n}"]`).click();
-  await expect(cell.locator('.cell-notes')).toHaveText(n!);
+  await expect(cell.locator('.number-value')).toHaveText(n!);
+  await expect(page.getByRole('button', { name: 'Zahl entfernen' })).toHaveClass(/delete-active/);
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
   await expect(page.locator('.puzzle-grid')).toHaveCount(0);
   await page.getByRole('button', { name: 'Spiel fortsetzen' }).click();
   await page.reload();
-  await expect(page.locator(`[data-cell="${cellId}"] .cell-notes`)).toHaveText(n!);
+  await expect(page.locator(`[data-cell="${cellId}"] .number-value`)).toHaveText(n!);
   expect(errors).toEqual([]);
 });
 
@@ -104,8 +104,7 @@ test('responsive glass view, dark mode and reduced motion', async ({ page }) => 
   expect(palette!.y + palette!.height).toBeLessThanOrEqual(toolbar!.y);
   expect(toolbar!.y + toolbar!.height).toBeLessThanOrEqual(812);
   await page.screenshot({ path: 'artifacts/cross-math-mobile.png' });
-  await page.getByRole('button', { name: 'Notizen', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Notizen', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: 'Notizen', exact: true })).toHaveCount(0);
   await page.getByRole('button', { name: 'Hinweis', exact: true }).click();
   await page.getByRole('button', { name: 'Zahl einsetzen' }).click();
   await expect(page.locator('.number-cell.editable .number-value')).toHaveCount(1);
@@ -179,7 +178,8 @@ for (const size of [{ width: 320, height: 568 }, { width: 375, height: 667 }, { 
     await page.getByRole('button', { name: 'Hinweis', exact: true }).click();
     await expect(page.locator('.hint-explanation')).toContainText('=');
     await page.getByRole('button', { name: 'Zahl einsetzen' }).click();
-    await expect(page.locator('.number-cell.editable .number-value')).toHaveCount(1);
+    // Compact equation rows render a shared cell twice; count logical cells.
+    await expect.poll(() => page.locator('.number-cell.editable:has(.number-value)').evaluateAll(cells => new Set(cells.map(cell => cell.getAttribute('data-cell'))).size)).toBe(1);
     await page.getByRole('button', { name: 'Tagesrätsel', exact: true }).click();
     await expect(page.locator('.game-title')).toContainText('Tagesrätsel');
     await assertFits();

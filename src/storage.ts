@@ -5,7 +5,7 @@ const db = new Dexie('cross-math');
 db.version(1).stores({ saves: 'key' });
 const saves = db.table('saves') as Table<{ key: string; value: Save; writtenAt: number }>;
 const backupKey = 'cross-math-backup-v1';
-export const defaults: Settings = { guided: true, showAllNumbers: false, puzzleSource: 'crossmath', theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
+export const defaults: Settings = { guided: true, showAllNumbers: false, puzzleSource: 'crossmath', uiStyle: 'auto', glassLevel: 35, fillScreen: true, theme: 'system', reduceMotion: false, opaque: false, showTimer: true, checkErrors: false };
 export const emptySave = (): Save => ({ version: 1, activeMode: 'free', session: null, daily: null, settings: { ...defaults }, stats: { solved: [], best: {}, dailyDates: [] } });
 
 const object = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -97,7 +97,11 @@ export function parseSave(text: string): Save {
   if (!list(v.stats.solved) || !list(v.stats.dailyDates) || !object(v.stats.best)
     || !Object.entries(v.stats.best).every(([k, n]) => ['easy', 'medium', 'hard'].includes(k) && natural(n))) throw new Error('Ungültige Statistik.');
   const result = v as unknown as Save;
-  return { ...result, settings: { ...result.settings, guided: result.settings.guided ?? true, showAllNumbers: result.settings.showAllNumbers ?? false, puzzleSource: result.settings.puzzleSource ?? 'crossmath' } };
+  return { ...result, settings: { ...defaults, ...result.settings,
+    uiStyle: ['auto', 'liquid', 'material', 'fluent'].includes(result.settings.uiStyle) ? result.settings.uiStyle : 'auto',
+    glassLevel: Number.isFinite(result.settings.glassLevel) ? Math.round(Math.max(0, Math.min(100, result.settings.glassLevel))) : 35,
+    fillScreen: typeof result.settings.fillScreen === 'boolean' ? result.settings.fillScreen : true,
+  } };
 }
 export async function loadSave(): Promise<Save> {
   const candidates: { writtenAt: number; value: Save }[] = [];

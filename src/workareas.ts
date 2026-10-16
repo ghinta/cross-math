@@ -8,6 +8,7 @@ function area(p: CrosswordPuzzle, equations: number[]): WorkArea {
   const top = Math.min(...positions.map(p => p.row)), left = Math.min(...positions.map(p => p.col));
   return { equations, cells, top, left, rows: Math.max(...positions.map(p => p.row)) - top + 1, cols: Math.max(...positions.map(p => p.col)) - left + 1 };
 }
+export const wholeBoard = (p: CrosswordPuzzle) => area(p, p.equations.map((_, i) => i));
 // Keep full equations and overlap neighbouring areas for context.
 export function workAreas(p: CrosswordPuzzle, maxRows: number, maxCols: number): WorkArea[] {
   const pending = new Set(p.equations.map((_, i) => i));

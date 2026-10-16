@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { newSession, place, remainingNumbers, toggleNote, travel } from '../src/game';
+import { newSession, place, remainingNumbers, clearCell, travel } from '../src/game';
 import { emptySave, parseSave } from '../src/storage';
 import type { Puzzle } from '../src/types';
 import catalog from '../src/data/puzzles.json';
@@ -30,17 +30,16 @@ describe('number inventory and game history', () => {
     expect(place(s, given, 99)).toBe(s);
     const unavailable = Array.from({ length: 99 }, (_, i) => i + 1).find(n => !p.bank.includes(n))!;
     expect(place(s, first, unavailable)).toBe(s);
-    expect(toggleNote(s, first, 0)).toBe(s);
-    expect(toggleNote(s, first, unavailable)).toBe(s);
+    expect(clearCell(s, given)).toBe(s);
   });
-  it('records notes without consuming numbers and clears redo after a new action', () => {
-    const s = newSession(p);
-    const noted = toggleNote(s, first, p.bank[0]);
-    expect(noted.notes[first]).toEqual([p.bank[0]]);
-    expect(noted.board).toEqual(s.board);
-    const undone = travel(noted, 'undo');
-    const changed = place(undone, first, p.bank[0]);
-    expect(changed.redo).toEqual([]);
+  it('clears a placed tile, restores inventory and clears redo after a new action', () => {
+    const s = place(newSession(p), first, p.bank[0]);
+    const cleared = clearCell(s, first);
+    expect(cleared.board[first]).toBeNull();
+    expect(remainingNumbers(p, cleared.board)).toEqual(remainingNumbers(p, p.givens));
+    const undone = travel(cleared, 'undo');
+    expect(undone.board[first]).toBe(p.bank[0]);
+    expect(clearCell(undone, first).redo).toEqual([]);
   });
 });
 

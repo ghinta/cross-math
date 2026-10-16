@@ -10,7 +10,7 @@ export default defineConfig({
   define: { __BUILD_REVISION__: JSON.stringify(revision) },
   plugins: [react(), VitePWA({
     registerType: 'prompt',
-    includeAssets: ['icon.svg', 'pwa-192.png', 'pwa-512.png', 'pwa-maskable.png', 'crossmath-notice.txt'],
+    includeAssets: ['icon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'pwa-192.png', 'pwa-512.png', 'pwa-1024.png', 'pwa-maskable.png', 'pwa-maskable-1024.png', 'appearance.js', 'crossmath-notice.txt'],
     manifest: {
       name: 'Cross Math', short_name: 'Cross Math', lang: 'de',
       description: 'Fülle die freien Felder so, dass alle Gleichungen stimmen.',
@@ -19,7 +19,9 @@ export default defineConfig({
       icons: [
         { src: `${base}pwa-192.png`, sizes: '192x192', type: 'image/png' },
         { src: `${base}pwa-512.png`, sizes: '512x512', type: 'image/png' },
+        { src: `${base}pwa-1024.png`, sizes: '1024x1024', type: 'image/png' },
         { src: `${base}pwa-maskable.png`, sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+        { src: `${base}pwa-maskable-1024.png`, sizes: '1024x1024', type: 'image/png', purpose: 'maskable' },
       ],
     },
     workbox: {

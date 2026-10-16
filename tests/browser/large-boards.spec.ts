@@ -153,13 +153,12 @@ test('compact portrait uses the bottom space and remembers both number preferenc
   await expect(page.getByRole('button', { name: 'Geführt aus', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
   await expect(page.locator('.app-info')).toContainText('Online');
-  await expect(page.getByRole('button', { name: 'App installieren', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Schließen', exact: true }).click();
   await page.screenshot({ path: 'artifacts/cross-math-compact-portrait.png' });
 });
 
 
-test('linked equation rows share values, notes and undo on a small display', async ({ page }) => {
+test('linked equation rows share values, deletion and undo on a small display', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 }); await seed(page, tall); await page.goto('./');
   await expect(page.locator('.side-heading')).toContainText('ZAHLEN FÜR DIESEN BEREICH');
   await page.getByRole('button', { name: 'Alle Zahlen', exact: true }).click();
@@ -180,9 +179,9 @@ test('linked equation rows share values, notes and undo on a small display', asy
   await expect(copies.locator('.number-value')).toHaveText([String(value), String(value)]);
   await page.getByRole('button', { name: 'Rückgängig', exact: true }).click();
   await expect(copies.locator('.empty-cell')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Notizen', exact: true }).click();
-  await page.keyboard.type(String(value));
-  await expect(copies.locator('.cell-notes')).toHaveText([String(value), String(value)]);
+  await page.getByRole('button', { name: 'Wiederholen', exact: true }).click();
+  await page.getByRole('button', { name: 'Zahl entfernen', exact: true }).click();
+  await expect(copies.locator('.empty-cell')).toHaveCount(2);
 });
 
 test('the reported medium puzzle uses compact connected areas in portrait', async ({ page }) => {
@@ -192,4 +191,36 @@ test('the reported medium puzzle uses compact connected areas in portrait', asyn
   await page.getByRole('button', { name: 'Nächster Bereich' }).click();
   expect(Number(await page.locator('.crossword-grid').getAttribute('data-equations'))).toBeGreaterThanOrEqual(2);
   await page.screenshot({ path: 'artifacts/cross-math-medium-compact.png' });
+});
+
+test('horizontal touch swipes change areas in all styles without editing the board', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 375, height: 667 }, isMobile: true, hasTouch: true });
+  const page = await context.newPage();
+  try {
+    await seed(page, tall); await page.goto('./');
+    await expect(page.locator('.side-heading')).toContainText('ZAHLEN FÜR DIESEN BEREICH');
+    const client = await context.newCDPSession(page);
+    for (const style of ['liquid', 'material', 'fluent']) {
+      await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
+      await page.getByRole('combobox', { name: 'UI-Stil' }).selectOption(style);
+      await page.getByRole('button', { name: 'Schließen', exact: true }).click();
+      const before = await page.locator('.crossword-view').getAttribute('data-area');
+      const original = await page.evaluate(() => JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value.session.board);
+      const rect = (await page.locator('.board-content').boundingBox())!;
+      const y = rect.y + rect.height / 2, x = rect.x + rect.width / 2;
+      async function drag(dx: number, dy = 0) {
+        await client.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: x - dx / 2, y: y - dy / 2, id: 1 }] });
+        for (let step = 1; step <= 4; step++) await client.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: x - dx / 2 + dx * step / 4, y: y - dy / 2 + dy * step / 4, id: 1 }] });
+        await client.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      }
+      await drag(-140);
+      await expect(page.locator('.crossword-view')).not.toHaveAttribute('data-area', before!);
+      await drag(140);
+      await expect(page.locator('.crossword-view')).toHaveAttribute('data-area', before!);
+      await drag(0, Math.min(80, rect.height - 10));
+      await expect(page.locator('.crossword-view')).toHaveAttribute('data-area', before!);
+      expect(await page.evaluate(() => JSON.parse(localStorage.getItem('cross-math-backup-v1')!).value.session.board)).toEqual(original);
+      await expect(page.locator('[data-cell][aria-pressed="true"]').first()).toBeVisible();
+    }
+  } finally { await context.close(); }
 });

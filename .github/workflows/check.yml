@@ -28,7 +28,7 @@ jobs:
       - run: npm run build
       - run: npm run check
       - run: npm run test:wasm
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v7.0.2
         if: always()
@@ -39,10 +39,27 @@ jobs:
             test-results/
 
   native:
+    needs: web
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+            bundles: deb,appimage
+          - os: windows-2025
+            target: x86_64-pc-windows-msvc
+            bundles: nsis,msi
+          - os: macos-15
+            target: aarch64-apple-darwin
+            bundles: dmg
+          - os: macos-15
+            target: x86_64-apple-darwin
+            bundles: dmg
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7.0.1
@@ -51,19 +68,50 @@ jobs:
           node-version-file: .nvmrc
           check-latest: true
           cache: npm
-      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249 # stable; compiler version is configured below
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
         with:
           toolchain: 1.99.0
-          targets: wasm32-unknown-unknown
+          targets: wasm32-unknown-unknown,${{ matrix.target }}
       - uses: Swatinem/rust-cache@v2.9.2
       - if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf libxdo-dev libssl-dev file
       - run: npm ci
       - run: cargo install wasm-bindgen-cli --version 0.2.129 --locked
-      - run: npm run tauri -- build --no-bundle
+      - name: Build native installers
+        env:
+          RUST_TARGET: ${{ matrix.target }}
+          BUNDLE_FORMATS: ${{ matrix.bundles }}
+          APPIMAGE_EXTRACT_AND_RUN: '1'
+        run: npm run tauri -- build --target "$RUST_TARGET" --bundles "$BUNDLE_FORMATS" -- --locked
+      - name: Collect installers
+        env:
+          RUST_TARGET: ${{ matrix.target }}
+        run: node scripts/collect-desktop-artifacts.mjs "$RUST_TARGET"
       - uses: actions/upload-artifact@v7.0.2
         with:
-          name: native-${{ matrix.os }}
-          path: |
-            target/release/cross-math
-            target/release/cross-math.exe
+          name: desktop-${{ matrix.target }}
+          path: desktop-artifacts/
+          if-no-files-found: error
+
+  release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: [web, native]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          pattern: desktop-*
+          merge-multiple: true
+          path: desktop-artifacts
+      - name: Publish installers and checksums
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          cd desktop-artifacts
+          sha256sum * > SHA256SUMS
+          cd ..
+          gh release create "$RELEASE_TAG" desktop-artifacts/* --verify-tag --title "Cross Math $RELEASE_TAG" --notes-file .github/desktop-release-notes.md

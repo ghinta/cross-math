@@ -10,3 +10,4 @@ src-tauri/gen/
 *.tsbuildinfo
 artifacts/
 .DS_Store
+desktop-artifacts/

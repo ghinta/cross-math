@@ -1,12 +1,18 @@
 # Cross Math
 
-Werbefreie Cross-Platform-App mit einer von Apple Liquid Glass inspirierten Oberfläche, gemeinsamem Rust-Kern und installierbarer Offline-PWA.
+Werbefreie Cross-Platform-App mit Liquid Glass, Material 3 und Fluent, gemeinsamem Rust-Kern und installierbarer Offline-PWA.
 
-Die App enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemeinsames Tagesrätsel, Notizen, Undo/Redo, kostenlose Hinweise, Pause, Statistiken, Light/Dark Mode, Einstellungen für reduzierte Bewegung/Transparenz und exportierbare lokale Spielstände. Im freien Spiel stehen unveränderte, geprüfte CrossMath-Originalaufgaben und der eigene Generator zur Auswahl. Das Tagesrätsel bleibt beim eigenen Generator, damit der begrenzte Originalkatalog keine täglichen Wiederholungen erzwingt.
+Die App enthält freie Rätsel in drei Schwierigkeitsstufen, ein gemeinsames Tagesrätsel, Undo/Redo, kostenlose Hinweise, Pause, Statistiken, Light/Dark Mode, Einstellungen für reduzierte Bewegung/Transparenz und exportierbare lokale Spielstände. Im freien Spiel stehen unveränderte, geprüfte CrossMath-Originalaufgaben und der eigene Generator zur Auswahl. Das Tagesrätsel bleibt beim eigenen Generator, damit der begrenzte Originalkatalog keine täglichen Wiederholungen erzwingt.
+
+## Darstellung
+
+Die automatische Auswahl folgt dem Browser: Safari → Liquid Glass, Chrome → Material 3, Edge → Fluent. Andere Browser verwenden die Plattform als Rückfall. Native Builds wählen anhand des Betriebssystems: macOS/iOS → Liquid, Windows → Fluent, Linux/Android → Material. Eine manuelle Auswahl in den Einstellungen hat Vorrang und wird zusammen mit Hell/Dunkel/System, Glasstärke und Bildschirmfüllung gespeichert. Die Darstellung wird bereits vor dem Start von React gesetzt. „Darstellung zurücksetzen“ lässt Spielstand und Spieloptionen erhalten.
+
+Icons werden direkt aus der SVG-Quelle bis 1024×1024 Pixel erzeugt (`npm run icons`), einschließlich Apple-Touch-, maskierbaren PWA- und nativen Icons.
 
 ## Starten
 
-Voraussetzungen: die neueste Node.js-LTS-Version (aktuell 24.21.0 mit npm 11.19.0), Rust (getestet mit 1.99.0), das Target `wasm32-unknown-unknown` und die zum Cargo-Lockfile passende `wasm-bindgen`-CLI (aktuell 0.2.129). Mit nvm wählen `nvm install` und `nvm use` anhand der `.nvmrc` automatisch die aktuelle LTS-Version.
+Voraussetzungen: die neueste Node.js-LTS-Version (aktuell 24.22.0 mit npm 11.19.1), Rust (getestet mit 1.99.0), das Target `wasm32-unknown-unknown` und die zum Cargo-Lockfile passende `wasm-bindgen`-CLI (aktuell 0.2.129). Mit nvm wählen `nvm install` und `nvm use` anhand der `.nvmrc` automatisch die aktuelle LTS-Version.
 
 ```bash
 npm ci
@@ -27,7 +33,7 @@ npm run build
 npm run preview
 ```
 
-`dist/` auf einem statischen HTTPS-Host veröffentlichen. Die App ist nach dem ersten vollständigen Laden offline nutzbar, einschließlich neuer Rätsel und Hinweise. Der Service Worker speichert auch die WASM-Engine und den Worker. Neue Versionen werden automatisch geladen; der Spielstand wird vor dem Aktualisieren gesichert. Die Installation erfolgt über die Einstellungen oder den Browser, auf dem iPhone über das Teilen-Menü. Der Entwicklungsserver verwendet keinen Offline-Cache.
+`dist/` auf einem statischen HTTPS-Host veröffentlichen. Die App ist nach dem ersten vollständigen Laden offline nutzbar, einschließlich neuer Rätsel und Hinweise. Der Service Worker speichert auch die WASM-Engine und den Worker. Neue Versionen werden automatisch geladen; der Spielstand wird vor dem Aktualisieren gesichert. Die Installation erfolgt über den Installationsknopf im Kopfbereich oder den Browser, auf dem iPhone über das Teilen-Menü. Der Entwicklungsserver verwendet keinen Offline-Cache.
 
 ### GitHub Pages
 
@@ -55,6 +61,8 @@ npm run tauri -- build
 
 Web und Tauri verwenden dieselbe React-Oberfläche. Der Web-Build liegt in `dist/`, der native Frontend-Build getrennt in `dist-native/`. Der Browser ruft den Rust-Kern über WebAssembly in einem Web Worker auf; Tauri verwendet denselben Core direkt über lokale Commands. Rechenintensive native Commands laufen außerhalb des UI-Threads.
 
+CI erzeugt Windows-Installer (EXE/MSI), Linux-Pakete (AppImage/DEB) und macOS-DMGs für Apple Silicon und Intel. Sie sind als `desktop-*`-Artifacts des Checks-Workflows verfügbar. Versions-Tags (`v…`) veröffentlichen diese nach erfolgreichen Prüfungen samt SHA-256-Prüfsummen als GitHub Release. Die Installer sind derzeit nicht signiert.
+
 Für Android auf einer vorbereiteten Android-Entwicklungsumgebung: `npm run tauri -- android init`, anschließend `npm run tauri -- android dev`. Für iOS auf macOS mit Xcode: `npm run tauri -- ios init`, anschließend `npm run tauri -- ios dev`. Mobile Projektdateien werden lokal generiert. Signierung und Store-Veröffentlichung sind gesonderte Schritte.
 
 ## Prüfen
@@ -63,15 +71,15 @@ Für Android auf einer vorbereiteten Android-Entwicklungsumgebung: `npm run taur
 npm run check
 npm run test:wasm
 npm run build
-npx playwright install chromium
+npx playwright install --with-deps chromium webkit
 npm run test:e2e
 ```
 
-Der Browser-Test nutzt vorhandenes `/usr/bin/chromium`, falls verfügbar; sonst das von Playwright installierte Chromium. Die Tests starten und stoppen ihren eigenen Preview-Server. Ein zusätzlicher Test wechselt eine gecachte alte PWA auf die neue Version und prüft den Erhalt des Spielstands sowie die Erkennung eines weiteren Updates.
+Der Browser-Test nutzt vorhandenes `/usr/bin/chromium`, falls verfügbar; sonst das von Playwright installierte Chromium. Die Tests starten und stoppen ihren eigenen Preview-Server. WebKit prüft zusätzlich alle drei Oberflächen in Hell/Dunkel, Installation, gespeicherte Auswahl und Layouts bis hinunter zu 360×480 Pixeln. Ein zusätzlicher Test wechselt eine gecachte alte PWA auf die neue Version und prüft den Erhalt des Spielstands sowie die Erkennung eines weiteren Updates.
 
 - Rust: 288 neue Aufgaben plus alle 36 mitgelieferten Rechenkreuze werden mit unabhängig implementierter Arithmetik und vollständiger Zahlenpermutation auf genau eine Lösung geprüft. Jeder Rechenschritt wird gegen den damaligen Zahlenvorrat nachgerechnet. Die Prüfungen der alten Engine bleiben erhalten.
 - WASM: 36 generierte Aufgaben werden mit dem nativen Katalog verglichen; 36 neue, 36 alte und 242 CrossMath-Originalaufgaben werden geprüft und über Hinweise vollständig gelöst. Die Originale werden zusätzlich gegen die Antworten und unveränderten Vorgaben der Quelle kontrolliert.
-- Frontend: Zahlenverbrauch, doppelte Kacheln, Notizen, History und Importvalidierung.
+- Frontend: Zahlenverbrauch, doppelte Kacheln, Löschen, History, Plattformauswahl und Importvalidierung.
 - Browser: Eingabe, konkrete Hinweise, Wiederherstellung, alte Spielstände, Tagesrätsel, Schwierigkeitswechsel, Offline-Neustart und Offline-Generierung. Brett, Zahlen und Aktionen werden unter anderem bei 320×568, 375×667, 390×844, 667×375 und 900×600 Pixeln auf Sichtbarkeit ohne Scrollen geprüft.
 
 Screenshots werden unter `artifacts/` erzeugt. CI prüft die Web-App unter Linux und native Builds unter Linux, Windows und macOS; die Plattformjobs müssen auf diesen Runnern tatsächlich laufen, bevor ihre Ergebnisse als bestätigt gelten.
@@ -82,13 +90,13 @@ Die Engine unterstützt verbundene Rechenkreuze bis 21×21 Rasterpositionen, 36 
 
 Der Generator erzeugt zunächst ein vollständig korrektes Brett und entfernt nur Zahlen, wenn eine vollständige Folge von Einzelschritten erhalten bleibt. Jeder Schritt löst eine konkrete Gleichung mit genau einer unbekannten Zahl und prüft den Zahlenvorrat. Ein separater Solver zählt danach die Lösungen: Nur genau eine Lösung wird zugelassen. Bei ausgeschöpftem Suchbudget gilt eine Aufgabe als ungeprüft und wird abgelehnt. Doppelte Zahlen sind Häufigkeiten, keine verschiedenen Lösungen. Vorab mitgelieferte Aufgaben unterliegen zusätzlich dem unabhängigen Referenzprüfer in CI. Der Hinweis zeigt die unvollständige und die vervollständigte Rechnung; Fehlerkorrekturen geben falsch platzierte Kacheln zurück.
 
-Formatversion 1 bleibt über `crates/core/src/legacy.rs` unterstützt. Laufende alte Spiele, Notizen, Verlauf und Statistiken werden erhalten. „Neues Rätsel“ startet das größere Brett. Der Tagesrätsel-Startwert verwendet für neue Aufgaben einen versionierten Namensraum; bereits gespeicherte Tagesrätsel desselben UTC-Datums bleiben erhalten.
+Formatversion 1 bleibt über `crates/core/src/legacy.rs` unterstützt. Laufende alte Spiele, Verlauf und Statistiken werden erhalten. Alte Notizdaten bleiben importierbar; die Notizfunktion ist aus der Bedienung entfernt. „Neues Rätsel“ startet das größere Brett. Der Tagesrätsel-Startwert verwendet für neue Aufgaben einen versionierten Namensraum; bereits gespeicherte Tagesrätsel desselben UTC-Datums bleiben erhalten.
 
-Die Spielansicht nutzt die verfügbare dynamische Bildschirmhöhe und sichere Randabstände. Auf dem Handy liegt der Zahlenvorrat unter dem Brett, auf breiten Bildschirmen daneben. Hinweise, Einstellungen und Regeln öffnen eigene Dialoge; umfangreiche Dialoginhalte können innerhalb des Dialogs scrollen. Das Spielfeld und der Zahlenvorrat benötigen keinen Scrollbereich. Online-/Offline-Status und Installation liegen in den Einstellungen; die frühere Statuszeile reserviert keinen Platz mehr. Auf dem Handy sind Brettfelder auf 44 px begrenzt und die Vorratskacheln 34 px hoch.
+Die Spielansicht nutzt die verfügbare dynamische Bildschirmhöhe und sichere Randabstände. Auf dem Handy liegt der Zahlenvorrat unter dem Brett, auf breiten Bildschirmen daneben. Hinweise, Einstellungen und Regeln öffnen eigene Dialoge; umfangreiche Dialoginhalte können innerhalb des Dialogs scrollen. Das Spielfeld und der Zahlenvorrat benötigen keinen Scrollbereich. Online-/Offline-Status liegt in den Einstellungen; die frühere Statuszeile reserviert keinen Platz mehr. Auf dem Handy sind Brettfelder auf 44 px begrenzt und die Vorratskacheln 34 px hoch.
 
-Arbeitsbereiche enthalten mindestens zwei vollständige, verbundene Gleichungen und überlappen bei Bedarf für mehr Kontext. Die Bereiche passen sich an die verfügbare Fläche an; die Gesamtübersicht ermöglicht direkte Navigation. Auf sehr niedrigen Displays werden zwei verbundene Rechnungen als kompakte Zeilen angezeigt. Gemeinsame Felder tragen dieselbe Buchstabenmarkierung und teilen Werte, Notizen und Verlauf. Übersicht/Detail sind per Knopf oder Zweifingergeste erreichbar.
+Arbeitsbereiche enthalten mindestens zwei vollständige, verbundene Gleichungen und überlappen bei Bedarf für mehr Kontext. Die Bereiche passen sich an die verfügbare Fläche an; die Gesamtübersicht ermöglicht direkte Navigation. Auf sehr niedrigen Displays werden zwei verbundene Rechnungen als kompakte Zeilen angezeigt. Gemeinsame Felder tragen dieselbe Buchstabenmarkierung und teilen Werte und Verlauf. Übersicht/Detail sind per Knopf oder Zweifingergeste erreichbar. Horizontales Wischen wechselt Bereiche, ohne Zahlen zu verändern. Auf ausreichend großen Bildschirmen wird das gesamte Brett angezeigt; „Bereiche“ schaltet zur geführten Ansicht.
 
-Der optionale geführte Modus enthält die noch benötigten Bereichszahlen einschließlich ihrer Häufigkeiten. Zusätzliche echte Zahlen aus dem restlichen Vorrat sorgen für mindestens vier verschiedene Auswahlzahlen, sofern so viele verfügbar sind. Ein einzelnes offenes Feld verrät daher nicht allein durch eine einzige angebotene Kachel die Antwort; die letzte verbleibende Kachel bleibt natürlich einsetzbar. „Alle Zahlen“ und das Ausschalten des Modus bleiben verfügbar. Beide Einstellungen werden mit dem Spielstand gespeichert und gelten auch nach einem neuen Rätsel oder Neustart. Große Vorräte werden ohne Scrollen in erreichbare Seiten aufgeteilt. Die Palette behält beim Seitenwechsel und beim Lösen ihre Höhe, damit das Brett nicht springt.
+Der optionale geführte Modus enthält die noch benötigten Bereichszahlen einschließlich ihrer Häufigkeiten. Zusätzliche echte Zahlen aus dem restlichen Vorrat sorgen für mindestens vier verschiedene Auswahlzahlen, sofern so viele verfügbar sind. Ein einzelnes offenes Feld verrät daher nicht allein durch eine einzige angebotene Kachel die Antwort; die letzte verbleibende Kachel bleibt natürlich einsetzbar. „Alle Zahlen“ und das Ausschalten des Modus bleiben verfügbar. Beide Einstellungen werden mit dem Spielstand gespeichert und gelten auch nach einem neuen Rätsel oder Neustart. Große Vorräte werden ohne Scrollen in erreichbare Seiten aufgeteilt. Unter dem Brett behält die Palette beim Seitenwechsel und beim Lösen ihre Höhe. Die seitliche Palette verwendet den tatsächlich verfügbaren Platz; das Brett bleibt davon unabhängig.
 
 36 eigene, vorab geprüfte Aufgaben liegen in `src/data/puzzles.json`. Sie dienen im Generator-Modus als geprüfte Reserve bei einem Generierungsfehler. Regeneration: `cargo run -p cross-math-core --release --example catalog > src/data/puzzles.json`.
 

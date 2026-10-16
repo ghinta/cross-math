@@ -13,6 +13,9 @@ try {
   await expect(page.locator('.crossword-grid')).toBeVisible();
   expect(Number(await page.locator('.crossword-grid').getAttribute('data-equations'))).toBeGreaterThanOrEqual(2);
   await expect(page.locator('.app-footer')).toHaveCount(0);
+  await expect(page.locator('html')).toHaveAttribute('data-ui', 'material');
+  await expect(page.getByRole('button', { name: 'Notizen', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'App installieren', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Geführt an', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
   await expect(page.locator('.source-attribution')).toContainText('242 geprüfte Originalaufgaben');
