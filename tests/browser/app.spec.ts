@@ -140,24 +140,26 @@ for (const size of [{ width: 320, height: 568 }, { width: 375, height: 667 }, { 
     await page.setViewportSize(size); await page.goto('./');
     await expect(page.locator('.puzzle-grid')).toBeVisible();
     const assertFits = async () => {
-      const overflow = await page.evaluate(() => ({ x: document.documentElement.scrollWidth > innerWidth, y: document.documentElement.scrollHeight > innerHeight }));
-      expect(overflow).toEqual({ x: false, y: false });
-      const area = (await page.locator('.board-area').boundingBox())!;
-      const grid = (await page.locator('.puzzle-grid').boundingBox())!;
-      expect(grid.x).toBeGreaterThanOrEqual(area.x - 1); expect(grid.y).toBeGreaterThanOrEqual(area.y - 1);
-      expect(grid.x + grid.width).toBeLessThanOrEqual(area.x + area.width + 1);
-      expect(grid.y + grid.height).toBeLessThanOrEqual(area.y + area.height + 1);
-      for (const selector of ['.puzzle-grid', '[data-cell]', '[data-number]', '.game-toolbar button', '.difficulty-switch button', '.mode-switch button']) {
-        for (const element of await page.locator(selector).all()) {
-          const box = (await element.boundingBox())!;
-          expect(box.width).toBeGreaterThan(0); expect(box.height).toBeGreaterThan(0);
-          expect(box.x).toBeGreaterThanOrEqual(0); expect(box.y).toBeGreaterThanOrEqual(0);
-          expect(box.x + box.width).toBeLessThanOrEqual(size.width + 1);
-          expect(box.y + box.height).toBeLessThanOrEqual(size.height + 1);
-          const exposed=await element.evaluate(el => { const r=el.getBoundingClientRect(); return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)); });
-          expect(exposed).toBe(true);
+      // ResizeObserver can replace the visible cells and palette after a puzzle
+      // switch. Capture one frame atomically instead of holding stale nth locators.
+      await expect.poll(() => page.evaluate(() => {
+        const errors: string[] = [];
+        if (document.documentElement.scrollWidth > innerWidth || document.documentElement.scrollHeight > innerHeight) errors.push('page overflow');
+        const area = document.querySelector('.board-area')?.getBoundingClientRect();
+        const grid = document.querySelector('.puzzle-grid')?.getBoundingClientRect();
+        if (!area || !grid || grid.x < area.x - 1 || grid.y < area.y - 1 || grid.right > area.right + 1 || grid.bottom > area.bottom + 1) errors.push('grid outside board area');
+        for (const selector of ['.puzzle-grid', '[data-cell]', '[data-number]', '.game-toolbar button', '.difficulty-switch button', '.mode-switch button']) {
+          const elements = document.querySelectorAll(selector);
+          if (!elements.length) errors.push(`missing ${selector}`);
+          for (const element of elements) {
+            const r = element.getBoundingClientRect();
+            const fits = r.width > 0 && r.height > 0 && r.x >= 0 && r.y >= 0 && r.right <= innerWidth + 1 && r.bottom <= innerHeight + 1;
+            const exposed = element.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+            if (!fits || !exposed) errors.push(`${selector}: ${element.getAttribute('aria-label') || element.textContent}`);
+          }
         }
-      }
+        return errors;
+      })).toEqual([]);
     };
     await assertFits(); // The bundled first puzzle deliberately has a tall layout.
     for (const difficulty of ['Mittel','Schwer']) {
