@@ -17,7 +17,7 @@
 .delete-button.delete-active { background: var(--danger-bg); color: var(--danger); box-shadow: 0 0 0 1px color-mix(in srgb,var(--danger) 24%,transparent) inset; }
 .delete-button.delete-active:hover { background: color-mix(in srgb,var(--danger) 20%,transparent); color: var(--danger); }
 .area-buttons button:disabled { opacity: .35; }
-.area-buttons .view-mode-button { width: auto; padding-inline: 10px; font-size: 11px; }
+.area-buttons .view-mode-button { display: flex; align-items: center; justify-content: center; gap: 5px; width: auto; padding-inline: 10px; font-size: 11px; }
 .numbers-card { --bank-columns: 3; --bank-tile: 42px; --bank-gap: 7px; --palette-side: 1; align-self: center; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
 .number-bank { grid-template-columns: repeat(var(--bank-columns),minmax(0,1fr)); gap: var(--bank-gap); grid-auto-rows: var(--bank-tile); align-content: start; flex-shrink: 0; }
 .bank-number { height: var(--bank-tile); }
@@ -97,6 +97,8 @@
 :root[data-ui='fluent'] :is(.theme-switch,.mode-switch,.difficulty-switch) button.active::after { content: ''; position: absolute; bottom: 1px; left: calc(50% - 7px); width: 14px; height: 2px; background: var(--accent); border-radius: 2px; }
 :root[data-glass='opaque'][data-ui='liquid'] :is(.glass,.game-card,.modal) { background: rgb(var(--surface-rgb)); backdrop-filter: none; -webkit-backdrop-filter: none; }
 @media (max-width: 650px) and (max-aspect-ratio: 6/5) {
+  .area-buttons .view-mode-button { width: 36px; padding: 0; }
+  .view-mode-button span { display: none; }
   .brand { font-size: 20px; }
   .brand-icon { width: 32px; height: 32px; }
   .app-header { gap: 6px; }

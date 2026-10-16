@@ -75,7 +75,9 @@ export default function CrosswordView(props: Props) {
   }, []);
   const regions = useMemo(() => workAreas(p, tileSpan(size.height), tileSpan(size.width)), [p, size.width, size.height]);
   const whole = useMemo(() => wholeBoard(p), [p]);
-  const wholeFits = size.width >= 500 && tilePixels(whole.rows) <= size.height && tilePixels(whole.cols) <= size.width;
+  // Use the measured board space on every device. The regional eight-blank
+  // budget must not split a complete board that is already readable.
+  const wholeFits = tilePixels(whole.rows) <= size.height && tilePixels(whole.cols) <= size.width;
   const areas = useMemo(() => wholeFits && !focusArea ? [whole] : regions, [wholeFits, focusArea, whole, regions]);
   const active = areas[Math.min(current, areas.length - 1)];
   useEffect(() => { setCurrent(0); setOverview(false); setFocusArea(false); }, [p.id]);
@@ -106,7 +108,10 @@ export default function CrosswordView(props: Props) {
     <nav className="view-tools" aria-label="Brettansicht">
       <button className="overview-button" aria-label={overview ? 'Zum Arbeitsbereich' : 'Brettübersicht öffnen'} onClick={() => setOverview(v => !v)}><MapBoard {...{ session, selected }} area={active} small /><span>{overview ? <Focus size={15} /> : <Expand size={15} />}{overview ? 'Detail' : 'Übersicht'}</span></button>
       <span className="area-counter" aria-live="polite">{wholeFits && !focusArea ? 'Ganzes Brett' : `Bereich ${Math.min(current, areas.length - 1) + 1} / ${areas.length}`}{compact && <small>Gleiche Felder sind verknüpft</small>}</span>
-      <div className="area-buttons">{wholeFits && <button className="view-mode-button" onClick={() => { setFocusArea(v => !v); setOverview(false); setCurrent(0); }}>{focusArea ? 'Ganzes Brett' : 'Bereiche'}</button>}<button aria-label="Vorheriger Bereich" disabled={areas.length === 1} onClick={() => chooseArea((current - 1 + areas.length) % areas.length)}><ChevronLeft size={19} /></button><button aria-label="Nächster Bereich" disabled={areas.length === 1} onClick={next}><ChevronRight size={19} /></button></div>
+      <div className="area-buttons">
+        {wholeFits && regions.length > 1 && <button className="view-mode-button" aria-label={focusArea ? 'Ganzes Brett' : 'Bereiche'} title={focusArea ? 'Ganzes Brett' : 'Bereiche'} onClick={() => { setFocusArea(v => !v); setOverview(false); setCurrent(0); }}>{focusArea ? <Expand size={17} /> : <Focus size={17} />}<span>{focusArea ? 'Ganzes Brett' : 'Bereiche'}</span></button>}
+        {areas.length > 1 && <><button aria-label="Vorheriger Bereich" onClick={() => chooseArea((current - 1 + areas.length) % areas.length)}><ChevronLeft size={19} /></button><button aria-label="Nächster Bereich" onClick={next}><ChevronRight size={19} /></button></>}
+      </div>
     </nav>
     <div className="board-content" ref={content} onPointerDown={e => {
       pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
