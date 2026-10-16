@@ -192,3 +192,18 @@ test('the reported nine-blank puzzle stays whole on a phone and only splits when
   await expect(page.locator('.area-counter')).toHaveText('Ganzes Brett');
   await expect(page.locator('[data-cell="1"] .number-value')).toHaveText('10');
 });
+
+
+test('short desktop grids keep every row inside the measured board space', async ({ page }) => {
+  const record = originals.records.find(r => r.puzzle.id === 'hf-crossmath-0077')!;
+  await seed(page, 'material', record.puzzle);
+  await page.setViewportSize({ width: 900, height: 600 }); await page.goto('./');
+  await expect(page.locator('.crossword-grid')).toBeVisible();
+  await expect.poll(() => page.locator('.board-content').evaluate(el => {
+    const area = el.getBoundingClientRect();
+    return [...el.querySelectorAll('.crossword-grid, [data-cell], .cross-symbol')].every(child => {
+      const r = child.getBoundingClientRect();
+      return r.width > 0 && r.height > 0 && r.x >= area.x - 1 && r.y >= area.y - 1 && r.right <= area.right + 1 && r.bottom <= area.bottom + 1 && child.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+    });
+  })).toBe(true);
+});

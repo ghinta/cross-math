@@ -90,7 +90,7 @@ main { display: grid; grid-template-rows: 44px minmax(0,1fr); gap: 12px; }
 .result.error { color: var(--error); }
 .result-check { position: absolute; top: 0; right: 0; width: 2cqw; }
 .vertical-equals { transform: rotate(90deg); display: inline-block; }
-.crossword-grid { --tile-max: 60px; width: min(100cqw,calc(100cqh * var(--ratio)),calc(var(--units-x) * var(--tile-max) + (var(--cols) - 1) * 2px)); gap: 2px; }
+.crossword-grid { min-height: 0; --tile-max: 60px; width: min(100cqw,calc(100cqh * var(--ratio)),calc(var(--units-x) * var(--tile-max) + (var(--cols) - 1) * 2px)); gap: 2px; }
 .crossword-grid .number-cell { border-radius: clamp(6px,1.8cqw,12px); font-size: min(32px,calc(58cqw / var(--units-x))); }
 .crossword-grid [data-digits='3'] .number-value { font-size: .8em; }
 .crossword-grid .empty-cell { font-size: inherit; }

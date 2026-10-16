@@ -35,7 +35,7 @@ function Grid({ session, selected, onSelect, check, showErrors, area, compact }:
   const rows = compact ? area.equations.length * 2 - 1 : area.rows, cols = compact ? 5 : area.cols;
   const units = (n: number) => (n + 1) / 2 + (n - 1) / 2 * .45;
   const style = { '--cols': cols, '--rows': rows, '--units-x': units(cols), '--ratio': units(cols) / units(rows), aspectRatio: `${units(cols)}/${units(rows)}`,
-    gridTemplateColumns: Array.from({ length: cols }, (_, i) => `${i % 2 ? .45 : 1}fr`).join(' '), gridTemplateRows: Array.from({ length: rows }, (_, i) => `${i % 2 ? .45 : 1}fr`).join(' ') } as CSSProperties;
+    gridTemplateColumns: Array.from({ length: cols }, (_, i) => `minmax(0,${i % 2 ? .45 : 1}fr)`).join(' '), gridTemplateRows: Array.from({ length: rows }, (_, i) => `minmax(0,${i % 2 ? .45 : 1}fr)`).join(' ') } as CSSProperties;
   return <div className={`puzzle-grid crossword-grid ${compact ? 'linked-equations' : ''}`} data-equations={area.equations.length} style={style} aria-label={`Arbeitsbereich mit ${area.equations.length} vollständigen Gleichungen`}>{Array.from({ length: rows * cols }, (_, i) => {
     const key = `${Math.floor(i / cols)},${i % cols}`;
     return tiles.get(key) ?? <span key={key} aria-hidden="true" />;

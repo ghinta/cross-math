@@ -170,13 +170,13 @@ for (const size of [{ width: 320, height: 568 }, { width: 375, height: 667 }, { 
     if (size.width === 375) await page.screenshot({ path: 'artifacts/cross-math-mobile-hard.png' });
     if (size.width === 667) await page.screenshot({ path: 'artifacts/cross-math-landscape.png' });
     // All tiles can be reached by touch without a scroll container or clipping.
-    const palette = (await page.locator('.number-bank').boundingBox())!;
-    for (const tile of await page.locator('[data-number]').all()) {
-      const box=(await tile.boundingBox())!;
-      expect(box.y + box.height).toBeLessThanOrEqual(palette.y + palette.height + 1);
-      const exposed=await tile.evaluate(el => { const r=el.getBoundingClientRect(); return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)); });
-      expect(exposed).toBe(true);
-    }
+    await expect.poll(() => page.locator('.number-bank').evaluate(el => {
+      const palette = el.getBoundingClientRect(), tiles = [...el.querySelectorAll('[data-number]')];
+      return tiles.length > 0 && tiles.every(tile => {
+        const r = tile.getBoundingClientRect();
+        return r.y >= palette.y - 1 && r.bottom <= palette.bottom + 1 && tile.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+      });
+    })).toBe(true);
     await page.getByRole('button', { name: 'Hinweis', exact: true }).click();
     await expect(page.locator('.hint-explanation')).toContainText('=');
     await page.getByRole('button', { name: 'Zahl einsetzen' }).click();
