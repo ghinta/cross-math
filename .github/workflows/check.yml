@@ -19,7 +19,7 @@ jobs:
           toolchain: 1.99.0
           targets: wasm32-unknown-unknown
           components: rustfmt, clippy
-      - uses: Swatinem/rust-cache@v2.9.2
+      - uses: Swatinem/rust-cache@v2.9.3
       - run: npm ci
       - name: Audit action runtimes including composite dependencies
         run: npm run check:actions
@@ -72,7 +72,7 @@ jobs:
         with:
           toolchain: 1.99.0
           targets: wasm32-unknown-unknown,${{ matrix.target }}
-      - uses: Swatinem/rust-cache@v2.9.2
+      - uses: Swatinem/rust-cache@v2.9.3
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf libxdo-dev libssl-dev file
       - run: npm ci

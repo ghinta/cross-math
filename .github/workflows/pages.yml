@@ -29,7 +29,7 @@ jobs:
           toolchain: 1.99.0
           targets: wasm32-unknown-unknown
           components: rustfmt, clippy
-      - uses: Swatinem/rust-cache@v2.9.2
+      - uses: Swatinem/rust-cache@v2.9.3
       - uses: actions/configure-pages@v6.0.0
         id: pages
       - run: npm ci
